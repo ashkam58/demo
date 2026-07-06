@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { 
-  Bot, Sparkles, Code, Paintbrush, Layers, Power, 
+  Sparkles, Code, Paintbrush, Layers, Power,
   ChevronRight, ArrowRight,
   Monitor, LayoutTemplate, Keyboard
 } from 'lucide-react';
@@ -20,7 +20,7 @@ const Button = ({ onClick, children, primary = false, className = "" }: any) => 
     onClick={() => { playSound('pop'); onClick(); }}
     className={`px-6 py-3 rounded-2xl font-bold flex items-center justify-center gap-2 transition-all duration-300 transform active:scale-95 ${
       primary 
-        ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-slate-700 shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1' 
+        ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1'
         : 'bg-white hover:bg-slate-50 text-slate-700 shadow-md border border-slate-200'
     } ${className}`}
   >
@@ -29,7 +29,7 @@ const Button = ({ onClick, children, primary = false, className = "" }: any) => 
 );
 
 // --- The Robot Companion (Byte) ---
-const Byte = ({ message, mood = 'happy' }: any) => {
+const Byte = ({ message }: any) => {
   return (
     <div className="fixed bottom-0 left-0 z-50 group pointer-events-none">
       <div className="pointer-events-auto p-12 -m-4">
@@ -99,7 +99,7 @@ const SceneAnatomy = ({ onComplete }: any) => {
           </div>
 
           {/* Hero Section */}
-          <div className={cssOn ? 'p-12 bg-gradient-to-br from-indigo-900 to-purple-900 text-slate-700 relative overflow-hidden' : 'p-4 bg-white text-black'}>
+          <div className={cssOn ? 'p-12 bg-gradient-to-br from-indigo-900 to-purple-900 text-white relative overflow-hidden' : 'p-4 bg-white text-black'}>
             {cssOn && <div className="absolute top-0 right-0 w-64 h-64 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>}
             <h2 className={cssOn ? 'text-5xl font-black mb-4 relative z-10' : 'text-2xl font-bold font-serif'}>
               Learn to Code Today
@@ -612,7 +612,7 @@ export default function App({ onComplete }: any) {
   }
 
   return (
-    <div className="sunrise-bg text-slate-900 font-sans selection:bg-pink-300 selection:text-slate-900 pb-32">
+    <div className="sunrise-bg text-slate-900 font-sans selection:bg-pink-300 selection:text-slate-900">
       
       {/* Navigation / Progress Bar */}
       <nav className="fixed top-0 left-0 w-full z-50 p-6 flex justify-between items-center pointer-events-none">
@@ -643,7 +643,7 @@ export default function App({ onComplete }: any) {
       </nav>
 
       {/* Main Content Area */}
-      <main className="pt-32 px-6 flex flex-col items-center min-h-[70vh] relative z-10 w-full max-w-7xl mx-auto">
+      <main className="pt-28 pb-8 px-6 flex flex-col items-center min-h-dvh relative z-10 w-full max-w-7xl mx-auto">
         
         {/* Floating Decorative Elements */}
         <div className="absolute top-40 left-20 animate-float opacity-40 pointer-events-none text-indigo-300">

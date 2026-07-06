@@ -26,7 +26,7 @@ const Button = ({ onClick, children, primary = false, className = "", color = "g
       onClick={() => { playSound('pop'); onClick(); }}
       className={`px-8 py-4 rounded-2xl font-bold flex items-center justify-center gap-2 transition-all duration-300 transform hover:-translate-y-1 active:scale-95 ${
         primary 
-          ? `bg-gradient-to-r ${baseColor} text-slate-700 shadow-lg` 
+          ? `bg-gradient-to-r ${baseColor} text-slate-950 shadow-lg`
           : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 shadow-md'
       } ${className}`}
     >
@@ -36,7 +36,7 @@ const Button = ({ onClick, children, primary = false, className = "", color = "g
 };
 
 // --- The Robot Companion (Py) ---
-const Py = ({ message, mood = 'happy' }: any) => {
+const Py = ({ message }: any) => {
   return (
     <div className="fixed bottom-0 left-0 z-50 group pointer-events-none">
       <div className="pointer-events-auto p-12 -m-4">
@@ -821,7 +821,7 @@ export default function App({ onComplete }: any) {
   }
 
   return (
-    <div className="min-h-screen text-slate-700 font-sans selection:bg-emerald-200 selection:text-slate-900 pb-32">
+    <div className="bright-bg text-slate-700 font-sans selection:bg-emerald-200 selection:text-slate-900">
       <div className="cyber-grid-light"></div>
       
       {/* Navigation / Progress Bar */}
@@ -855,7 +855,7 @@ export default function App({ onComplete }: any) {
       </nav>
 
       {/* Main Content Area */}
-      <main className="pt-32 px-6 flex flex-col items-center min-h-[70vh] relative z-10 w-full max-w-7xl mx-auto">
+      <main className="pt-28 pb-8 px-6 flex flex-col items-center min-h-dvh relative z-10 w-full max-w-7xl mx-auto">
         
         <div className="w-full flex-1 flex flex-col items-center justify-center">
           
