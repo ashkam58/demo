@@ -2,11 +2,6 @@
 
 // Singleton AudioContext
 let audioCtx: AudioContext | null = null;
-let bgmOsc: OscillatorNode | null = null;
-let bgmOsc2: OscillatorNode | null = null;
-let bgmLfo: OscillatorNode | null = null;
-let bgmGain: GainNode | null = null;
-let isBgmPlaying = false;
 
 export const initAudio = () => {
   if (!audioCtx) {
@@ -25,7 +20,7 @@ export const startBGM = () => {
 // Pentatonic Scale (E major: E, F#, G#, B, C#)
 const scale = [329.63, 369.99, 415.30, 493.88, 554.37, 659.25, 739.99];
 
-export const playInteractionSound = (type: 'type' | 'click' | 'success' | 'hover' | 'laser') => {
+export const playInteractionSound = (type: 'type' | 'click' | 'success' | 'hover' | 'laser' | 'pop' | 'switch') => {
   initAudio();
   if (!audioCtx) return;
 
@@ -59,7 +54,7 @@ export const playInteractionSound = (type: 'type' | 'click' | 'success' | 'hover
     
     osc.start(t);
     osc.stop(t + 0.4);
-  } else if (type === 'click') {
+  } else if (type === 'click' || type === 'pop' || type === 'switch') {
     // Piano/Bell sound
     const freq = scale[Math.floor(Math.random() * scale.length)];
     osc.type = 'sine';
