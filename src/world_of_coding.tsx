@@ -781,7 +781,7 @@ export default function App({ onComplete }: any) {
   };
 
   return (
-    <div className="min-h-[70vh] bg-[#FFFDF6] rounded-[30px] border border-slate-200 shadow-sm text-slate-700 font-sans overflow-x-hidden selection:bg-purple-300/50">
+    <div className="min-h-screen text-slate-700 font-sans overflow-x-hidden selection:bg-purple-300/50">
       <style dangerouslySetInnerHTML={{ __html: customStyles }} />
       
       {/* Global Background Layer */}

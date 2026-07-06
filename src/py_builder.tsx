@@ -821,7 +821,7 @@ export default function App({ onComplete }: any) {
   }
 
   return (
-    <div className="bright-bg text-slate-700 font-sans selection:bg-emerald-200 selection:text-slate-900 pb-32">
+    <div className="min-h-screen text-slate-700 font-sans selection:bg-emerald-200 selection:text-slate-900 pb-32">
       <div className="cyber-grid-light"></div>
       
       {/* Navigation / Progress Bar */}
