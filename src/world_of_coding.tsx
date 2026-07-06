@@ -114,7 +114,7 @@ const WelcomeScene = ({ onNext }: any) => (
     
     <button 
       onClick={onNext}
-      className="group relative px-8 py-4 bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10 border border-slate-700/50  text-slate-900 rounded-full font-bold text-2xl transition-all duration-300 hover:scale-105 animate-glow flex items-center gap-3 overflow-hidden shadow-xl"
+      className="group relative px-8 py-4 bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10 text-white rounded-full font-bold text-2xl transition-all duration-300 hover:scale-105 animate-glow flex items-center gap-3 overflow-hidden shadow-xl"
     >
       <div className="absolute inset-0 bg-gradient-to-r from-sky-300 via-purple-300 to-pink-300 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       <span className="relative z-10 flex items-center gap-2">
@@ -145,13 +145,13 @@ const CodingScene = ({ onNext }: any) => {
           
           <h2 className="text-5xl md:text-7xl font-headings font-black text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] via-[#7C3AED] to-[#EC4899] drop-shadow-[0_8px_25px_rgba(0,0,0,0.15)] mb-6 tracking-tight drop-shadow-sm">
           Welcome to the<br/>World of Coding
-        </h2>  <p className="text-2xl text-slate-700 leading-relaxed">
+        </h2>  <p className="text-2xl text-blue-100 leading-relaxed">
             Coding is simply giving instructions to a computer. Computers aren't actually smart—they just follow your commands exactly!
           </p>
 
-          <div className="bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10 border border-slate-700/50 /80 rounded-2xl p-6 border border-slate-200 shadow-sm">
-            <h3 className="text-slate-700 font-semibold mb-4 flex items-center gap-2">
-              <span className="bg-indigo-500 w-8 h-8 rounded-full flex items-center justify-center text-slate-700 text-sm">1</span>
+          <div className="bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10 rounded-2xl p-6 border border-slate-200 shadow-sm">
+            <h3 className="text-white font-semibold mb-4 flex items-center gap-2">
+              <span className="bg-indigo-500 w-8 h-8 rounded-full flex items-center justify-center text-white text-sm">1</span>
               Give Byte an instruction:
             </h3>
             <div className="flex flex-wrap gap-3">
@@ -198,7 +198,7 @@ const CodingScene = ({ onNext }: any) => {
               </div>
             
             {/* Speech bubble */}
-            <div className="absolute -top-16 -right-16 bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10 border border-slate-700/50  text-slate-900 px-4 py-2 rounded-2xl rounded-bl-none font-bold shadow-xl animate-float">
+            <div className="absolute -top-16 -right-16 bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10 text-white px-4 py-2 rounded-2xl rounded-bl-none font-bold shadow-xl animate-float">
               {robotAction === 'idle' ? "Hi! I'm Byte!" : 
                robotAction === 'jump' ? "Wheee!" :
                robotAction === 'spin' ? "Dizzy!" : "So shiny!"}
@@ -262,10 +262,10 @@ const AlgorithmScene = ({ onNext }: any) => {
   return (
     <div className="relative z-10 flex flex-col items-center justify-center min-h-[70vh] px-4 scene-enter max-w-6xl mx-auto py-4">
       <div className="text-center mb-8">
-        <h2 className="text-5xl md:text-7xl font-headings font-bold text-slate-700 mb-4">
+        <h2 className="text-5xl md:text-7xl font-headings font-bold text-white mb-4">
           What is an <span className="text-gradient">Algorithm?</span>
         </h2>
-        <p className="text-2xl text-slate-700 max-w-2xl mx-auto">
+        <p className="text-2xl text-blue-100 max-w-2xl mx-auto">
           An algorithm is simply a step-by-step recipe to solve a problem. Build a sequence of steps to help Byte reach the battery!
         </p>
       </div>
@@ -274,7 +274,7 @@ const AlgorithmScene = ({ onNext }: any) => {
         
         {/* The Grid Game */}
         <div className="flex-1 w-full flex justify-center">
-          <div className="relative bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10 border border-slate-700/50 /50 p-4 rounded-2xl border border-white inline-block shadow-xl">
+          <div className="relative bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10 p-4 rounded-2xl border border-white inline-block shadow-xl">
             <div className="grid grid-cols-3 gap-2">
               {Array.from({ length: 9 }).map((_, i) => {
                 const x = i % 3;
@@ -305,7 +305,7 @@ const AlgorithmScene = ({ onNext }: any) => {
             
             {success && (
               <div className="absolute inset-0 bg-green-100/80 backdrop-blur-sm rounded-2xl flex items-center justify-center flex-col z-20 scene-enter border border-green-400">
-                <div className="bg-green-500 text-slate-700 p-4 rounded-full mb-2 shadow-[0_0_30px_rgba(34,197,94,0.6)]">
+                <div className="bg-green-500 text-white p-4 rounded-full mb-2 shadow-[0_0_30px_rgba(34,197,94,0.6)]">
                   <Check className="w-8 h-8" />
                 </div>
                 <h3 className="text-2xl font-bold text-green-700">Algorithm Solved!</h3>
@@ -316,8 +316,8 @@ const AlgorithmScene = ({ onNext }: any) => {
 
         {/* Controls */}
         <div className="flex-1 w-full space-y-6">
-          <div className="bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10 border border-slate-700/50 /80 rounded-2xl p-6 border border-slate-200 h-full shadow-sm">
-            <h3 className="text-slate-700 font-bold text-xl mb-4">1. Build your algorithm:</h3>
+          <div className="bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10 rounded-2xl p-6 border border-slate-200 h-full shadow-sm">
+            <h3 className="text-white font-bold text-xl mb-4">1. Build your algorithm:</h3>
             
             <div className="grid grid-cols-3 gap-2 w-48 mb-6 mx-auto">
               <div />
@@ -331,7 +331,7 @@ const AlgorithmScene = ({ onNext }: any) => {
             <div className="bg-slate-50 rounded-xl p-4 min-h-[80px] flex gap-2 flex-wrap items-center border border-slate-200 shadow-inner">
               {path.length === 0 && <span className="text-slate-400 text-sm italic">Add steps to the list...</span>}
               {path.map((step, i) => (
-                <div key={i} className="bg-sky-400 text-slate-700 p-2 rounded flex items-center text-sm font-bold animate-enter shadow-sm">
+                <div key={i} className="bg-sky-400 text-slate-900 p-2 rounded flex items-center text-sm font-bold animate-enter shadow-sm">
                   {step === 'up' && <ArrowUp size={16} />}
                   {step === 'down' && <ArrowDown size={16} />}
                   {step === 'left' && <ArrowLeft size={16} />}
@@ -408,10 +408,10 @@ const AIScene = ({ onNext }: any) => {
           <BrainCircuit className="w-5 h-5" />
           <span className="font-semibold tracking-wider uppercase text-sm">Chapter 3: Artificial Intelligence</span>
         </div>
-        <h2 className="text-5xl md:text-7xl font-headings font-bold text-slate-700 mb-4">
+        <h2 className="text-5xl md:text-7xl font-headings font-bold text-white mb-4">
           What is <span className="text-gradient">AI?</span>
         </h2>
-        <p className="text-2xl text-slate-700 max-w-2xl mx-auto">
+        <p className="text-2xl text-blue-100 max-w-2xl mx-auto">
           AI is not magic. It's a system that <b>learns from examples</b>. Let's train this AI brain to recognize Cats!
         </p>
       </div>
@@ -420,7 +420,7 @@ const AIScene = ({ onNext }: any) => {
         
         {/* Brain Visualizer */}
         <div className="relative mb-4">
-          <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10 border border-slate-700/50  flex items-center justify-center border-4 border-purple-200 relative z-10 shadow-xl">
+          <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10  flex items-center justify-center border-4 border-purple-200 relative z-10 shadow-xl">
             <BrainCircuit className={`w-16 h-16 ${confidence > 50 ? 'text-pink-500 animate-pulse' : 'text-purple-400'} transition-colors duration-1000`} />
           </div>
           {/* Synapses glowing behind */}
@@ -444,9 +444,9 @@ const AIScene = ({ onNext }: any) => {
         {/* Training Area */}
         {!isComplete ? (
           <div className="flex flex-col items-center w-full">
-            <h3 className="text-2xl text-slate-700 font-bold mb-4">Is this a Cat?</h3>
+            <h3 className="text-2xl text-white font-bold mb-4">Is this a Cat?</h3>
             
-            <div className="relative w-32 h-32 bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10 border border-slate-700/50  rounded-2xl flex items-center justify-center text-6xl mb-6 border border-slate-200 shadow-xl">
+            <div className="relative w-32 h-32 bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10  rounded-2xl flex items-center justify-center text-6xl mb-6 border border-slate-200 shadow-xl">
               <span className="animate-enter">{trainingData[currentImageIndex].emoji}</span>
               
               {/* Feedback Overlay */}
@@ -481,8 +481,8 @@ const AIScene = ({ onNext }: any) => {
             <div className="w-20 h-20 bg-emerald-100 border-4 border-emerald-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
               <Sparkles className="w-10 h-10 text-emerald-600" />
             </div>
-            <h3 className="text-3xl font-bold text-slate-700 mb-4">Training Complete!</h3>
-            <p className="text-slate-700 mb-8 max-w-md mx-auto">
+            <h3 className="text-3xl font-bold text-white mb-4">Training Complete!</h3>
+            <p className="text-blue-100 mb-8 max-w-md mx-auto">
               The AI learned the pattern by looking at examples and receiving feedback. That's how machine learning works!
             </p>
             <button onClick={onNext} className="px-8 py-4 bg-indigo-600 text-white rounded-full font-bold text-xl flex items-center gap-2 hover:scale-105 transition-all mx-auto shadow-xl">
@@ -603,7 +603,7 @@ const MazeGameScene = ({ onNext }: any) => {
           <Flag className="w-5 h-5" />
           <span className="font-semibold tracking-wider uppercase text-sm">Chapter 4: The Logic Maze (Level {level + 1}/5)</span>
         </div>
-        <h2 className="text-5xl md:text-7xl font-headings font-bold text-slate-700 mb-4">
+        <h2 className="text-5xl md:text-7xl font-headings font-bold text-white mb-4">
           Master the <span className="text-gradient">Maze!</span>
         </h2>
         <p className="text-2xl text-slate-700 max-w-2xl mx-auto font-medium bg-amber-100/50 p-3 rounded-xl border border-amber-200">
@@ -615,7 +615,7 @@ const MazeGameScene = ({ onNext }: any) => {
         
         {/* The Grid Game */}
         <div className="flex-1 w-full flex justify-center relative">
-          <div className="relative bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10 border border-slate-700/50 /50 p-4 rounded-2xl border border-white inline-block shadow-xl">
+          <div className="relative bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10 p-4 rounded-2xl border border-white inline-block shadow-xl">
             <div className="grid grid-cols-5 gap-1">
               {Array.from({ length: 25 }).map((_, i) => {
                 const x = i % 5;
@@ -648,7 +648,7 @@ const MazeGameScene = ({ onNext }: any) => {
             
             {status === 'success' && (
               <div className="absolute inset-0 bg-green-100/90 backdrop-blur-sm rounded-2xl flex items-center justify-center flex-col z-20 scene-enter border border-green-400">
-                <div className="bg-green-500 text-slate-700 p-4 rounded-full mb-2 shadow-[0_0_30px_rgba(34,197,94,0.6)]">
+                <div className="bg-green-500 text-white p-4 rounded-full mb-2 shadow-[0_0_30px_rgba(34,197,94,0.6)]">
                   <Check className="w-8 h-8" />
                 </div>
                 <h3 className="text-2xl font-bold text-green-700 mb-4">Level Cleared!</h3>
@@ -659,7 +659,7 @@ const MazeGameScene = ({ onNext }: any) => {
             )}
             {status === 'fail' && (
               <div className="absolute inset-0 bg-red-100/90 backdrop-blur-sm rounded-2xl flex items-center justify-center flex-col z-20 scene-enter border border-red-400">
-                <div className="bg-red-500 text-slate-700 p-4 rounded-full mb-2 shadow-[0_0_30px_rgba(239,68,68,0.6)]">
+                <div className="bg-red-500 text-white p-4 rounded-full mb-2 shadow-[0_0_30px_rgba(239,68,68,0.6)]">
                   <X className="w-8 h-8" />
                 </div>
                 <h3 className="text-2xl font-bold text-red-700 mb-4">Oops! Try Again.</h3>
@@ -673,8 +673,8 @@ const MazeGameScene = ({ onNext }: any) => {
 
         {/* Controls */}
         <div className="flex-1 w-full space-y-6">
-          <div className="bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10 border border-slate-700/50 /80 rounded-2xl p-6 border border-slate-200 h-full shadow-sm">
-            <h3 className="text-slate-700 font-bold text-xl mb-4">1. Write your code:</h3>
+          <div className="bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10 rounded-2xl p-6 border border-slate-200 h-full shadow-sm">
+            <h3 className="text-white font-bold text-xl mb-4">1. Write your code:</h3>
             
             <div className="flex justify-center gap-3 mb-6">
               <button onClick={() => addCommand('left')} disabled={running || status === 'success'} className="px-4 py-3 bg-sky-100 hover:bg-sky-200 text-sky-700 rounded-xl flex flex-col items-center disabled:opacity-50 active:scale-95 transition-all shadow-sm font-bold text-sm">
@@ -691,7 +691,7 @@ const MazeGameScene = ({ onNext }: any) => {
             <div className="bg-slate-50 rounded-xl p-4 min-h-[120px] flex gap-2 flex-wrap items-start border border-slate-200 shadow-inner">
               {commands.length === 0 && <span className="text-slate-400 text-sm italic">Add commands to build your logic...</span>}
               {commands.map((step, i) => (
-                <div key={i} className="bg-indigo-500 text-slate-700 p-2 px-3 rounded-lg flex items-center gap-1 text-sm font-bold animate-enter shadow-sm">
+                <div key={i} className="bg-indigo-500 text-white p-2 px-3 rounded-lg flex items-center gap-1 text-sm font-bold animate-enter shadow-sm">
                   {step === 'forward' && <><ArrowUp size={14} /> FWD</>}
                   {step === 'left' && <><RotateCcw size={14} /> LFT</>}
                   {step === 'right' && <><RotateCw size={14} /> RGT</>}
@@ -739,11 +739,11 @@ const FinaleScene = ({ onComplete, onRestart }: any) => (
     </h1>
     
     <div className="flex flex-col md:flex-row gap-6 md:gap-12 text-2xl md:text-2xl text-slate-700 font-medium mb-12">
-      <div className="bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10 border border-slate-700/50 /60 px-6 py-4 rounded-2xl border border-white backdrop-blur-sm shadow-sm">
+      <div className="bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10 px-6 py-4 rounded-2xl border border-white backdrop-blur-sm shadow-sm">
         <span className="text-slate-400 line-through mr-2">Play Games</span>
         <span className="text-indigo-600 font-bold">Make Games</span>
       </div>
-      <div className="bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10 border border-slate-700/50 /60 px-6 py-4 rounded-2xl border border-white backdrop-blur-sm shadow-sm">
+      <div className="bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10 px-6 py-4 rounded-2xl border border-white backdrop-blur-sm shadow-sm">
         <span className="text-slate-400 line-through mr-2">Use Apps</span>
         <span className="text-pink-500 font-bold">Build Apps</span>
       </div>
@@ -800,7 +800,7 @@ export default function App({ onComplete }: any) {
         
         <button 
           onClick={toggleSound}
-          className="pointer-events-auto w-12 h-12 rounded-full bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10 border border-slate-700/50 /80 border border-slate-200 shadow-sm flex items-center justify-center hover:bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10 border border-slate-700/50  transition-colors"
+          className="pointer-events-auto w-12 h-12 rounded-full bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10 border border-slate-200 shadow-sm flex items-center justify-center hover:bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10  transition-colors"
           title="Toggle Ambient Music"
         >
           {soundEnabled ? <Volume2 className="w-5 h-5 text-indigo-500" /> : <VolumeX className="w-5 h-5 text-slate-400" />}
