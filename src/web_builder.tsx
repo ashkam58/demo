@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { 
   Bot, Sparkles, Code, Paintbrush, Layers, Power, 
-  ChevronRight, ArrowRight, CheckCircle2,
+  ChevronRight, ArrowRight,
   Monitor, LayoutTemplate, Keyboard
 } from 'lucide-react';
 
@@ -580,7 +580,7 @@ export default function App({ onComplete }: any) {
       }
     `;
     document.head.appendChild(style);
-    return () => document.head.removeChild(style);
+    return () => { document.head.removeChild(style); };
   }, []);
 
   const nextStep = () => setStep(s => Math.min(s + 1, 4));

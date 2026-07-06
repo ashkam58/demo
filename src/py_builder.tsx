@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { 
   Bot, Sparkles, TerminalSquare, Cpu, Zap, Network, 
-  ChevronRight, ArrowRight, CheckCircle2, Search, Play,
-  Box, Database, ShieldAlert, Code2, PaintBucket
+  ChevronRight, ArrowRight, Play,
+  Box, Database, Code2, PaintBucket
 } from 'lucide-react';
 
 // --- Web Audio API for Interactions ---
@@ -814,7 +814,7 @@ export default function App({ onComplete }: any) {
       }
     `;
     document.head.appendChild(style);
-    return () => document.head.removeChild(style);
+    return () => { document.head.removeChild(style); };
   }, []);
 
   const nextStep = useCallback(() => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Play, Sparkles, BrainCircuit, Code2, Volume2, VolumeX, ArrowRight, ArrowUp, ArrowDown, ArrowLeft, RefreshCw, Check, X, Flag, RotateCcw, RotateCw } from 'lucide-react';
 
 // --- CUSTOM ANIMATION STYLES ---
