@@ -140,11 +140,9 @@ const CodingScene = ({ onNext }: any) => {
             <span className="font-semibold tracking-wider uppercase text-sm">Chapter 1: Coding</span>
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-800">
-            What is <span className="text-gradient">Coding?</span>
-          </h2>
-          
-          <p className="text-xl text-slate-600 leading-relaxed">
+          <h2 className="text-5xl md:text-7xl font-funky font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-500 mb-6 tracking-tight drop-shadow-sm">
+          Welcome to the<br/>World of Coding
+        </h2>  <p className="text-xl text-slate-600 leading-relaxed">
             Coding is simply giving instructions to a computer. Computers aren't actually smart—they just follow your commands exactly!
           </p>
 
@@ -254,7 +252,7 @@ const AlgorithmScene = ({ onNext }: any) => {
   return (
     <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 scene-enter max-w-6xl mx-auto py-20">
       <div className="text-center mb-8">
-        <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
+        <h2 className="text-5xl md:text-7xl font-funky font-bold text-slate-800 mb-4">
           What is an <span className="text-gradient">Algorithm?</span>
         </h2>
         <p className="text-xl text-slate-600 max-w-2xl mx-auto">
@@ -388,13 +386,13 @@ const AIScene = ({ onNext }: any) => {
   const isComplete = confidence >= 100 || currentImageIndex >= trainingData.length - 1;
 
   return (
-    <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 scene-enter max-w-6xl mx-auto py-20">
+    <div className="relative z-10 flex flex-col items-center justify-center min-h-[90vh] px-4 scene-enter max-w-6xl mx-auto py-10">
       <div className="text-center mb-8">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-100 text-purple-700 border border-purple-200 mb-6">
           <BrainCircuit className="w-5 h-5" />
           <span className="font-semibold tracking-wider uppercase text-sm">Chapter 3: Artificial Intelligence</span>
         </div>
-        <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
+        <h2 className="text-5xl md:text-7xl font-funky font-bold text-slate-800 mb-4">
           What is <span className="text-gradient">AI?</span>
         </h2>
         <p className="text-xl text-slate-600 max-w-2xl mx-auto">
@@ -405,7 +403,7 @@ const AIScene = ({ onNext }: any) => {
       <div className="glass-panel rounded-3xl p-8 w-full max-w-4xl mx-auto flex flex-col items-center relative overflow-hidden">
         
         {/* Brain Visualizer */}
-        <div className="relative mb-8 mt-4">
+        <div className="relative mb-4">
           <div className="w-32 h-32 rounded-full bg-white flex items-center justify-center border-4 border-purple-200 relative z-10 shadow-xl">
             <BrainCircuit className={`w-16 h-16 ${confidence > 50 ? 'text-pink-500 animate-pulse' : 'text-purple-400'} transition-colors duration-1000`} />
           </div>
@@ -414,7 +412,7 @@ const AIScene = ({ onNext }: any) => {
         </div>
 
         {/* Confidence Meter */}
-        <div className="w-full max-w-md mb-10">
+        <div className="w-full max-w-md mb-6">
           <div className="flex justify-between text-sm font-bold text-purple-600 mb-2">
             <span>AI Brain Confidence</span>
             <span>{confidence}%</span>
@@ -430,9 +428,9 @@ const AIScene = ({ onNext }: any) => {
         {/* Training Area */}
         {!isComplete ? (
           <div className="flex flex-col items-center w-full">
-            <h3 className="text-xl text-slate-800 font-bold mb-6">Is this a Cat?</h3>
+            <h3 className="text-xl text-slate-800 font-bold mb-4">Is this a Cat?</h3>
             
-            <div className="relative w-40 h-40 bg-white rounded-2xl flex items-center justify-center text-7xl mb-8 border border-slate-200 shadow-xl">
+            <div className="relative w-32 h-32 bg-white rounded-2xl flex items-center justify-center text-6xl mb-6 border border-slate-200 shadow-xl">
               <span className="animate-enter">{trainingData[currentImageIndex].emoji}</span>
               
               {/* Feedback Overlay */}
@@ -583,13 +581,13 @@ const MazeGameScene = ({ onNext }: any) => {
   };
 
   return (
-    <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 scene-enter max-w-6xl mx-auto py-20">
+    <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 scene-enter max-w-6xl mx-auto">
       <div className="text-center mb-8">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 border border-emerald-200 mb-6">
           <Flag className="w-5 h-5" />
           <span className="font-semibold tracking-wider uppercase text-sm">Chapter 4: The Logic Maze (Level {level + 1}/5)</span>
         </div>
-        <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
+        <h2 className="text-5xl md:text-7xl font-funky font-bold text-slate-800 mb-4">
           Master the <span className="text-gradient">Maze!</span>
         </h2>
         <p className="text-xl text-slate-600 max-w-2xl mx-auto font-medium bg-amber-100/50 p-3 rounded-xl border border-amber-200">
@@ -790,7 +788,7 @@ export default function App({ onComplete }: any) {
       </div>
 
       {/* Scene Manager */}
-      <main className="relative z-10 pb-20 w-full max-w-7xl mx-auto">
+      <main className="relative z-10 w-full max-w-7xl mx-auto">
         {currentScene === 0 && <WelcomeScene onNext={nextScene} />}
         {currentScene === 1 && <CodingScene onNext={nextScene} />}
         {currentScene === 2 && <AlgorithmScene onNext={nextScene} />}
