@@ -26,33 +26,43 @@ export const startBGM = () => {
   bgmGain.gain.value = 0; // fade in
   bgmGain.connect(audioCtx.destination);
   
-  // A low Drone E2 (82.41 Hz) and B2 (123.47 Hz)
-  bgmOsc = audioCtx.createOscillator();
-  bgmOsc.type = 'sine';
-  bgmOsc.frequency.value = 82.41;
-  bgmOsc.connect(bgmGain);
+  // Lush ambient Cmaj9 chord drone for a musical, soothing EDM pad feel
+  const frequencies = [261.63, 329.63, 392.00, 493.88, 587.33]; // C4, E4, G4, B4, D5
   
-  bgmOsc2 = audioCtx.createOscillator();
-  bgmOsc2.type = 'triangle';
-  bgmOsc2.frequency.value = 123.47;
-  bgmOsc2.connect(bgmGain);
+  frequencies.forEach((freq, index) => {
+    const osc = audioCtx!.createOscillator();
+    osc.type = index % 2 === 0 ? 'sine' : 'triangle';
+    osc.frequency.value = freq;
+    
+    // Slight detune for that thick EDM pad chorus effect
+    const oscDetune = audioCtx!.createOscillator();
+    oscDetune.type = 'sine';
+    oscDetune.frequency.value = freq * 1.005;
+    
+    const mixGain = audioCtx!.createGain();
+    mixGain.gain.value = 0.15; // lower individual volume
+    
+    osc.connect(mixGain);
+    oscDetune.connect(mixGain);
+    mixGain.connect(bgmGain!);
+    
+    osc.start();
+    oscDetune.start();
+  });
   
-  // LFO for slow pulsation
+  // Global slow LFO for a pulsing, swelling ambient effect
   bgmLfo = audioCtx.createOscillator();
   bgmLfo.type = 'sine';
-  bgmLfo.frequency.value = 0.1; // 10 second cycle
+  bgmLfo.frequency.value = 0.15; // ~6.5 second cycle
   
   const lfoGain = audioCtx.createGain();
-  lfoGain.gain.value = 0.04; // Modulation depth
+  lfoGain.gain.value = 0.03; // Modulation depth
   bgmLfo.connect(lfoGain);
   lfoGain.connect(bgmGain.gain);
-  
-  bgmOsc.start();
-  bgmOsc2.start();
   bgmLfo.start();
   
-  // Fade in to a very low volume (soothing, not distracting)
-  bgmGain.gain.linearRampToValueAtTime(0.05, audioCtx.currentTime + 5);
+  // Fade in smoothly
+  bgmGain.gain.linearRampToValueAtTime(0.12, audioCtx.currentTime + 5);
   isBgmPlaying = true;
 };
 
