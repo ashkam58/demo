@@ -341,11 +341,11 @@ const SceneGuidedCoding = ({ onComplete }: any) => {
   const [celebrate, setCelebrate] = useState(false);
 
   const challenges = [
-    { type: 'html', instruction: "Let's build a robot's power core! Type <div class='core'></div>", expected: "<div class='core'></div>", hint: "Use single quotes for the class!" },
-    { type: 'css', instruction: "Give it energy! Type background: #06b6d4;", expected: "background: #06b6d4;", hint: "Don't forget the semicolon!" },
-    { type: 'css', instruction: "Make it round! Type border-radius: 50%;", expected: "border-radius: 50%;", hint: "50% makes a perfect circle." },
-    { type: 'css', instruction: "Make it glow! Type box-shadow: 0 0 80px #06b6d4;", expected: "box-shadow: 0 0 80px #06b6d4;", hint: "This adds a massive cyan shadow." },
-    { type: 'css', instruction: "Supercharge it! Type transform: scale(1.5);", expected: "transform: scale(1.5);", hint: "This scales it up by 1.5x" },
+    { type: 'html', instruction: "Create the Cyberspace Core. Type <div class='neon-core'></div>", expected: "<div class='neon-core'></div>", hint: "Use single quotes for the class!" },
+    { type: 'css', instruction: "Give it deep space energy! Type background: #a855f7;", expected: "background: #a855f7;", hint: "Don't forget the semicolon!" },
+    { type: 'css', instruction: "Make it a perfect circle! Type border-radius: 50%;", expected: "border-radius: 50%;", hint: "50% makes it round." },
+    { type: 'css', instruction: "Add a massive neon glow! Type box-shadow: 0 0 150px #a855f7;", expected: "box-shadow: 0 0 150px #a855f7;", hint: "This creates an intense purple shadow." },
+    { type: 'css', instruction: "Spin it up to full power! Type transform: rotate(45deg) scale(1.5);", expected: "transform: rotate(45deg) scale(1.5);", hint: "This scales and rotates it." },
   ];
 
   const currentChallenge = challenges[level];
@@ -385,7 +385,7 @@ const SceneGuidedCoding = ({ onComplete }: any) => {
         <h2 className="text-4xl font-black text-slate-800 mb-2 flex items-center justify-center gap-3">
           <Keyboard className="text-indigo-600" size={36} /> You are the Developer
         </h2>
-        <p className="text-slate-600 font-bold text-lg">Bring the robot to life! Type the code exactly as shown to see the magic happen instantly.</p>
+        <p className="text-slate-600 font-bold text-lg">Bring the cyberspace core to life! Type the code exactly as shown to see the magic happen instantly.</p>
       </div>
 
       <div className="flex flex-col lg:flex-row w-full gap-8">
@@ -410,7 +410,7 @@ const SceneGuidedCoding = ({ onComplete }: any) => {
             
             <textarea 
               value={code}
-              onChange={(e) => setCode(e.target.value)}
+              onChange={(e) => { setCode(e.target.value); playSound('type'); }}
               className="w-full h-full mt-10 bg-transparent text-emerald-400 font-mono text-3xl outline-none resize-none caret-white"
               placeholder="Type your code here..."
               spellCheck="false"
@@ -425,38 +425,58 @@ const SceneGuidedCoding = ({ onComplete }: any) => {
             {success && <span className="bg-green-100 text-green-700 px-4 py-1 rounded-full text-sm font-black animate-pulse shadow-sm">Code Match! 🎉</span>}
           </div>
           
-          <div className="bg-white rounded-3xl p-8 shadow-2xl flex-1 min-h-[300px] flex items-center justify-center border-4 border-slate-200 relative overflow-hidden">
+          <div className="bg-slate-900 rounded-3xl p-8 shadow-2xl flex-1 min-h-[400px] flex items-center justify-center border-4 border-slate-800 relative overflow-hidden">
              
-             {/* The Robot Chassis */}
-             <div className={`w-80 h-80 bg-slate-800 rounded-[3rem] flex items-center justify-center border-[12px] border-slate-700 relative transition-all duration-500 shadow-2xl ${celebrate ? 'scale-110 rotate-3' : 'hover:scale-105'}`}>
-                {/* Robot Eyes */}
-                <div className="absolute top-8 left-1/2 -translate-x-1/2 flex gap-8 z-10">
-                  <div className={`w-8 h-8 rounded-full transition-all duration-700 ${level >= 2 ? 'bg-cyan-400 shadow-[0_0_20px_#06b6d4]' : 'bg-slate-900 border-2 border-slate-700'}`}></div>
-                  <div className={`w-8 h-8 rounded-full transition-all duration-700 ${level >= 2 ? 'bg-cyan-400 shadow-[0_0_20px_#06b6d4]' : 'bg-slate-900 border-2 border-slate-700'}`}></div>
-                </div>
-                
-                {/* Robot Mouth */}
-                <div className={`absolute bottom-12 w-32 h-4 rounded-full transition-all duration-700 z-10 ${level >= 4 ? 'bg-cyan-400 shadow-[0_0_15px_#06b6d4] h-8' : 'bg-slate-900'}`}></div>
+             {/* Tech Grid Background */}
+             <div className="absolute inset-0 opacity-20" style={{ 
+               backgroundImage: 'linear-gradient(rgba(6,182,212,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(6,182,212,0.3) 1px, transparent 1px)', 
+               backgroundSize: '30px 30px' 
+             }}></div>
+
+             <div className={`w-full h-full flex items-center justify-center relative transition-all duration-500 ${celebrate ? 'scale-110' : 'hover:scale-105'}`}>
 
                 {/* Target Styles */}
                 <style dangerouslySetInnerHTML={{__html: `
-                  .core {
-                    width: 120px;
-                    height: 120px;
-                    background: #334155;
-                    border: 6px solid #475569;
-                    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-                    z-index: 0;
+                  .neon-core {
+                    width: 140px;
+                    height: 140px;
+                    background: transparent;
+                    border: 4px solid rgba(168, 85, 247, 0.3);
+                    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+                    position: relative;
+                    z-index: 10;
                     ${finalCss}
                   }
+                  .neon-core::before {
+                    content: '';
+                    position: absolute;
+                    inset: -20px;
+                    border: 2px dashed rgba(6, 182, 212, ${level >= 3 ? '0.8' : '0.1'});
+                    border-radius: 50%;
+                    animation: spin-forward 10s linear infinite;
+                    pointer-events: none;
+                    transition: all 0.5s;
+                  }
+                  .neon-core::after {
+                    content: '';
+                    position: absolute;
+                    inset: -40px;
+                    border: 1px solid rgba(168, 85, 247, ${level >= 4 ? '0.5' : '0.1'});
+                    border-radius: 50%;
+                    animation: spin-backward 15s linear infinite;
+                    pointer-events: none;
+                    transition: all 0.5s;
+                  }
+                  @keyframes spin-forward { 100% { transform: rotate(360deg); } }
+                  @keyframes spin-backward { 100% { transform: rotate(-360deg); } }
                 `}} />
 
                 {/* Core Rendering */}
                 <div 
                   dangerouslySetInnerHTML={{ 
-                    __html: level === 0 ? code : "<div class='core'></div>" 
+                    __html: level === 0 ? code : "<div class='neon-core'></div>" 
                   }} 
-                  className={`relative z-0 transition-all duration-500 ${celebrate ? 'scale-125' : ''}`}
+                  className="relative z-10"
                 />
              </div>
 
