@@ -31,7 +31,7 @@ const customStyles = `
   .animate-glow { animation: pulse-glow 3s ease-in-out infinite; }
   .scene-enter { animation: scene-transition 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
   
-  .glass-panel {
+  .bg-slate-800/80 backdrop-blur-xl border-slate-700 shadow-2xl {
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
@@ -92,7 +92,7 @@ const MagicalBackground = () => {
 
 // --- SCENE 1: WELCOME ---
 const WelcomeScene = ({ onNext }: any) => (
-  <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4 scene-enter">
+  <div className="relative z-10 flex flex-col items-center justify-center min-h-[70vh] text-center px-4 scene-enter">
     <div className="animate-float mb-8">
       <div className="w-24 h-24 rounded-3xl bg-gradient-to-tr from-sky-400 to-indigo-500 flex items-center justify-center shadow-[0_0_50px_rgba(56,189,248,0.5)] rotate-12">
         <Sparkles className="w-12 h-12 text-white" />
@@ -100,18 +100,18 @@ const WelcomeScene = ({ onNext }: any) => (
     </div>
     
     <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight mb-6">
-      <span className="text-slate-800">THE WORLD OF </span>
+      <span className="text-slate-100">THE WORLD OF </span>
       <br />
       <span className="text-gradient">CODING</span>
     </h1>
     
-    <p className="text-xl md:text-2xl text-slate-600 max-w-2xl mb-12 font-medium">
+    <p className="text-2xl md:text-2xl text-slate-300 max-w-2xl mb-12 font-medium">
       Everything around you—from video games to spaceships—was created using code. Ready to discover how it works?
     </p>
     
     <button 
       onClick={onNext}
-      className="group relative px-8 py-4 bg-white text-slate-900 rounded-full font-bold text-xl transition-all duration-300 hover:scale-105 animate-glow flex items-center gap-3 overflow-hidden shadow-xl"
+      className="group relative px-8 py-4 bg-slate-800/80 backdrop-blur-md border border-slate-700/50 text-white text-slate-900 rounded-full font-bold text-2xl transition-all duration-300 hover:scale-105 animate-glow flex items-center gap-3 overflow-hidden shadow-xl"
     >
       <div className="absolute inset-0 bg-gradient-to-r from-sky-300 via-purple-300 to-pink-300 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       <span className="relative z-10 flex items-center gap-2">
@@ -131,8 +131,8 @@ const CodingScene = ({ onNext }: any) => {
   };
 
   return (
-    <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 scene-enter max-w-6xl mx-auto py-20">
-      <div className="glass-panel rounded-3xl p-8 md:p-12 w-full flex flex-col md:flex-row gap-12 items-center">
+    <div className="relative z-10 flex flex-col items-center justify-center min-h-[70vh] px-4 scene-enter max-w-6xl mx-auto py-4">
+      <div className="bg-slate-800/80 backdrop-blur-xl border-slate-700 shadow-2xl rounded-3xl p-8 md:p-12 w-full flex flex-col md:flex-row gap-12 items-center">
         
         <div className="flex-1 space-y-6">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 border border-blue-200">
@@ -142,12 +142,12 @@ const CodingScene = ({ onNext }: any) => {
           
           <h2 className="text-5xl md:text-7xl font-funky font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-500 mb-6 tracking-tight drop-shadow-sm">
           Welcome to the<br/>World of Coding
-        </h2>  <p className="text-xl text-slate-600 leading-relaxed">
+        </h2>  <p className="text-2xl text-slate-300 leading-relaxed">
             Coding is simply giving instructions to a computer. Computers aren't actually smart—they just follow your commands exactly!
           </p>
 
-          <div className="bg-white/80 rounded-2xl p-6 border border-slate-200 shadow-sm">
-            <h3 className="text-slate-800 font-semibold mb-4 flex items-center gap-2">
+          <div className="bg-slate-800/80 backdrop-blur-md border border-slate-700/50 text-white/80 rounded-2xl p-6 border border-slate-200 shadow-sm">
+            <h3 className="text-slate-100 font-semibold mb-4 flex items-center gap-2">
               <span className="bg-indigo-500 w-8 h-8 rounded-full flex items-center justify-center text-white text-sm">1</span>
               Give Byte an instruction:
             </h3>
@@ -188,7 +188,7 @@ const CodingScene = ({ onNext }: any) => {
             </div>
             
             {/* Speech bubble */}
-            <div className="absolute -top-16 -right-16 bg-white text-slate-900 px-4 py-2 rounded-2xl rounded-bl-none font-bold shadow-xl animate-float">
+            <div className="absolute -top-16 -right-16 bg-slate-800/80 backdrop-blur-md border border-slate-700/50 text-white text-slate-900 px-4 py-2 rounded-2xl rounded-bl-none font-bold shadow-xl animate-float">
               {robotAction === 'idle' ? "Hi! I'm Byte!" : 
                robotAction === 'jump' ? "Wheee!" :
                robotAction === 'spin' ? "Dizzy!" : "So shiny!"}
@@ -250,21 +250,21 @@ const AlgorithmScene = ({ onNext }: any) => {
   };
 
   return (
-    <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 scene-enter max-w-6xl mx-auto py-20">
+    <div className="relative z-10 flex flex-col items-center justify-center min-h-[70vh] px-4 scene-enter max-w-6xl mx-auto py-4">
       <div className="text-center mb-8">
-        <h2 className="text-5xl md:text-7xl font-funky font-bold text-slate-800 mb-4">
+        <h2 className="text-5xl md:text-7xl font-funky font-bold text-slate-100 mb-4">
           What is an <span className="text-gradient">Algorithm?</span>
         </h2>
-        <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+        <p className="text-2xl text-slate-300 max-w-2xl mx-auto">
           An algorithm is simply a step-by-step recipe to solve a problem. Build a sequence of steps to help Byte reach the battery!
         </p>
       </div>
 
-      <div className="glass-panel rounded-3xl p-8 w-full flex flex-col lg:flex-row gap-12 items-start">
+      <div className="bg-slate-800/80 backdrop-blur-xl border-slate-700 shadow-2xl rounded-3xl p-8 w-full flex flex-col lg:flex-row gap-12 items-start">
         
         {/* The Grid Game */}
         <div className="flex-1 w-full flex justify-center">
-          <div className="relative bg-white/50 p-4 rounded-2xl border border-white inline-block shadow-xl">
+          <div className="relative bg-slate-800/80 backdrop-blur-md border border-slate-700/50 text-white/50 p-4 rounded-2xl border border-white inline-block shadow-xl">
             <div className="grid grid-cols-3 gap-2">
               {Array.from({ length: 9 }).map((_, i) => {
                 const x = i % 3;
@@ -274,7 +274,7 @@ const AlgorithmScene = ({ onNext }: any) => {
                 
                 return (
                   <div key={i} className={`w-20 h-20 md:w-24 md:h-24 rounded-xl border-2 flex items-center justify-center transition-all duration-300
-                    ${isTarget ? 'bg-yellow-100 border-yellow-400' : 'bg-white border-slate-200'}
+                    ${isTarget ? 'bg-yellow-100 border-yellow-400' : 'bg-slate-800/80 backdrop-blur-md border border-slate-700/50 text-white border-slate-200'}
                   `}>
                     {isTarget && !isRobot && <div className="text-4xl animate-bounce">⚡</div>}
                     {isRobot && (
@@ -300,8 +300,8 @@ const AlgorithmScene = ({ onNext }: any) => {
 
         {/* Controls */}
         <div className="flex-1 w-full space-y-6">
-          <div className="bg-white/80 rounded-2xl p-6 border border-slate-200 h-full shadow-sm">
-            <h3 className="text-slate-800 font-bold text-lg mb-4">1. Build your algorithm:</h3>
+          <div className="bg-slate-800/80 backdrop-blur-md border border-slate-700/50 text-white/80 rounded-2xl p-6 border border-slate-200 h-full shadow-sm">
+            <h3 className="text-slate-100 font-bold text-xl mb-4">1. Build your algorithm:</h3>
             
             <div className="grid grid-cols-3 gap-2 w-48 mb-6 mx-auto">
               <div />
@@ -344,7 +344,7 @@ const AlgorithmScene = ({ onNext }: any) => {
       </div>
       
       {success && (
-        <button onClick={onNext} className="mt-8 px-8 py-4 bg-indigo-600 text-white rounded-full font-bold text-lg flex items-center gap-2 hover:scale-105 transition-all animate-glow shadow-xl">
+        <button onClick={onNext} className="mt-8 px-8 py-4 bg-indigo-600 text-white rounded-full font-bold text-xl flex items-center gap-2 hover:scale-105 transition-all animate-glow shadow-xl">
           Next: What is AI? <ArrowRight className="w-5 h-5" />
         </button>
       )}
@@ -392,19 +392,19 @@ const AIScene = ({ onNext }: any) => {
           <BrainCircuit className="w-5 h-5" />
           <span className="font-semibold tracking-wider uppercase text-sm">Chapter 3: Artificial Intelligence</span>
         </div>
-        <h2 className="text-5xl md:text-7xl font-funky font-bold text-slate-800 mb-4">
+        <h2 className="text-5xl md:text-7xl font-funky font-bold text-slate-100 mb-4">
           What is <span className="text-gradient">AI?</span>
         </h2>
-        <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+        <p className="text-2xl text-slate-300 max-w-2xl mx-auto">
           AI is not magic. It's a system that <b>learns from examples</b>. Let's train this AI brain to recognize Cats!
         </p>
       </div>
 
-      <div className="glass-panel rounded-3xl p-8 w-full max-w-4xl mx-auto flex flex-col items-center relative overflow-hidden">
+      <div className="bg-slate-800/80 backdrop-blur-xl border-slate-700 shadow-2xl rounded-3xl p-8 w-full max-w-4xl mx-auto flex flex-col items-center relative overflow-hidden">
         
         {/* Brain Visualizer */}
         <div className="relative mb-4">
-          <div className="w-32 h-32 rounded-full bg-white flex items-center justify-center border-4 border-purple-200 relative z-10 shadow-xl">
+          <div className="w-32 h-32 rounded-full bg-slate-800/80 backdrop-blur-md border border-slate-700/50 text-white flex items-center justify-center border-4 border-purple-200 relative z-10 shadow-xl">
             <BrainCircuit className={`w-16 h-16 ${confidence > 50 ? 'text-pink-500 animate-pulse' : 'text-purple-400'} transition-colors duration-1000`} />
           </div>
           {/* Synapses glowing behind */}
@@ -428,9 +428,9 @@ const AIScene = ({ onNext }: any) => {
         {/* Training Area */}
         {!isComplete ? (
           <div className="flex flex-col items-center w-full">
-            <h3 className="text-xl text-slate-800 font-bold mb-4">Is this a Cat?</h3>
+            <h3 className="text-2xl text-slate-100 font-bold mb-4">Is this a Cat?</h3>
             
-            <div className="relative w-32 h-32 bg-white rounded-2xl flex items-center justify-center text-6xl mb-6 border border-slate-200 shadow-xl">
+            <div className="relative w-32 h-32 bg-slate-800/80 backdrop-blur-md border border-slate-700/50 text-white rounded-2xl flex items-center justify-center text-6xl mb-6 border border-slate-200 shadow-xl">
               <span className="animate-enter">{trainingData[currentImageIndex].emoji}</span>
               
               {/* Feedback Overlay */}
@@ -447,14 +447,14 @@ const AIScene = ({ onNext }: any) => {
               <button 
                 onClick={() => handleGuess(true)} 
                 disabled={feedback !== null}
-                className="px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-bold text-lg shadow-md active:scale-95 transition-all"
+                className="px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-bold text-xl shadow-md active:scale-95 transition-all"
               >
                 Yes
               </button>
               <button 
                 onClick={() => handleGuess(false)} 
                 disabled={feedback !== null}
-                className="px-8 py-3 bg-rose-500 hover:bg-rose-600 text-white rounded-xl font-bold text-lg shadow-md active:scale-95 transition-all"
+                className="px-8 py-3 bg-rose-500 hover:bg-rose-600 text-white rounded-xl font-bold text-xl shadow-md active:scale-95 transition-all"
               >
                 No
               </button>
@@ -465,11 +465,11 @@ const AIScene = ({ onNext }: any) => {
             <div className="w-20 h-20 bg-emerald-100 border-4 border-emerald-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
               <Sparkles className="w-10 h-10 text-emerald-600" />
             </div>
-            <h3 className="text-3xl font-bold text-slate-800 mb-4">Training Complete!</h3>
-            <p className="text-slate-600 mb-8 max-w-md mx-auto">
+            <h3 className="text-3xl font-bold text-slate-100 mb-4">Training Complete!</h3>
+            <p className="text-slate-300 mb-8 max-w-md mx-auto">
               The AI learned the pattern by looking at examples and receiving feedback. That's how machine learning works!
             </p>
-            <button onClick={onNext} className="px-8 py-4 bg-indigo-600 text-white rounded-full font-bold text-lg flex items-center gap-2 hover:scale-105 transition-all mx-auto shadow-xl">
+            <button onClick={onNext} className="px-8 py-4 bg-indigo-600 text-white rounded-full font-bold text-xl flex items-center gap-2 hover:scale-105 transition-all mx-auto shadow-xl">
               Next: Master the Maze <ArrowRight className="w-5 h-5" />
             </button>
           </div>
@@ -581,25 +581,25 @@ const MazeGameScene = ({ onNext }: any) => {
   };
 
   return (
-    <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 scene-enter max-w-6xl mx-auto">
+    <div className="relative z-10 flex flex-col items-center justify-center min-h-[70vh] px-4 scene-enter max-w-6xl mx-auto">
       <div className="text-center mb-8">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 border border-emerald-200 mb-6">
           <Flag className="w-5 h-5" />
           <span className="font-semibold tracking-wider uppercase text-sm">Chapter 4: The Logic Maze (Level {level + 1}/5)</span>
         </div>
-        <h2 className="text-5xl md:text-7xl font-funky font-bold text-slate-800 mb-4">
+        <h2 className="text-5xl md:text-7xl font-funky font-bold text-slate-100 mb-4">
           Master the <span className="text-gradient">Maze!</span>
         </h2>
-        <p className="text-xl text-slate-600 max-w-2xl mx-auto font-medium bg-amber-100/50 p-3 rounded-xl border border-amber-200">
+        <p className="text-2xl text-slate-300 max-w-2xl mx-auto font-medium bg-amber-100/50 p-3 rounded-xl border border-amber-200">
           💡 Hint: {currentLevel.hint}
         </p>
       </div>
 
-      <div className="glass-panel rounded-3xl p-8 w-full flex flex-col lg:flex-row gap-12 items-start">
+      <div className="bg-slate-800/80 backdrop-blur-xl border-slate-700 shadow-2xl rounded-3xl p-8 w-full flex flex-col lg:flex-row gap-12 items-start">
         
         {/* The Grid Game */}
         <div className="flex-1 w-full flex justify-center relative">
-          <div className="relative bg-white/50 p-4 rounded-2xl border border-white inline-block shadow-xl">
+          <div className="relative bg-slate-800/80 backdrop-blur-md border border-slate-700/50 text-white/50 p-4 rounded-2xl border border-white inline-block shadow-xl">
             <div className="grid grid-cols-5 gap-1">
               {Array.from({ length: 25 }).map((_, i) => {
                 const x = i % 5;
@@ -610,7 +610,7 @@ const MazeGameScene = ({ onNext }: any) => {
                 
                 return (
                   <div key={i} className={`w-12 h-12 sm:w-16 sm:h-16 rounded-lg border-2 flex items-center justify-center transition-all duration-300
-                    ${isTarget ? 'bg-green-100 border-green-400' : isWall ? 'bg-slate-700 border-slate-900' : 'bg-white border-slate-200'}
+                    ${isTarget ? 'bg-green-100 border-green-400' : isWall ? 'bg-slate-700 border-slate-900' : 'bg-slate-800/80 backdrop-blur-md border border-slate-700/50 text-white border-slate-200'}
                   `}>
                     {isTarget && !isRobot && <Flag className="w-8 h-8 text-green-600 animate-bounce" />}
                     {isWall && <div className="text-2xl opacity-50">🧱</div>}
@@ -653,8 +653,8 @@ const MazeGameScene = ({ onNext }: any) => {
 
         {/* Controls */}
         <div className="flex-1 w-full space-y-6">
-          <div className="bg-white/80 rounded-2xl p-6 border border-slate-200 h-full shadow-sm">
-            <h3 className="text-slate-800 font-bold text-lg mb-4">1. Write your code:</h3>
+          <div className="bg-slate-800/80 backdrop-blur-md border border-slate-700/50 text-white/80 rounded-2xl p-6 border border-slate-200 h-full shadow-sm">
+            <h3 className="text-slate-100 font-bold text-xl mb-4">1. Write your code:</h3>
             
             <div className="flex justify-center gap-3 mb-6">
               <button onClick={() => addCommand('left')} disabled={running || status === 'success'} className="px-4 py-3 bg-sky-100 hover:bg-sky-200 text-sky-700 rounded-xl flex flex-col items-center disabled:opacity-50 active:scale-95 transition-all shadow-sm font-bold text-sm">
@@ -704,7 +704,7 @@ const MazeGameScene = ({ onNext }: any) => {
 
 // --- SCENE 6: FINALE ---
 const FinaleScene = ({ onComplete, onRestart }: any) => (
-  <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4 scene-enter">
+  <div className="relative z-10 flex flex-col items-center justify-center min-h-[70vh] text-center px-4 scene-enter">
     
     <div className="animate-float-slow mb-8 relative">
       <div className="absolute inset-0 bg-yellow-300 blur-3xl opacity-50 rounded-full animate-pulse-glow"></div>
@@ -714,16 +714,16 @@ const FinaleScene = ({ onComplete, onRestart }: any) => (
     </div>
     
     <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
-      <span className="text-slate-800">Become a </span>
+      <span className="text-slate-100">Become a </span>
       <span className="text-gradient">Creator</span>
     </h1>
     
-    <div className="flex flex-col md:flex-row gap-6 md:gap-12 text-xl md:text-2xl text-slate-600 font-medium mb-12">
-      <div className="bg-white/60 px-6 py-4 rounded-2xl border border-white backdrop-blur-sm shadow-sm">
+    <div className="flex flex-col md:flex-row gap-6 md:gap-12 text-2xl md:text-2xl text-slate-300 font-medium mb-12">
+      <div className="bg-slate-800/80 backdrop-blur-md border border-slate-700/50 text-white/60 px-6 py-4 rounded-2xl border border-white backdrop-blur-sm shadow-sm">
         <span className="text-slate-400 line-through mr-2">Play Games</span>
         <span className="text-indigo-600 font-bold">Make Games</span>
       </div>
-      <div className="bg-white/60 px-6 py-4 rounded-2xl border border-white backdrop-blur-sm shadow-sm">
+      <div className="bg-slate-800/80 backdrop-blur-md border border-slate-700/50 text-white/60 px-6 py-4 rounded-2xl border border-white backdrop-blur-sm shadow-sm">
         <span className="text-slate-400 line-through mr-2">Use Apps</span>
         <span className="text-pink-500 font-bold">Build Apps</span>
       </div>
@@ -731,7 +731,7 @@ const FinaleScene = ({ onComplete, onRestart }: any) => (
     
     <button 
       onClick={onComplete || onRestart}
-      className="px-8 py-4 bg-indigo-600 text-white rounded-full font-bold text-lg transition-all duration-300 hover:bg-indigo-700 hover:scale-105 flex items-center gap-2 shadow-xl"
+      className="px-8 py-4 bg-indigo-600 text-white rounded-full font-bold text-xl transition-all duration-300 hover:bg-indigo-700 hover:scale-105 flex items-center gap-2 shadow-xl"
     >
       {onComplete ? (
         <><ArrowRight className="w-5 h-5" /> Continue Journey</>
@@ -761,7 +761,7 @@ export default function App({ onComplete }: any) {
   };
 
   return (
-    <div className="min-h-screen bg-sky-50 text-slate-800 font-sans overflow-x-hidden selection:bg-purple-300/50">
+    <div className="min-h-[70vh] bg-slate-900/50 text-slate-100 font-sans overflow-x-hidden selection:bg-purple-300/50">
       <style dangerouslySetInnerHTML={{ __html: customStyles }} />
       
       {/* Global Background Layer */}
@@ -780,7 +780,7 @@ export default function App({ onComplete }: any) {
         
         <button 
           onClick={toggleSound}
-          className="pointer-events-auto w-12 h-12 rounded-full bg-white/80 border border-slate-200 shadow-sm flex items-center justify-center hover:bg-white transition-colors"
+          className="pointer-events-auto w-12 h-12 rounded-full bg-slate-800/80 backdrop-blur-md border border-slate-700/50 text-white/80 border border-slate-200 shadow-sm flex items-center justify-center hover:bg-slate-800/80 backdrop-blur-md border border-slate-700/50 text-white transition-colors"
           title="Toggle Ambient Music"
         >
           {soundEnabled ? <Volume2 className="w-5 h-5 text-indigo-500" /> : <VolumeX className="w-5 h-5 text-slate-400" />}

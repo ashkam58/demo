@@ -10,7 +10,7 @@ import confetti from 'canvas-confetti';
 
 // --- Shared Components ---
 const GlassPanel = ({ children, className = "", glowing = false }: any) => (
-  <div className={`bg-white/70 backdrop-blur-xl border ${glowing ? 'border-green-400 shadow-[0_0_30px_rgba(74,222,128,0.5)]' : 'border-white/50 shadow-xl'} rounded-3xl overflow-hidden transition-all duration-500 ${className}`}>
+  <div className={`bg-slate-800/80/70 backdrop-blur-xl border ${glowing ? 'border-green-400 shadow-[0_0_30px_rgba(74,222,128,0.5)]' : 'border-white/50 shadow-xl'} rounded-3xl overflow-hidden transition-all duration-500 ${className}`}>
     {children}
   </div>
 );
@@ -27,7 +27,7 @@ const Button = ({ onClick, children, primary = false, className = "", color = "g
       className={`px-8 py-4 rounded-2xl font-bold flex items-center justify-center gap-2 transition-all duration-300 transform hover:-translate-y-1 active:scale-95 ${
         primary 
           ? `bg-gradient-to-r ${baseColor} text-white shadow-lg` 
-          : 'bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 shadow-md'
+          : 'bg-slate-800/80 hover:bg-slate-50 text-white border border-slate-200 shadow-md'
       } ${className}`}
     >
       {children}
@@ -42,13 +42,13 @@ const Py = ({ message, mood = 'happy' }: any) => {
       <div className="pointer-events-auto p-12 -m-4">
         <div className="flex items-end gap-4 animate-float max-w-sm opacity-0 group-hover:opacity-100 translate-y-12 group-hover:translate-y-0 transition-all duration-500 mb-8 ml-8">
           <div className="relative">
-            <div className="w-16 h-16 rounded-3xl bg-white flex items-center justify-center shadow-[0_0_30px_rgba(74,222,128,0.5)] border-2 border-green-400">
+            <div className="w-16 h-16 rounded-3xl bg-slate-800/80 flex items-center justify-center shadow-[0_0_30px_rgba(74,222,128,0.5)] border-2 border-green-400">
               <Bot size={32} className={`text-green-500 ${mood === 'excited' ? 'animate-pulse' : ''}`} />
             </div>
             <div className="absolute -top-2 -right-2 w-4 h-4 bg-emerald-400 rounded-full animate-ping"></div>
             <div className="absolute -top-2 -right-2 w-4 h-4 bg-emerald-500 rounded-full border-2 border-white"></div>
           </div>
-          <div className="bg-white/90 text-emerald-800 px-6 py-4 rounded-3xl rounded-bl-none shadow-xl border border-green-200 backdrop-blur-md">
+          <div className="bg-slate-800/80/90 text-emerald-800 px-6 py-4 rounded-3xl rounded-bl-none shadow-xl border border-green-200 backdrop-blur-md">
             <p className="font-mono text-sm tracking-wide leading-relaxed font-bold">{message}</p>
           </div>
         </div>
@@ -68,18 +68,18 @@ const SceneIntro = ({ onComplete }: any) => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center w-full max-w-4xl mx-auto mt-12 gap-8 text-slate-800">
+    <div className="flex flex-col items-center w-full max-w-4xl mx-auto mt-12 gap-8 text-white">
       <div className="text-center mb-8">
         <h2 className="text-4xl font-black mb-4">Evolution of a Web App</h2>
-        <p className="text-slate-600 font-mono">Watch how code transforms static text into an intelligent machine.</p>
+        <p className="text-slate-300 font-mono">Watch how code transforms static text into an intelligent machine.</p>
       </div>
 
       <div className="flex gap-8 items-center w-full justify-center">
         {/* HTML Stage */}
         <div className={`transition-all duration-1000 ${stage >= 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-50'} text-center`}>
-          <div className="bg-white p-6 w-48 h-64 border border-slate-300 mb-4 flex flex-col justify-start shadow-sm">
-            <h1 className="text-slate-800 font-serif text-lg mb-2">My Robot</h1>
-            <button className="bg-slate-200 border border-slate-400 text-slate-800 px-2 py-1 text-sm">Click me</button>
+          <div className="bg-slate-800/80 p-6 w-48 h-64 border border-slate-300 mb-4 flex flex-col justify-start shadow-sm">
+            <h1 className="text-white font-serif text-lg mb-2">My Robot</h1>
+            <button className="bg-slate-200 border border-slate-400 text-white px-2 py-1 text-sm">Click me</button>
           </div>
           <div className="font-mono text-slate-500">&lt;html&gt; (Structure)</div>
         </div>
@@ -90,7 +90,7 @@ const SceneIntro = ({ onComplete }: any) => {
         <div className={`transition-all duration-1000 ${stage >= 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-50 absolute'} text-center`}>
           <div className="bg-gradient-to-br from-indigo-400 to-purple-500 p-6 w-48 h-64 rounded-3xl shadow-xl border border-white mb-4 flex flex-col justify-center items-center">
             <h1 className="text-white font-bold text-xl mb-4 drop-shadow-sm">My Robot</h1>
-            <button className="bg-white text-indigo-600 px-4 py-2 rounded-full font-bold shadow-md">Hover Me</button>
+            <button className="bg-slate-800/80 text-indigo-600 px-4 py-2 rounded-full font-bold shadow-md">Hover Me</button>
           </div>
           <div className="font-mono text-indigo-600 font-bold">CSS (Style)</div>
         </div>
@@ -99,11 +99,11 @@ const SceneIntro = ({ onComplete }: any) => {
 
         {/* Python Stage */}
         <div className={`transition-all duration-1000 ${stage >= 2 ? 'opacity-100 scale-110' : 'opacity-0 scale-50 absolute'} text-center`}>
-          <div className="bg-white p-6 w-56 h-72 rounded-3xl shadow-[0_0_40px_rgba(74,222,128,0.5)] border-2 border-emerald-400 mb-4 flex flex-col justify-center items-center relative overflow-hidden group cursor-pointer">
+          <div className="bg-slate-800/80 p-6 w-56 h-72 rounded-3xl shadow-[0_0_40px_rgba(74,222,128,0.5)] border-2 border-emerald-400 mb-4 flex flex-col justify-center items-center relative overflow-hidden group cursor-pointer">
             <div className="absolute inset-0 bg-green-50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <Bot size={64} className="text-emerald-500 mb-4 animate-bounce-slow" />
             <h1 className="text-emerald-600 font-mono font-bold text-xl mb-4">AI Online</h1>
-            <div className="text-xs text-slate-600 font-mono text-left w-full bg-slate-100 p-3 rounded-xl border border-slate-200">
+            <div className="text-xs text-slate-300 font-mono text-left w-full bg-slate-100 p-3 rounded-xl border border-slate-200">
               {">"} analyzing...<br/>
               {">"} user detected<br/>
               {">"} awaiting input_
@@ -181,7 +181,7 @@ const SceneTerminal = ({ onComplete }: any) => {
             # Challenge: Make the computer say "I am a Python Wizard!"
           </div>
           <div className="flex font-mono text-lg">
-            <div className="text-slate-600 select-none pr-4 text-right">
+            <div className="text-slate-300 select-none pr-4 text-right">
               1<br/>2
             </div>
             <textarea 
@@ -208,7 +208,7 @@ const SceneTerminal = ({ onComplete }: any) => {
               {">"} {line}
             </div>
           ))}
-          {output.length === 0 && <div className="text-slate-600 animate-pulse">{">"} waiting for execution...</div>}
+          {output.length === 0 && <div className="text-slate-300 animate-pulse">{">"} waiting for execution...</div>}
         </div>
       </GlassPanel>
 
@@ -236,9 +236,9 @@ const SceneVariables = ({ onComplete }: any) => {
 
   return (
     <div className="w-full max-w-5xl mx-auto flex flex-col items-center mt-8 gap-12">
-      <div className="text-center text-slate-800">
+      <div className="text-center text-white">
         <h2 className="text-4xl font-black mb-2">Variables are Magic Containers</h2>
-        <p className="text-slate-600 font-mono text-lg">Click a value to store it in a variable.</p>
+        <p className="text-slate-300 font-mono text-lg">Click a value to store it in a variable.</p>
       </div>
 
       <div className="flex flex-col md:flex-row gap-12 w-full justify-center items-center">
@@ -247,13 +247,13 @@ const SceneVariables = ({ onComplete }: any) => {
         <div className="flex flex-col gap-4">
           <button 
             onClick={() => handleAssign('name', '"Alex"')}
-            className={`px-6 py-4 rounded-xl font-mono text-xl border-2 transition-all font-bold ${vars.name === '"Alex"' ? 'opacity-0 scale-50' : 'bg-white border-purple-400 text-purple-600 hover:bg-purple-50 shadow-md'}`}
+            className={`px-6 py-4 rounded-xl font-mono text-xl border-2 transition-all font-bold ${vars.name === '"Alex"' ? 'opacity-0 scale-50' : 'bg-slate-800/80 border-purple-400 text-purple-600 hover:bg-purple-50 shadow-md'}`}
           >
             "Alex"
           </button>
           <button 
             onClick={() => handleAssign('score', '9000')}
-            className={`px-6 py-4 rounded-xl font-mono text-xl border-2 transition-all font-bold ${vars.score === '9000' ? 'opacity-0 scale-50' : 'bg-white border-blue-400 text-blue-600 hover:bg-blue-50 shadow-md'}`}
+            className={`px-6 py-4 rounded-xl font-mono text-xl border-2 transition-all font-bold ${vars.score === '9000' ? 'opacity-0 scale-50' : 'bg-slate-800/80 border-blue-400 text-blue-600 hover:bg-blue-50 shadow-md'}`}
           >
             9000
           </button>
@@ -263,7 +263,7 @@ const SceneVariables = ({ onComplete }: any) => {
 
         {/* The Variables (Containers) */}
         <div className="flex gap-8">
-          <GlassPanel className={`w-48 h-48 flex flex-col items-center justify-center relative transition-all duration-500 bg-white ${vars.name ? 'border-purple-400 shadow-[0_0_30px_rgba(168,85,247,0.3)]' : ''}`}>
+          <GlassPanel className={`w-48 h-48 flex flex-col items-center justify-center relative transition-all duration-500 bg-slate-800/80 ${vars.name ? 'border-purple-400 shadow-[0_0_30px_rgba(168,85,247,0.3)]' : ''}`}>
             <Box size={48} className={vars.name ? 'text-purple-500' : 'text-slate-400'} />
             <div className="font-mono mt-4 text-slate-500 font-bold">player_name</div>
             {vars.name && (
@@ -273,7 +273,7 @@ const SceneVariables = ({ onComplete }: any) => {
             )}
           </GlassPanel>
 
-          <GlassPanel className={`w-48 h-48 flex flex-col items-center justify-center relative transition-all duration-500 bg-white ${vars.score ? 'border-blue-400 shadow-[0_0_30px_rgba(59,130,246,0.3)]' : ''}`}>
+          <GlassPanel className={`w-48 h-48 flex flex-col items-center justify-center relative transition-all duration-500 bg-slate-800/80 ${vars.score ? 'border-blue-400 shadow-[0_0_30px_rgba(59,130,246,0.3)]' : ''}`}>
             <Database size={48} className={vars.score ? 'text-blue-500' : 'text-slate-400'} />
             <div className="font-mono mt-4 text-slate-500 font-bold">high_score</div>
             {vars.score && (
@@ -353,8 +353,8 @@ const SceneBinarySearch = ({ onComplete }: any) => {
     return (
       <div className="flex flex-col items-center justify-center w-full max-w-2xl mx-auto mt-12 gap-8 animate-fade-in">
         <Cpu size={80} className="text-emerald-500 drop-shadow-[0_0_20px_rgba(16,185,129,0.5)] animate-pulse" />
-        <h2 className="text-5xl font-black text-slate-800 text-center tracking-tight">The AI Mind Reader</h2>
-        <p className="text-xl text-slate-600 text-center mb-8">
+        <h2 className="text-5xl font-black text-white text-center tracking-tight">The AI Mind Reader</h2>
+        <p className="text-xl text-slate-300 text-center mb-8">
           Think of ANY number between <span className="text-indigo-600 font-bold">1</span> and <span className="text-indigo-600 font-bold">1000</span>.<br/>
           I will find it using an algorithm called <strong>Binary Search</strong>.
         </p>
@@ -370,17 +370,17 @@ const SceneBinarySearch = ({ onComplete }: any) => {
       
       {/* Top HUD */}
       <div className="grid grid-cols-3 gap-6">
-        <GlassPanel className="p-6 text-center bg-white">
+        <GlassPanel className="p-6 text-center bg-slate-800/80">
           <div className="text-slate-500 font-mono text-sm uppercase tracking-wider mb-2 font-bold">Search Space</div>
-          <div className="text-3xl font-black text-slate-800">{rangeTotal} <span className="text-sm font-normal text-slate-500">numbers left</span></div>
+          <div className="text-3xl font-black text-white">{rangeTotal} <span className="text-sm font-normal text-slate-500">numbers left</span></div>
         </GlassPanel>
-        <GlassPanel className="p-6 text-center border-emerald-400 bg-white" glowing>
+        <GlassPanel className="p-6 text-center border-emerald-400 bg-slate-800/80" glowing>
           <div className="text-emerald-600 font-mono text-sm uppercase tracking-wider mb-2 font-bold">Current Range</div>
-          <div className="text-3xl font-black text-slate-800">{low} <span className="text-slate-400 mx-2">→</span> {high}</div>
+          <div className="text-3xl font-black text-white">{low} <span className="text-slate-400 mx-2">→</span> {high}</div>
         </GlassPanel>
-        <GlassPanel className="p-6 text-center bg-white">
+        <GlassPanel className="p-6 text-center bg-slate-800/80">
           <div className="text-slate-500 font-mono text-sm uppercase tracking-wider mb-2 font-bold">Guesses Taken</div>
-          <div className="text-3xl font-black text-slate-800">{stepCount}</div>
+          <div className="text-3xl font-black text-white">{stepCount}</div>
         </GlassPanel>
       </div>
 
@@ -428,9 +428,9 @@ const SceneBinarySearch = ({ onComplete }: any) => {
       ) : (
         <div className="text-center animate-fade-in-up mt-8">
           <h2 className="text-4xl font-black text-emerald-600 mb-4 drop-shadow-sm">I read your mind in {stepCount} steps!</h2>
-          <p className="text-slate-600 text-xl mb-8 font-medium">This is the power of algorithms. Now let's build something visual.</p>
+          <p className="text-slate-300 text-xl mb-8 font-medium">This is the power of algorithms. Now let's build something visual.</p>
           <div className="flex gap-4 justify-center">
-            <Button onClick={reset} className="bg-white text-slate-800">Play Again</Button>
+            <Button onClick={reset} className="bg-slate-800/80 text-white">Play Again</Button>
             <Button primary onClick={onComplete}>Enter Python Canvas <ArrowRight/></Button>
           </div>
         </div>
@@ -570,11 +570,11 @@ const ScenePythonVisualizer = ({ onComplete }: any) => {
         }
       `}} />
 
-      <div className="bg-white/80 p-6 rounded-3xl backdrop-blur-md border border-white text-center w-full shadow-2xl">
-        <h2 className="text-4xl font-black text-slate-800 mb-2 flex items-center justify-center gap-3">
+      <div className="bg-slate-800/80/80 p-6 rounded-3xl backdrop-blur-md border border-white text-center w-full shadow-2xl">
+        <h2 className="text-4xl font-black text-white mb-2 flex items-center justify-center gap-3">
           <PaintBucket className="text-indigo-600" size={36}/> Python Canvas
         </h2>
-        <p className="text-slate-600 font-bold text-lg">Use Python commands to conjure shapes into existence!</p>
+        <p className="text-slate-300 font-bold text-lg">Use Python commands to conjure shapes into existence!</p>
       </div>
 
       <div className="flex flex-col lg:flex-row w-full gap-8">
@@ -618,7 +618,7 @@ const ScenePythonVisualizer = ({ onComplete }: any) => {
 
         {/* Output Side */}
         <div className="flex-1 flex flex-col gap-4">
-          <div className="bg-white/80 border border-white p-4 rounded-2xl flex items-center justify-between shadow-sm">
+          <div className="bg-slate-800/80/80 border border-white p-4 rounded-2xl flex items-center justify-between shadow-sm">
             <span className="font-black text-slate-700 text-xl tracking-tight">Canvas Output</span>
             {success && <span className="bg-green-100 text-green-700 px-4 py-1 rounded-full text-sm font-black animate-pulse shadow-sm">Masterpiece! 🎉</span>}
           </div>
@@ -667,7 +667,7 @@ const SceneFinale = ({ onComplete }: any) => {
         You Are A Creator
       </h1>
       
-      <p className="text-xl md:text-2xl text-slate-600 max-w-2xl text-center leading-relaxed font-medium mb-16">
+      <p className="text-xl md:text-2xl text-slate-300 max-w-2xl text-center leading-relaxed font-medium mb-16">
         You are no longer just playing games or using apps.<br/>
         With Code, you now have the power to build them.
       </p>
@@ -679,7 +679,7 @@ const SceneFinale = ({ onComplete }: any) => {
             className={`px-6 py-3 rounded-full font-bold text-lg backdrop-blur-md border ${
               skill === 'PYTHON' 
                 ? 'bg-emerald-100 border-emerald-400 text-emerald-600 shadow-[0_0_20px_rgba(16,185,129,0.3)] animate-bounce-slow' 
-                : 'bg-white border-slate-200 text-slate-500 shadow-sm'
+                : 'bg-slate-800/80 border-slate-200 text-slate-500 shadow-sm'
             }`}
             style={{ animationDelay: `${i * 0.1}s` }}
           >
@@ -811,7 +811,7 @@ export default function App({ onComplete }: any) {
   }
 
   return (
-    <div className="bright-bg text-slate-800 font-sans selection:bg-emerald-200 selection:text-slate-900 pb-32">
+    <div className="bright-bg text-white font-sans selection:bg-emerald-200 selection:text-slate-900 pb-32">
       <div className="cyber-grid-light"></div>
       
       {/* Navigation / Progress Bar */}
@@ -819,16 +819,16 @@ export default function App({ onComplete }: any) {
         
         <div className="group pointer-events-none">
           <div className="pointer-events-auto p-6 -m-6">
-            <div className="bg-white/80 backdrop-blur-md border border-white px-6 py-3 rounded-full flex items-center gap-3 shadow-lg opacity-0 group-hover:opacity-100 -translate-y-8 group-hover:translate-y-0 transition-all duration-500">
+            <div className="bg-slate-800/80/80 backdrop-blur-md border border-white px-6 py-3 rounded-full flex items-center gap-3 shadow-lg opacity-0 group-hover:opacity-100 -translate-y-8 group-hover:translate-y-0 transition-all duration-500">
               <Code2 className="text-emerald-500" size={24} />
-              <span className="text-slate-800 font-black tracking-widest text-xl font-mono">PYTHON_ACADEMY</span>
+              <span className="text-white font-black tracking-widest text-xl font-mono">PYTHON_ACADEMY</span>
             </div>
           </div>
         </div>
         
         <div className="group pointer-events-none">
           <div className="pointer-events-auto p-6 -m-6">
-            <div className="bg-white/80 backdrop-blur-md border border-white px-6 py-3 rounded-full flex gap-2 shadow-lg opacity-0 group-hover:opacity-100 -translate-y-8 group-hover:translate-y-0 transition-all duration-500">
+            <div className="bg-slate-800/80/80 backdrop-blur-md border border-white px-6 py-3 rounded-full flex gap-2 shadow-lg opacity-0 group-hover:opacity-100 -translate-y-8 group-hover:translate-y-0 transition-all duration-500">
               {[0, 1, 2, 3, 4, 5].map(i => (
                 <div 
                   key={i} 
@@ -845,7 +845,7 @@ export default function App({ onComplete }: any) {
       </nav>
 
       {/* Main Content Area */}
-      <main className="pt-32 px-6 flex flex-col items-center min-h-screen relative z-10 w-full max-w-7xl mx-auto">
+      <main className="pt-32 px-6 flex flex-col items-center min-h-[70vh] relative z-10 w-full max-w-7xl mx-auto">
         
         <div className="w-full flex-1 flex flex-col items-center justify-center">
           
