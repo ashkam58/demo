@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import WorldOfCodingApp from './world_of_coding';
 import WebBuilderApp from './web_builder';
 import PyBuilderApp from './py_builder';
@@ -26,7 +26,7 @@ export default function IntegratedApp() {
     }
   };
 
-  const jumpToModule = (index) => {
+  const jumpToModule = (index: number) => {
     setCurrentModuleIndex(index);
   };
 

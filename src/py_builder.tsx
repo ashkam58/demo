@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { 
-  Bot, Sparkles, TerminalSquare, Cpu, Zap, Network, 
+  Bot, Sparkles, TerminalSquare, Cpu, Zap, 
   ChevronRight, ArrowRight, Play,
   Box, Database, Code2, PaintBucket
 } from 'lucide-react';
