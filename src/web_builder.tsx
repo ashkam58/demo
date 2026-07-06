@@ -10,7 +10,7 @@ import confetti from 'canvas-confetti';
 
 // --- Shared Components ---
 const GlassCard = ({ children, className = "" }: any) => (
-  <div className={`bg-slate-800/80/60 backdrop-blur-xl border border-white shadow-xl rounded-3xl overflow-hidden transition-all duration-500 ${className}`}>
+  <div className={`bg-white/60 backdrop-blur-xl border border-white shadow-xl rounded-3xl overflow-hidden transition-all duration-500 ${className}`}>
     {children}
   </div>
 );
@@ -21,7 +21,7 @@ const Button = ({ onClick, children, primary = false, className = "" }: any) => 
     className={`px-6 py-3 rounded-2xl font-bold flex items-center justify-center gap-2 transition-all duration-300 transform active:scale-95 ${
       primary 
         ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-slate-700 shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1' 
-        : 'bg-slate-800/80 hover:bg-slate-50 text-slate-700 shadow-md border border-slate-200'
+        : 'bg-white hover:bg-slate-50 text-slate-700 shadow-md border border-slate-200'
     } ${className}`}
   >
     {children}
@@ -51,7 +51,7 @@ const Byte = ({ message, mood = 'happy' }: any) => {
             <div className="absolute top-1 w-1 h-3 bg-slate-400 -z-10 left-[48%]"></div>
             <div className="absolute top-0 w-2 h-2 rounded-full bg-[#42E8FF] shadow-[0_0_8px_#42E8FF] animate-bounce left-[46%]"></div>
           </div>
-          <div className="bg-slate-800/80 text-indigo-950 px-6 py-4 rounded-3xl rounded-bl-none shadow-xl border border-slate-200 transform transition-all">
+          <div className="bg-white text-indigo-950 px-6 py-4 rounded-3xl rounded-bl-none shadow-xl border border-slate-200 transform transition-all">
             <p className="font-bold text-lg">{message}</p>
           </div>
         </div>
@@ -66,7 +66,7 @@ const SceneAnatomy = ({ onComplete }: any) => {
 
   return (
     <div className="flex flex-col items-center w-full max-w-5xl mx-auto mt-12 gap-8">
-      <div className="flex items-center gap-4 bg-slate-800/80/50 p-2 rounded-full backdrop-blur-md border border-white shadow-sm">
+      <div className="flex items-center gap-4 bg-white/50 p-2 rounded-full backdrop-blur-md border border-white shadow-sm">
         <button 
           onClick={() => { setCssOn(false); playSound('switch'); }}
           className={`px-6 py-2 rounded-full font-bold transition-all ${!cssOn ? 'bg-slate-800 text-slate-700 shadow-lg' : 'text-slate-700 hover:text-slate-700'}`}
@@ -83,11 +83,11 @@ const SceneAnatomy = ({ onComplete }: any) => {
 
       <div className="w-full relative perspective-[1000px]">
         {/* The Website Mockup */}
-        <div className={`w-full mx-auto bg-slate-800/80 transition-all duration-1000 origin-top overflow-hidden
+        <div className={`w-full mx-auto bg-white transition-all duration-1000 origin-top overflow-hidden
           ${cssOn ? 'rounded-3xl shadow-2xl rotate-x-12 scale-95 border-4 border-white' : 'rounded-none shadow-sm rotate-x-0 scale-100 border border-slate-300'}`}>
           
           {/* Header */}
-          <div className={cssOn ? 'bg-indigo-600 p-6 flex justify-between items-center' : 'p-4 border-b border-gray-300 bg-slate-800/80'}>
+          <div className={cssOn ? 'bg-indigo-600 p-6 flex justify-between items-center' : 'p-4 border-b border-gray-300 bg-white'}>
             <h1 className={cssOn ? 'text-3xl font-extrabold text-slate-700 tracking-tight' : 'text-blue-800 text-xl underline font-serif'}>
               {cssOn ? 'FlixNet' : 'Welcome to My Webpage'}
             </h1>
@@ -99,7 +99,7 @@ const SceneAnatomy = ({ onComplete }: any) => {
           </div>
 
           {/* Hero Section */}
-          <div className={cssOn ? 'p-12 bg-gradient-to-br from-indigo-900 to-purple-900 text-slate-700 relative overflow-hidden' : 'p-4 bg-slate-800/80 text-black'}>
+          <div className={cssOn ? 'p-12 bg-gradient-to-br from-indigo-900 to-purple-900 text-slate-700 relative overflow-hidden' : 'p-4 bg-white text-black'}>
             {cssOn && <div className="absolute top-0 right-0 w-64 h-64 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>}
             <h2 className={cssOn ? 'text-5xl font-black mb-4 relative z-10' : 'text-2xl font-bold font-serif'}>
               Learn to Code Today
@@ -107,15 +107,15 @@ const SceneAnatomy = ({ onComplete }: any) => {
             <p className={cssOn ? 'text-xl text-slate-700/90 max-w-lg mb-8 relative z-10' : 'font-serif mb-4'}>
               Discover the magic behind websites. Turn plain text into beautiful interactive experiences.
             </p>
-            <button className={cssOn ? 'bg-slate-800/80 text-indigo-900 px-8 py-4 rounded-full font-bold shadow-xl hover:scale-105 transition-transform' : 'bg-gray-200 border border-gray-400 px-2 py-1 text-black'}>
+            <button className={cssOn ? 'bg-white text-indigo-900 px-8 py-4 rounded-full font-bold shadow-xl hover:scale-105 transition-transform' : 'bg-gray-200 border border-gray-400 px-2 py-1 text-black'}>
               Start Watching
             </button>
           </div>
 
           {/* Grid Section */}
-          <div className={cssOn ? 'p-12 grid grid-cols-3 gap-8 bg-slate-50' : 'p-4 bg-slate-800/80 text-black'}>
+          <div className={cssOn ? 'p-12 grid grid-cols-3 gap-8 bg-slate-50' : 'p-4 bg-white text-black'}>
             {[1, 2, 3].map(i => (
-              <div key={i} className={cssOn ? 'bg-slate-800/80 rounded-2xl shadow-lg overflow-hidden hover:-translate-y-2 transition-transform' : 'mb-8'}>
+              <div key={i} className={cssOn ? 'bg-white rounded-2xl shadow-lg overflow-hidden hover:-translate-y-2 transition-transform' : 'mb-8'}>
                 <img 
                   src={`https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=400&q=80`} 
                   alt="Code" 
@@ -240,7 +240,7 @@ const SceneBuilder = ({ onComplete }: any) => {
               <p className="opacity-90">Building the web of tomorrow.</p>
             </div>
             <button 
-              className="bg-slate-800/80 text-gray-900 font-bold py-2 px-6 hover:scale-105 transition-transform shadow-md"
+              className="bg-white text-gray-900 font-bold py-2 px-6 hover:scale-105 transition-transform shadow-md"
               style={{ borderRadius: `${styles.borderRadius / 2}px` }}
             >
               Follow
@@ -258,7 +258,7 @@ const SceneXRay = ({ onComplete }: any) => {
 
   return (
     <div className="flex flex-col items-center w-full max-w-4xl mx-auto mt-8 gap-8">
-      <div className="bg-slate-800/80/60 p-6 rounded-3xl backdrop-blur-md border border-white text-center w-full shadow-xl">
+      <div className="bg-white/60 p-6 rounded-3xl backdrop-blur-md border border-white text-center w-full shadow-xl">
         <h2 className="text-2xl font-bold text-slate-700 mb-4">The Browser's X-Ray Vision</h2>
         <p className="text-slate-700 mb-6 font-medium">Browsers read tags to understand what things are. Turn on X-Ray mode to see the hidden HTML tags!</p>
         
@@ -273,7 +273,7 @@ const SceneXRay = ({ onComplete }: any) => {
       </div>
 
       {/* Interactive Canvas */}
-      <div className="w-full bg-slate-800/80 p-12 rounded-3xl shadow-xl overflow-hidden relative border border-slate-200">
+      <div className="w-full bg-white p-12 rounded-3xl shadow-xl overflow-hidden relative border border-slate-200">
         <style dangerouslySetInnerHTML={{__html: `
           .xray-mode * {
             outline: 2px dashed rgba(239, 68, 68, 0.5) !important;
@@ -399,7 +399,7 @@ const SceneGuidedCoding = ({ onComplete }: any) => {
 
   return (
     <div className="flex flex-col items-center w-full max-w-6xl mx-auto mt-8 gap-8">
-      <div className="bg-slate-800/80/80 p-6 rounded-3xl backdrop-blur-md border border-white text-center w-full shadow-2xl">
+      <div className="bg-white/80 p-6 rounded-3xl backdrop-blur-md border border-white text-center w-full shadow-2xl">
         <h2 className="text-4xl font-black text-slate-700 mb-2 flex items-center justify-center gap-3">
           <Keyboard className="text-indigo-600" size={36} /> You are the Developer
         </h2>
@@ -438,7 +438,7 @@ const SceneGuidedCoding = ({ onComplete }: any) => {
 
         {/* Output Side */}
         <div className="flex-1 flex flex-col gap-4">
-          <div className="bg-slate-800/80/80 border border-white p-4 rounded-2xl flex items-center justify-between shadow-sm">
+          <div className="bg-white/80 border border-white p-4 rounded-2xl flex items-center justify-between shadow-sm">
             <span className="font-black text-slate-700 text-xl tracking-tight">Live Preview</span>
             {success && <span className="bg-green-100 text-green-700 px-4 py-1 rounded-full text-sm font-black animate-pulse shadow-sm">Code Match! 🎉</span>}
           </div>
@@ -619,7 +619,7 @@ export default function App({ onComplete }: any) {
         
         <div className="group pointer-events-none">
           <div className="pointer-events-auto p-6 -m-6">
-            <div className="bg-slate-800/80/60 backdrop-blur-xl border border-white px-6 py-3 rounded-full flex items-center gap-3 shadow-xl opacity-0 group-hover:opacity-100 -translate-y-8 group-hover:translate-y-0 transition-all duration-500">
+            <div className="bg-white/60 backdrop-blur-xl border border-white px-6 py-3 rounded-full flex items-center gap-3 shadow-xl opacity-0 group-hover:opacity-100 -translate-y-8 group-hover:translate-y-0 transition-all duration-500">
               <Monitor className="text-indigo-500" size={24} />
               <span className="text-slate-700 font-black tracking-widest text-xl">WEB BUILDER</span>
             </div>
@@ -628,7 +628,7 @@ export default function App({ onComplete }: any) {
         
         <div className="group pointer-events-none">
           <div className="pointer-events-auto p-6 -m-6">
-            <div className="bg-slate-800/80/60 backdrop-blur-xl border border-white px-6 py-3 rounded-full flex gap-2 shadow-xl opacity-0 group-hover:opacity-100 -translate-y-8 group-hover:translate-y-0 transition-all duration-500">
+            <div className="bg-white/60 backdrop-blur-xl border border-white px-6 py-3 rounded-full flex gap-2 shadow-xl opacity-0 group-hover:opacity-100 -translate-y-8 group-hover:translate-y-0 transition-all duration-500">
               {[0, 1, 2, 3, 4].map(i => (
                 <div 
                   key={i} 
@@ -658,7 +658,7 @@ export default function App({ onComplete }: any) {
           
           {step === 0 && (
             <div className="text-center animate-fade-in-up max-w-3xl">
-              <div className="mb-8 inline-block p-4 bg-slate-800/80/60 rounded-3xl backdrop-blur-md border border-white shadow-xl animate-float">
+              <div className="mb-8 inline-block p-4 bg-white/60 rounded-3xl backdrop-blur-md border border-white shadow-xl animate-float">
                 <Sparkles size={64} className="text-amber-400 mx-auto" />
               </div>
               <h1 className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mb-6 drop-shadow-sm">
