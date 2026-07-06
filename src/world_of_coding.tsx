@@ -262,10 +262,10 @@ const AlgorithmScene = ({ onNext }: any) => {
   return (
     <div className="relative z-10 flex flex-col items-center justify-center min-h-[70vh] px-4 scene-enter max-w-6xl mx-auto py-4">
       <div className="text-center mb-8">
-        <h2 className="text-5xl md:text-7xl font-headings font-bold text-white mb-4">
+        <h2 className="text-5xl md:text-7xl font-headings font-bold text-gradient mb-4">
           What is an <span className="text-gradient">Algorithm?</span>
         </h2>
-        <p className="text-2xl text-blue-100 max-w-2xl mx-auto">
+        <p className="text-2xl text-slate-700 max-w-2xl mx-auto font-medium">
           An algorithm is simply a step-by-step recipe to solve a problem. Build a sequence of steps to help Byte reach the battery!
         </p>
       </div>
@@ -408,10 +408,10 @@ const AIScene = ({ onNext }: any) => {
           <BrainCircuit className="w-5 h-5" />
           <span className="font-semibold tracking-wider uppercase text-sm">Chapter 3: Artificial Intelligence</span>
         </div>
-        <h2 className="text-5xl md:text-7xl font-headings font-bold text-white mb-4">
+        <h2 className="text-5xl md:text-7xl font-headings font-bold text-gradient mb-4">
           What is <span className="text-gradient">AI?</span>
         </h2>
-        <p className="text-2xl text-blue-100 max-w-2xl mx-auto">
+        <p className="text-2xl text-slate-700 max-w-2xl mx-auto font-medium">
           AI is not magic. It's a system that <b>learns from examples</b>. Let's train this AI brain to recognize Cats!
         </p>
       </div>
@@ -603,7 +603,7 @@ const MazeGameScene = ({ onNext }: any) => {
           <Flag className="w-5 h-5" />
           <span className="font-semibold tracking-wider uppercase text-sm">Chapter 4: The Logic Maze (Level {level + 1}/5)</span>
         </div>
-        <h2 className="text-5xl md:text-7xl font-headings font-bold text-white mb-4">
+        <h2 className="text-5xl md:text-7xl font-headings font-bold text-gradient mb-4">
           Master the <span className="text-gradient">Maze!</span>
         </h2>
         <p className="text-2xl text-slate-700 max-w-2xl mx-auto font-medium bg-amber-100/50 p-3 rounded-xl border border-amber-200">

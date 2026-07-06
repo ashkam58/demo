@@ -69,13 +69,13 @@ const SceneAnatomy = ({ onComplete }: any) => {
       <div className="flex items-center gap-4 bg-white/50 p-2 rounded-full backdrop-blur-md border border-white shadow-sm">
         <button 
           onClick={() => { setCssOn(false); playSound('switch'); }}
-          className={`px-6 py-2 rounded-full font-bold transition-all ${!cssOn ? 'bg-slate-800 text-slate-700 shadow-lg' : 'text-slate-700 hover:text-slate-700'}`}
+          className={`px-6 py-2 rounded-full font-bold transition-all ${!cssOn ? 'bg-slate-800 text-white shadow-lg' : 'text-slate-700 hover:text-slate-900'}`}
         >
           <Code className="inline mr-2" size={18}/> HTML Only
         </button>
         <button 
           onClick={() => { setCssOn(true); playSound('switch'); }}
-          className={`px-6 py-2 rounded-full font-bold transition-all ${cssOn ? 'bg-gradient-to-r from-pink-500 to-orange-400 text-slate-700 shadow-md' : 'text-slate-700 hover:text-slate-700'}`}
+          className={`px-6 py-2 rounded-full font-bold transition-all ${cssOn ? 'bg-gradient-to-r from-pink-500 to-orange-400 text-white shadow-md' : 'text-slate-700 hover:text-slate-900'}`}
         >
           <Paintbrush className="inline mr-2" size={18}/> CSS ON
         </button>
@@ -88,13 +88,13 @@ const SceneAnatomy = ({ onComplete }: any) => {
           
           {/* Header */}
           <div className={cssOn ? 'bg-indigo-600 p-6 flex justify-between items-center' : 'p-4 border-b border-gray-300 bg-white'}>
-            <h1 className={cssOn ? 'text-3xl font-extrabold text-slate-700 tracking-tight' : 'text-blue-800 text-xl underline font-serif'}>
+            <h1 className={cssOn ? 'text-3xl font-extrabold text-white tracking-tight' : 'text-blue-800 text-xl underline font-serif'}>
               {cssOn ? 'FlixNet' : 'Welcome to My Webpage'}
             </h1>
-            <ul className={cssOn ? 'flex gap-6 text-slate-700/90 font-medium' : 'list-disc pl-8 font-serif text-slate-700'}>
-              <li className={cssOn ? 'hover:text-slate-700 cursor-pointer' : 'text-blue-800 underline'}>Home</li>
-              <li className={cssOn ? 'hover:text-slate-700 cursor-pointer' : 'text-blue-800 underline'}>Movies</li>
-              <li className={cssOn ? 'hover:text-slate-700 cursor-pointer' : 'text-blue-800 underline'}>Series</li>
+            <ul className={cssOn ? 'flex gap-6 text-white font-medium' : 'list-disc pl-8 font-serif text-slate-700'}>
+              <li className={cssOn ? 'hover:text-indigo-100 cursor-pointer' : 'text-blue-800 underline'}>Home</li>
+              <li className={cssOn ? 'hover:text-indigo-100 cursor-pointer' : 'text-blue-800 underline'}>Movies</li>
+              <li className={cssOn ? 'hover:text-indigo-100 cursor-pointer' : 'text-blue-800 underline'}>Series</li>
             </ul>
           </div>
 
@@ -104,7 +104,7 @@ const SceneAnatomy = ({ onComplete }: any) => {
             <h2 className={cssOn ? 'text-5xl font-black mb-4 relative z-10' : 'text-2xl font-bold font-serif'}>
               Learn to Code Today
             </h2>
-            <p className={cssOn ? 'text-xl text-slate-700/90 max-w-lg mb-8 relative z-10' : 'font-serif mb-4'}>
+            <p className={cssOn ? 'text-xl text-indigo-100 max-w-lg mb-8 relative z-10' : 'font-serif mb-4'}>
               Discover the magic behind websites. Turn plain text into beautiful interactive experiences.
             </p>
             <button className={cssOn ? 'bg-white text-indigo-900 px-8 py-4 rounded-full font-bold shadow-xl hover:scale-105 transition-transform' : 'bg-gray-200 border border-gray-400 px-2 py-1 text-black'}>
@@ -265,7 +265,7 @@ const SceneXRay = ({ onComplete }: any) => {
         <button 
           onClick={() => { setXrayOn(!xrayOn); playSound('switch'); }}
           className={`px-8 py-4 rounded-2xl font-bold text-xl flex items-center gap-3 mx-auto transition-all shadow-md ${
-            xrayOn ? 'bg-red-500 text-slate-700 animate-pulse' : 'bg-gradient-to-r from-emerald-400 to-teal-500 text-slate-700 hover:scale-105'
+            xrayOn ? 'bg-red-600 text-white animate-pulse' : 'bg-gradient-to-r from-emerald-400 to-teal-500 text-slate-950 hover:scale-105'
           }`}
         >
           <Layers /> {xrayOn ? 'Turn X-Ray OFF' : 'ACTIVATE X-RAY MODE'}
@@ -319,7 +319,7 @@ const SceneXRay = ({ onComplete }: any) => {
               Every beautiful website you see is just a combination of structure (HTML) and style (CSS) painted by your browser.
             </p>
             <div className="flex justify-center gap-4 mb-12">
-              <button className="bg-indigo-600 text-slate-700 px-8 py-4 rounded-xl font-bold shadow-lg shadow-indigo-200">Get Started</button>
+              <button className="bg-indigo-600 text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-indigo-200">Get Started</button>
               <button className="bg-slate-100 text-gray-800 px-8 py-4 rounded-xl font-bold border border-slate-200">Learn More</button>
             </div>
             <div className="grid grid-cols-2 gap-6">
