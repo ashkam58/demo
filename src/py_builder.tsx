@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { 
-  Bot, Sparkles, TerminalSquare, Cpu, Zap, 
-  ChevronRight, ArrowRight, Play,
+  Bot, Sparkles, TerminalSquare, Cpu,
+  ArrowRight, Play,
   Box, Database, Code2, PaintBucket
 } from 'lucide-react';
 
@@ -74,11 +74,12 @@ const SceneIntro = ({ onComplete }: any) => {
   useEffect(() => {
     const timer1 = setTimeout(() => setStage(1), 2000);
     const timer2 = setTimeout(() => { setStage(2); playSound('success'); }, 4000);
-    return () => { clearTimeout(timer1); clearTimeout(timer2); };
-  }, []);
+    const timer3 = setTimeout(onComplete, 8000);
+    return () => { clearTimeout(timer1); clearTimeout(timer2); clearTimeout(timer3); };
+  }, [onComplete]);
 
   return (
-    <div className="flex flex-col items-center w-full max-w-4xl mx-auto mt-12 gap-8 text-slate-700">
+    <div className="lesson-fit flex flex-col items-center justify-center w-full max-w-4xl mx-auto gap-6 text-slate-700">
       <div className="text-center mb-8">
         <h2 className="text-4xl font-black mb-4">Evolution of a Web App</h2>
         <p className="text-slate-700 font-mono">Watch how code transforms static text into an intelligent machine.</p>
@@ -123,13 +124,6 @@ const SceneIntro = ({ onComplete }: any) => {
         </div>
       </div>
 
-      {stage === 2 && (
-        <div className="animate-fade-in-up mt-12">
-          <Button primary onClick={onComplete} color="green">
-            Give me superpowers <Zap size={18} />
-          </Button>
-        </div>
-      )}
     </div>
   );
 };
@@ -139,6 +133,12 @@ const SceneTerminal = ({ onComplete }: any) => {
   const [code, setCode] = useState("");
   const [output, setOutput] = useState<string[]>([]);
   const [isSuccess, setIsSuccess] = useState(false);
+
+  useEffect(() => {
+    if (!isSuccess) return;
+    const timer = setTimeout(onComplete, 4000);
+    return () => clearTimeout(timer);
+  }, [isSuccess, onComplete]);
 
   const handleType = (e: any) => {
     setCode(e.target.value);
@@ -171,7 +171,7 @@ const SceneTerminal = ({ onComplete }: any) => {
   };
 
   return (
-    <div className="flex flex-col items-center w-full max-w-3xl mx-auto mt-8 gap-8">
+    <div className="lesson-fit flex flex-col items-center justify-center w-full max-w-3xl mx-auto gap-6">
       <GlassPanel className="w-full flex flex-col shadow-2xl" glowing={isSuccess}>
         {/* Terminal Header */}
         <div className="bg-slate-800 px-4 py-3 border-b border-slate-700 flex items-center justify-between rounded-t-3xl">
@@ -222,13 +222,6 @@ const SceneTerminal = ({ onComplete }: any) => {
         </div>
       </GlassPanel>
 
-      {isSuccess && (
-        <div className="animate-fade-in-up">
-          <Button primary onClick={onComplete} color="green">
-            Awesome! Next Lesson <ChevronRight />
-          </Button>
-        </div>
-      )}
     </div>
   );
 };
@@ -244,8 +237,15 @@ const SceneVariables = ({ onComplete }: any) => {
 
   const isComplete = vars.name && vars.score;
 
+  useEffect(() => {
+    if (!isComplete) return;
+    playSound('success');
+    const timer = setTimeout(onComplete, 4000);
+    return () => clearTimeout(timer);
+  }, [isComplete, onComplete]);
+
   return (
-    <div className="w-full max-w-5xl mx-auto flex flex-col items-center mt-8 gap-12">
+    <div className="lesson-fit w-full max-w-5xl mx-auto flex flex-col items-center justify-center gap-8">
       <div className="text-center text-slate-700">
         <h2 className="text-4xl font-black mb-2">Variables are Magic Containers</h2>
         <p className="text-slate-700 font-mono text-lg">Click a value to store it in a variable.</p>
@@ -307,13 +307,6 @@ const SceneVariables = ({ onComplete }: any) => {
         )}
       </div>
 
-      {isComplete && (
-        <div className="animate-fade-in-up mt-4">
-          <Button primary onClick={() => { playSound('success'); onComplete(); }} color="green">
-            Perfect! Proceed to Algorithms <ChevronRight />
-          </Button>
-        </div>
-      )}
     </div>
   );
 };
@@ -327,6 +320,12 @@ const SceneBinarySearch = ({ onComplete }: any) => {
   const [stepCount, setStepCount] = useState(0);
   const [found, setFound] = useState(false);
   const [isStarting, setIsStarting] = useState(true);
+
+  useEffect(() => {
+    if (!found) return;
+    const timer = setTimeout(onComplete, 4000);
+    return () => clearTimeout(timer);
+  }, [found, onComplete]);
 
   const guess = Math.floor((low + high) / 2);
   const rangeTotal = high - low + 1;
@@ -361,7 +360,7 @@ const SceneBinarySearch = ({ onComplete }: any) => {
 
   if (isStarting) {
     return (
-      <div className="flex flex-col items-center justify-center w-full max-w-2xl mx-auto mt-12 gap-8 animate-fade-in">
+      <div className="lesson-fit flex flex-col items-center justify-center w-full max-w-2xl mx-auto gap-6 animate-fade-in">
         <Cpu size={80} className="text-emerald-500 drop-shadow-[0_0_20px_rgba(16,185,129,0.5)] animate-pulse" />
         <h2 className="text-5xl font-black text-slate-700 text-center tracking-tight">The AI Mind Reader</h2>
         <p className="text-xl text-slate-700 text-center mb-8">
@@ -376,7 +375,7 @@ const SceneBinarySearch = ({ onComplete }: any) => {
   }
 
   return (
-    <div className="w-full max-w-6xl mx-auto mt-4 flex flex-col gap-8 animate-fade-in">
+    <div className="lesson-fit w-full max-w-6xl mx-auto flex flex-col gap-6 animate-fade-in">
       
       {/* Top HUD */}
       <div className="grid grid-cols-3 gap-6">
@@ -441,7 +440,6 @@ const SceneBinarySearch = ({ onComplete }: any) => {
           <p className="text-slate-700 text-xl mb-8 font-medium">This is the power of algorithms. Now let's build something visual.</p>
           <div className="flex gap-4 justify-center">
             <Button onClick={reset} className="bg-white text-slate-700">Play Again</Button>
-            <Button primary onClick={onComplete}>Enter Python Canvas <ArrowRight/></Button>
           </div>
         </div>
       )}
@@ -559,8 +557,14 @@ const ScenePythonVisualizer = ({ onComplete }: any) => {
     }
   };
 
+  useEffect(() => {
+    if (!success) return;
+    const timer = setTimeout(nextLevel, 4000);
+    return () => clearTimeout(timer);
+  }, [success, level]);
+
   return (
-    <div className="flex flex-col items-center w-full max-w-6xl mx-auto mt-8 gap-8">
+    <div className="lesson-fit flex flex-col items-center justify-center w-full max-w-6xl mx-auto gap-6">
       
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes extreme-bounce {
@@ -653,13 +657,6 @@ const ScenePythonVisualizer = ({ onComplete }: any) => {
         </div>
       </div>
 
-      {success && (
-        <div className="animate-fade-in-up w-full mt-4 flex justify-center">
-          <Button primary onClick={nextLevel} className="text-2xl px-12 py-6 shadow-[0_0_40px_rgba(74,222,128,0.5)] bg-gradient-to-r from-emerald-400 to-green-500 hover:scale-110">
-             {level < levels.length - 1 ? 'Next Level! 🚀' : 'Complete Python Canvas! 🏆'}
-          </Button>
-        </div>
-      )}
     </div>
   );
 };
@@ -667,8 +664,14 @@ const ScenePythonVisualizer = ({ onComplete }: any) => {
 
 // --- SCENE 6: Grand Finale (The Constellation) ---
 const SceneFinale = ({ onComplete }: any) => {
+  useEffect(() => {
+    if (!onComplete) return;
+    const timer = setTimeout(onComplete, 4000);
+    return () => clearTimeout(timer);
+  }, [onComplete]);
+
   return (
-    <div className="flex flex-col items-center justify-center w-full min-h-[70vh] relative">
+    <div className="lesson-fit flex flex-col items-center justify-center w-full h-full relative">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-green-200/40 via-transparent to-transparent pointer-events-none"></div>
       
       <Sparkles size={80} className="text-emerald-500 mb-8 animate-pulse drop-shadow-[0_0_20px_rgba(16,185,129,0.5)]" />
@@ -698,13 +701,6 @@ const SceneFinale = ({ onComplete }: any) => {
         ))}
       </div>
       
-      {onComplete && (
-        <div className="animate-fade-in-up mt-8">
-          <Button primary onClick={onComplete} color="green" className="text-xl px-12 py-6 shadow-xl">
-            Complete Journey <ArrowRight className="ml-2" />
-          </Button>
-        </div>
-      )}
     </div>
   );
 };
@@ -855,7 +851,7 @@ export default function App({ onComplete }: any) {
       </nav>
 
       {/* Main Content Area */}
-      <main className="pt-28 pb-8 px-6 flex flex-col items-center min-h-dvh relative z-10 w-full max-w-7xl mx-auto">
+      <main className="h-dvh overflow-hidden pt-20 pb-4 px-6 flex flex-col items-center justify-center relative z-10 w-full max-w-7xl mx-auto">
         
         <div className="w-full flex-1 flex flex-col items-center justify-center">
           
