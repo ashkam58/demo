@@ -26,8 +26,8 @@ const Button = ({ onClick, children, primary = false, className = "", color = "g
       onClick={() => { playSound('pop'); onClick(); }}
       className={`px-8 py-4 rounded-2xl font-bold flex items-center justify-center gap-2 transition-all duration-300 transform hover:-translate-y-1 active:scale-95 ${
         primary 
-          ? `bg-gradient-to-r ${baseColor} text-slate-600 shadow-lg` 
-          : 'bg-slate-800/80 hover:bg-slate-50 text-slate-600 border border-slate-200 shadow-md'
+          ? `bg-gradient-to-r ${baseColor} text-slate-700 shadow-lg` 
+          : 'bg-slate-800/80 hover:bg-slate-50 text-slate-700 border border-slate-200 shadow-md'
       } ${className}`}
     >
       {children}
@@ -78,20 +78,20 @@ const SceneIntro = ({ onComplete }: any) => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center w-full max-w-4xl mx-auto mt-12 gap-8 text-slate-600">
+    <div className="flex flex-col items-center w-full max-w-4xl mx-auto mt-12 gap-8 text-slate-700">
       <div className="text-center mb-8">
         <h2 className="text-4xl font-black mb-4">Evolution of a Web App</h2>
-        <p className="text-slate-500 font-mono">Watch how code transforms static text into an intelligent machine.</p>
+        <p className="text-slate-700 font-mono">Watch how code transforms static text into an intelligent machine.</p>
       </div>
 
       <div className="flex gap-8 items-center w-full justify-center">
         {/* HTML Stage */}
         <div className={`transition-all duration-1000 ${stage >= 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-50'} text-center`}>
           <div className="bg-slate-800/80 p-6 w-48 h-64 border border-slate-300 mb-4 flex flex-col justify-start shadow-sm">
-            <h1 className="text-slate-600 font-serif text-lg mb-2">My Robot</h1>
-            <button className="bg-slate-200 border border-slate-400 text-slate-600 px-2 py-1 text-sm">Click me</button>
+            <h1 className="text-slate-700 font-serif text-lg mb-2">My Robot</h1>
+            <button className="bg-slate-200 border border-slate-400 text-slate-700 px-2 py-1 text-sm">Click me</button>
           </div>
-          <div className="font-mono text-slate-500">&lt;html&gt; (Structure)</div>
+          <div className="font-mono text-slate-700">&lt;html&gt; (Structure)</div>
         </div>
 
         <ArrowRight className={`text-slate-400 transition-all duration-500 ${stage >= 1 ? 'opacity-100' : 'opacity-0'}`} size={32} />
@@ -99,7 +99,7 @@ const SceneIntro = ({ onComplete }: any) => {
         {/* CSS Stage */}
         <div className={`transition-all duration-1000 ${stage >= 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-50 absolute'} text-center`}>
           <div className="bg-gradient-to-br from-indigo-400 to-purple-500 p-6 w-48 h-64 rounded-3xl shadow-xl border border-white mb-4 flex flex-col justify-center items-center">
-            <h1 className="text-slate-600 font-bold text-xl mb-4 drop-shadow-sm">My Robot</h1>
+            <h1 className="text-slate-700 font-bold text-xl mb-4 drop-shadow-sm">My Robot</h1>
             <button className="bg-slate-800/80 text-indigo-600 px-4 py-2 rounded-full font-bold shadow-md">Hover Me</button>
           </div>
           <div className="font-mono text-indigo-600 font-bold">CSS (Style)</div>
@@ -113,7 +113,7 @@ const SceneIntro = ({ onComplete }: any) => {
             <div className="absolute inset-0 bg-green-50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <Bot size={64} className="text-emerald-500 mb-4 animate-bounce-slow" />
             <h1 className="text-emerald-600 font-mono font-bold text-xl mb-4">AI Online</h1>
-            <div className="text-xs text-slate-500 font-mono text-left w-full bg-slate-100 p-3 rounded-xl border border-slate-200">
+            <div className="text-xs text-slate-700 font-mono text-left w-full bg-slate-100 p-3 rounded-xl border border-slate-200">
               {">"} analyzing...<br/>
               {">"} user detected<br/>
               {">"} awaiting input_
@@ -180,7 +180,7 @@ const SceneTerminal = ({ onComplete }: any) => {
             <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
             <div className="w-3 h-3 rounded-full bg-green-500"></div>
           </div>
-          <div className="text-slate-500 font-mono text-sm flex items-center gap-2">
+          <div className="text-slate-700 font-mono text-sm flex items-center gap-2">
             <TerminalSquare size={16} /> PyTerm 3.11
           </div>
         </div>
@@ -191,7 +191,7 @@ const SceneTerminal = ({ onComplete }: any) => {
             # Challenge: Make the computer say "I am a Python Wizard!"
           </div>
           <div className="flex font-mono text-lg">
-            <div className="text-slate-500 select-none pr-4 text-right">
+            <div className="text-slate-700 select-none pr-4 text-right">
               1<br/>2
             </div>
             <textarea 
@@ -204,7 +204,7 @@ const SceneTerminal = ({ onComplete }: any) => {
           </div>
           <button 
             onClick={handleRun}
-            className="absolute bottom-6 right-6 bg-emerald-500 hover:bg-emerald-400 text-slate-600 shadow-lg shadow-emerald-500/30 px-6 py-2 rounded-xl font-mono flex items-center gap-2 transition-all font-bold"
+            className="absolute bottom-6 right-6 bg-emerald-500 hover:bg-emerald-400 text-slate-700 shadow-lg shadow-emerald-500/30 px-6 py-2 rounded-xl font-mono flex items-center gap-2 transition-all font-bold"
           >
             <Play size={16} fill="currentColor" /> RUN CODE
           </button>
@@ -212,13 +212,13 @@ const SceneTerminal = ({ onComplete }: any) => {
 
         {/* Output */}
         <div className="bg-slate-950 p-6 min-h-[120px] font-mono rounded-b-3xl">
-          <div className="text-slate-500 text-xs mb-2">OUTPUT CONSOLE:</div>
+          <div className="text-slate-700 text-xs mb-2">OUTPUT CONSOLE:</div>
           {output.map((line, i) => (
             <div key={i} className={`text-lg ${line.includes('Error') ? 'text-rose-400' : 'text-slate-200'} animate-fade-in`}>
               {">"} {line}
             </div>
           ))}
-          {output.length === 0 && <div className="text-slate-500 animate-pulse">{">"} waiting for execution...</div>}
+          {output.length === 0 && <div className="text-slate-700 animate-pulse">{">"} waiting for execution...</div>}
         </div>
       </GlassPanel>
 
@@ -246,9 +246,9 @@ const SceneVariables = ({ onComplete }: any) => {
 
   return (
     <div className="w-full max-w-5xl mx-auto flex flex-col items-center mt-8 gap-12">
-      <div className="text-center text-slate-600">
+      <div className="text-center text-slate-700">
         <h2 className="text-4xl font-black mb-2">Variables are Magic Containers</h2>
-        <p className="text-slate-500 font-mono text-lg">Click a value to store it in a variable.</p>
+        <p className="text-slate-700 font-mono text-lg">Click a value to store it in a variable.</p>
       </div>
 
       <div className="flex flex-col md:flex-row gap-12 w-full justify-center items-center">
@@ -275,7 +275,7 @@ const SceneVariables = ({ onComplete }: any) => {
         <div className="flex gap-8">
           <GlassPanel className={`w-48 h-48 flex flex-col items-center justify-center relative transition-all duration-500 bg-slate-800/80 ${vars.name ? 'border-purple-400 shadow-[0_0_30px_rgba(168,85,247,0.3)]' : ''}`}>
             <Box size={48} className={vars.name ? 'text-purple-500' : 'text-slate-400'} />
-            <div className="font-mono mt-4 text-slate-500 font-bold">player_name</div>
+            <div className="font-mono mt-4 text-slate-700 font-bold">player_name</div>
             {vars.name && (
               <div className="absolute inset-0 flex items-center justify-center bg-purple-500/10 backdrop-blur-sm animate-fade-in">
                 <span className="font-mono text-2xl text-purple-700 font-black drop-shadow-sm">{vars.name}</span>
@@ -285,7 +285,7 @@ const SceneVariables = ({ onComplete }: any) => {
 
           <GlassPanel className={`w-48 h-48 flex flex-col items-center justify-center relative transition-all duration-500 bg-slate-800/80 ${vars.score ? 'border-blue-400 shadow-[0_0_30px_rgba(59,130,246,0.3)]' : ''}`}>
             <Database size={48} className={vars.score ? 'text-blue-500' : 'text-slate-400'} />
-            <div className="font-mono mt-4 text-slate-500 font-bold">high_score</div>
+            <div className="font-mono mt-4 text-slate-700 font-bold">high_score</div>
             {vars.score && (
               <div className="absolute inset-0 flex items-center justify-center bg-blue-500/10 backdrop-blur-sm animate-fade-in">
                 <span className="font-mono text-2xl text-blue-700 font-black drop-shadow-sm">{vars.score}</span>
@@ -296,14 +296,14 @@ const SceneVariables = ({ onComplete }: any) => {
       </div>
 
       {/* Live Output */}
-      <div className="w-full max-w-2xl bg-slate-900 rounded-3xl p-6 shadow-2xl font-mono text-slate-600 mt-8 h-32 flex flex-col justify-center border-4 border-slate-700">
+      <div className="w-full max-w-2xl bg-slate-900 rounded-3xl p-6 shadow-2xl font-mono text-slate-700 mt-8 h-32 flex flex-col justify-center border-4 border-slate-700">
         {isComplete ? (
           <div className="animate-fade-in-up text-lg">
             <span className="text-emerald-400">{"> "}Welcome back,</span> <span className="text-purple-300 font-bold">{vars.name}</span>!<br/>
             <span className="text-emerald-400">{"> "}Your current high score is:</span> <span className="text-blue-300 font-bold">{vars.score}</span>
           </div>
         ) : (
-          <div className="text-slate-500 animate-pulse text-lg">{"> "} Waiting for variables to be assigned...</div>
+          <div className="text-slate-700 animate-pulse text-lg">{"> "} Waiting for variables to be assigned...</div>
         )}
       </div>
 
@@ -363,8 +363,8 @@ const SceneBinarySearch = ({ onComplete }: any) => {
     return (
       <div className="flex flex-col items-center justify-center w-full max-w-2xl mx-auto mt-12 gap-8 animate-fade-in">
         <Cpu size={80} className="text-emerald-500 drop-shadow-[0_0_20px_rgba(16,185,129,0.5)] animate-pulse" />
-        <h2 className="text-5xl font-black text-slate-600 text-center tracking-tight">The AI Mind Reader</h2>
-        <p className="text-xl text-slate-500 text-center mb-8">
+        <h2 className="text-5xl font-black text-slate-700 text-center tracking-tight">The AI Mind Reader</h2>
+        <p className="text-xl text-slate-700 text-center mb-8">
           Think of ANY number between <span className="text-indigo-600 font-bold">1</span> and <span className="text-indigo-600 font-bold">1000</span>.<br/>
           I will find it using an algorithm called <strong>Binary Search</strong>.
         </p>
@@ -381,16 +381,16 @@ const SceneBinarySearch = ({ onComplete }: any) => {
       {/* Top HUD */}
       <div className="grid grid-cols-3 gap-6">
         <GlassPanel className="p-6 text-center bg-slate-800/80">
-          <div className="text-slate-500 font-mono text-sm uppercase tracking-wider mb-2 font-bold">Search Space</div>
-          <div className="text-3xl font-black text-slate-600">{rangeTotal} <span className="text-sm font-normal text-slate-500">numbers left</span></div>
+          <div className="text-slate-700 font-mono text-sm uppercase tracking-wider mb-2 font-bold">Search Space</div>
+          <div className="text-3xl font-black text-slate-700">{rangeTotal} <span className="text-sm font-normal text-slate-700">numbers left</span></div>
         </GlassPanel>
         <GlassPanel className="p-6 text-center border-emerald-400 bg-slate-800/80" glowing>
           <div className="text-emerald-600 font-mono text-sm uppercase tracking-wider mb-2 font-bold">Current Range</div>
-          <div className="text-3xl font-black text-slate-600">{low} <span className="text-slate-400 mx-2">→</span> {high}</div>
+          <div className="text-3xl font-black text-slate-700">{low} <span className="text-slate-400 mx-2">→</span> {high}</div>
         </GlassPanel>
         <GlassPanel className="p-6 text-center bg-slate-800/80">
-          <div className="text-slate-500 font-mono text-sm uppercase tracking-wider mb-2 font-bold">Guesses Taken</div>
-          <div className="text-3xl font-black text-slate-600">{stepCount}</div>
+          <div className="text-slate-700 font-mono text-sm uppercase tracking-wider mb-2 font-bold">Guesses Taken</div>
+          <div className="text-3xl font-black text-slate-700">{stepCount}</div>
         </GlassPanel>
       </div>
 
@@ -410,7 +410,7 @@ const SceneBinarySearch = ({ onComplete }: any) => {
             style={{ left: `${guessPercentRelative}%` }}
           >
             {/* Value flag */}
-            <div className="absolute -top-10 bg-emerald-500 text-slate-600 font-black px-4 py-1 rounded-full text-xl shadow-lg transform -translate-x-1/2 whitespace-nowrap">
+            <div className="absolute -top-10 bg-emerald-500 text-slate-700 font-black px-4 py-1 rounded-full text-xl shadow-lg transform -translate-x-1/2 whitespace-nowrap">
               Is it {guess}?
             </div>
           </div>
@@ -438,9 +438,9 @@ const SceneBinarySearch = ({ onComplete }: any) => {
       ) : (
         <div className="text-center animate-fade-in-up mt-8">
           <h2 className="text-4xl font-black text-emerald-600 mb-4 drop-shadow-sm">I read your mind in {stepCount} steps!</h2>
-          <p className="text-slate-500 text-xl mb-8 font-medium">This is the power of algorithms. Now let's build something visual.</p>
+          <p className="text-slate-700 text-xl mb-8 font-medium">This is the power of algorithms. Now let's build something visual.</p>
           <div className="flex gap-4 justify-center">
-            <Button onClick={reset} className="bg-slate-800/80 text-slate-600">Play Again</Button>
+            <Button onClick={reset} className="bg-slate-800/80 text-slate-700">Play Again</Button>
             <Button primary onClick={onComplete}>Enter Python Canvas <ArrowRight/></Button>
           </div>
         </div>
@@ -581,10 +581,10 @@ const ScenePythonVisualizer = ({ onComplete }: any) => {
       `}} />
 
       <div className="bg-slate-800/80/80 p-6 rounded-3xl backdrop-blur-md border border-white text-center w-full shadow-2xl">
-        <h2 className="text-4xl font-black text-slate-600 mb-2 flex items-center justify-center gap-3">
+        <h2 className="text-4xl font-black text-slate-700 mb-2 flex items-center justify-center gap-3">
           <PaintBucket className="text-indigo-600" size={36}/> Python Canvas
         </h2>
-        <p className="text-slate-500 font-bold text-lg">Use Python commands to conjure shapes into existence!</p>
+        <p className="text-slate-700 font-bold text-lg">Use Python commands to conjure shapes into existence!</p>
       </div>
 
       <div className="flex flex-col lg:flex-row w-full gap-8">
@@ -619,7 +619,7 @@ const ScenePythonVisualizer = ({ onComplete }: any) => {
 
             <button 
               onClick={executeCode}
-              className="absolute bottom-6 right-6 bg-emerald-500 hover:bg-emerald-400 text-slate-600 shadow-[0_0_20px_rgba(16,185,129,0.5)] hover:shadow-[0_0_30px_rgba(16,185,129,0.8)] px-8 py-4 rounded-xl font-mono flex items-center gap-3 transition-all transform hover:scale-105 font-black text-xl"
+              className="absolute bottom-6 right-6 bg-emerald-500 hover:bg-emerald-400 text-slate-700 shadow-[0_0_20px_rgba(16,185,129,0.5)] hover:shadow-[0_0_30px_rgba(16,185,129,0.8)] px-8 py-4 rounded-xl font-mono flex items-center gap-3 transition-all transform hover:scale-105 font-black text-xl"
             >
               <Play size={24} fill="currentColor" /> RUN SCRIPT
             </button>
@@ -642,7 +642,7 @@ const ScenePythonVisualizer = ({ onComplete }: any) => {
             }}></div>
 
             {elements.length === 0 ? (
-              <div className="text-slate-500 font-mono text-center flex flex-col items-center gap-4 animate-pulse">
+              <div className="text-slate-700 font-mono text-center flex flex-col items-center gap-4 animate-pulse">
                 <Sparkles size={48} className="opacity-50" />
                 <p className="text-xl font-bold">Awaiting Instructions...</p>
               </div>
@@ -677,7 +677,7 @@ const SceneFinale = ({ onComplete }: any) => {
         You Are A Creator
       </h1>
       
-      <p className="text-xl md:text-2xl text-slate-500 max-w-2xl text-center leading-relaxed font-medium mb-16">
+      <p className="text-xl md:text-2xl text-slate-700 max-w-2xl text-center leading-relaxed font-medium mb-16">
         You are no longer just playing games or using apps.<br/>
         With Code, you now have the power to build them.
       </p>
@@ -689,7 +689,7 @@ const SceneFinale = ({ onComplete }: any) => {
             className={`px-6 py-3 rounded-full font-bold text-lg backdrop-blur-md border ${
               skill === 'PYTHON' 
                 ? 'bg-emerald-100 border-emerald-400 text-emerald-600 shadow-[0_0_20px_rgba(16,185,129,0.3)] animate-bounce-slow' 
-                : 'bg-slate-800/80 border-slate-200 text-slate-500 shadow-sm'
+                : 'bg-slate-800/80 border-slate-200 text-slate-700 shadow-sm'
             }`}
             style={{ animationDelay: `${i * 0.1}s` }}
           >
@@ -821,7 +821,7 @@ export default function App({ onComplete }: any) {
   }
 
   return (
-    <div className="bright-bg text-slate-600 font-sans selection:bg-emerald-200 selection:text-slate-900 pb-32">
+    <div className="bright-bg text-slate-700 font-sans selection:bg-emerald-200 selection:text-slate-900 pb-32">
       <div className="cyber-grid-light"></div>
       
       {/* Navigation / Progress Bar */}
@@ -831,7 +831,7 @@ export default function App({ onComplete }: any) {
           <div className="pointer-events-auto p-6 -m-6">
             <div className="bg-slate-800/80/80 backdrop-blur-md border border-white px-6 py-3 rounded-full flex items-center gap-3 shadow-lg opacity-0 group-hover:opacity-100 -translate-y-8 group-hover:translate-y-0 transition-all duration-500">
               <Code2 className="text-emerald-500" size={24} />
-              <span className="text-slate-600 font-black tracking-widest text-xl font-mono">PYTHON_ACADEMY</span>
+              <span className="text-slate-700 font-black tracking-widest text-xl font-mono">PYTHON_ACADEMY</span>
             </div>
           </div>
         </div>

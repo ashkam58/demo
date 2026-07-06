@@ -20,8 +20,8 @@ const Button = ({ onClick, children, primary = false, className = "" }: any) => 
     onClick={() => { playSound('pop'); onClick(); }}
     className={`px-6 py-3 rounded-2xl font-bold flex items-center justify-center gap-2 transition-all duration-300 transform active:scale-95 ${
       primary 
-        ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-slate-600 shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1' 
-        : 'bg-slate-800/80 hover:bg-slate-50 text-slate-600 shadow-md border border-slate-200'
+        ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-slate-700 shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1' 
+        : 'bg-slate-800/80 hover:bg-slate-50 text-slate-700 shadow-md border border-slate-200'
     } ${className}`}
   >
     {children}
@@ -69,13 +69,13 @@ const SceneAnatomy = ({ onComplete }: any) => {
       <div className="flex items-center gap-4 bg-slate-800/80/50 p-2 rounded-full backdrop-blur-md border border-white shadow-sm">
         <button 
           onClick={() => { setCssOn(false); playSound('switch'); }}
-          className={`px-6 py-2 rounded-full font-bold transition-all ${!cssOn ? 'bg-slate-800 text-slate-600 shadow-lg' : 'text-slate-500 hover:text-slate-600'}`}
+          className={`px-6 py-2 rounded-full font-bold transition-all ${!cssOn ? 'bg-slate-800 text-slate-700 shadow-lg' : 'text-slate-700 hover:text-slate-700'}`}
         >
           <Code className="inline mr-2" size={18}/> HTML Only
         </button>
         <button 
           onClick={() => { setCssOn(true); playSound('switch'); }}
-          className={`px-6 py-2 rounded-full font-bold transition-all ${cssOn ? 'bg-gradient-to-r from-pink-500 to-orange-400 text-slate-600 shadow-md' : 'text-slate-500 hover:text-slate-600'}`}
+          className={`px-6 py-2 rounded-full font-bold transition-all ${cssOn ? 'bg-gradient-to-r from-pink-500 to-orange-400 text-slate-700 shadow-md' : 'text-slate-700 hover:text-slate-700'}`}
         >
           <Paintbrush className="inline mr-2" size={18}/> CSS ON
         </button>
@@ -88,23 +88,23 @@ const SceneAnatomy = ({ onComplete }: any) => {
           
           {/* Header */}
           <div className={cssOn ? 'bg-indigo-600 p-6 flex justify-between items-center' : 'p-4 border-b border-gray-300 bg-slate-800/80'}>
-            <h1 className={cssOn ? 'text-3xl font-extrabold text-slate-600 tracking-tight' : 'text-blue-800 text-xl underline font-serif'}>
+            <h1 className={cssOn ? 'text-3xl font-extrabold text-slate-700 tracking-tight' : 'text-blue-800 text-xl underline font-serif'}>
               {cssOn ? 'FlixNet' : 'Welcome to My Webpage'}
             </h1>
-            <ul className={cssOn ? 'flex gap-6 text-slate-600/90 font-medium' : 'list-disc pl-8 font-serif text-slate-600'}>
-              <li className={cssOn ? 'hover:text-slate-600 cursor-pointer' : 'text-blue-800 underline'}>Home</li>
-              <li className={cssOn ? 'hover:text-slate-600 cursor-pointer' : 'text-blue-800 underline'}>Movies</li>
-              <li className={cssOn ? 'hover:text-slate-600 cursor-pointer' : 'text-blue-800 underline'}>Series</li>
+            <ul className={cssOn ? 'flex gap-6 text-slate-700/90 font-medium' : 'list-disc pl-8 font-serif text-slate-700'}>
+              <li className={cssOn ? 'hover:text-slate-700 cursor-pointer' : 'text-blue-800 underline'}>Home</li>
+              <li className={cssOn ? 'hover:text-slate-700 cursor-pointer' : 'text-blue-800 underline'}>Movies</li>
+              <li className={cssOn ? 'hover:text-slate-700 cursor-pointer' : 'text-blue-800 underline'}>Series</li>
             </ul>
           </div>
 
           {/* Hero Section */}
-          <div className={cssOn ? 'p-12 bg-gradient-to-br from-indigo-900 to-purple-900 text-slate-600 relative overflow-hidden' : 'p-4 bg-slate-800/80 text-black'}>
+          <div className={cssOn ? 'p-12 bg-gradient-to-br from-indigo-900 to-purple-900 text-slate-700 relative overflow-hidden' : 'p-4 bg-slate-800/80 text-black'}>
             {cssOn && <div className="absolute top-0 right-0 w-64 h-64 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>}
             <h2 className={cssOn ? 'text-5xl font-black mb-4 relative z-10' : 'text-2xl font-bold font-serif'}>
               Learn to Code Today
             </h2>
-            <p className={cssOn ? 'text-xl text-slate-600/90 max-w-lg mb-8 relative z-10' : 'font-serif mb-4'}>
+            <p className={cssOn ? 'text-xl text-slate-700/90 max-w-lg mb-8 relative z-10' : 'font-serif mb-4'}>
               Discover the magic behind websites. Turn plain text into beautiful interactive experiences.
             </p>
             <button className={cssOn ? 'bg-slate-800/80 text-indigo-900 px-8 py-4 rounded-full font-bold shadow-xl hover:scale-105 transition-transform' : 'bg-gray-200 border border-gray-400 px-2 py-1 text-black'}>
@@ -159,13 +159,13 @@ const SceneBuilder = ({ onComplete }: any) => {
       
       {/* Controls / CSS Inspector */}
       <GlassCard className="flex-1 p-8 w-full">
-        <h2 className="text-2xl font-bold text-slate-600 mb-6 flex items-center gap-2">
+        <h2 className="text-2xl font-bold text-slate-700 mb-6 flex items-center gap-2">
           <Paintbrush className="text-pink-500"/> CSS Playground
         </h2>
         
         <div className="space-y-6">
           <div className="space-y-2">
-            <div className="flex justify-between text-slate-500 font-mono text-sm font-bold">
+            <div className="flex justify-between text-slate-700 font-mono text-sm font-bold">
               <span>border-radius</span>
               <span>{styles.borderRadius}px</span>
             </div>
@@ -173,7 +173,7 @@ const SceneBuilder = ({ onComplete }: any) => {
           </div>
 
           <div className="space-y-2">
-            <div className="flex justify-between text-slate-500 font-mono text-sm font-bold">
+            <div className="flex justify-between text-slate-700 font-mono text-sm font-bold">
               <span>padding</span>
               <span>{styles.padding}px</span>
             </div>
@@ -181,7 +181,7 @@ const SceneBuilder = ({ onComplete }: any) => {
           </div>
 
           <div className="space-y-2">
-            <div className="flex justify-between text-slate-500 font-mono text-sm font-bold">
+            <div className="flex justify-between text-slate-700 font-mono text-sm font-bold">
               <span>background-color (hue)</span>
               <span>{styles.hue}deg</span>
             </div>
@@ -189,7 +189,7 @@ const SceneBuilder = ({ onComplete }: any) => {
           </div>
 
           <div className="space-y-2">
-            <div className="flex justify-between text-slate-500 font-mono text-sm font-bold">
+            <div className="flex justify-between text-slate-700 font-mono text-sm font-bold">
               <span>box-shadow</span>
               <span>{styles.shadow}px</span>
             </div>
@@ -259,13 +259,13 @@ const SceneXRay = ({ onComplete }: any) => {
   return (
     <div className="flex flex-col items-center w-full max-w-4xl mx-auto mt-8 gap-8">
       <div className="bg-slate-800/80/60 p-6 rounded-3xl backdrop-blur-md border border-white text-center w-full shadow-xl">
-        <h2 className="text-2xl font-bold text-slate-600 mb-4">The Browser's X-Ray Vision</h2>
-        <p className="text-slate-500 mb-6 font-medium">Browsers read tags to understand what things are. Turn on X-Ray mode to see the hidden HTML tags!</p>
+        <h2 className="text-2xl font-bold text-slate-700 mb-4">The Browser's X-Ray Vision</h2>
+        <p className="text-slate-700 mb-6 font-medium">Browsers read tags to understand what things are. Turn on X-Ray mode to see the hidden HTML tags!</p>
         
         <button 
           onClick={() => { setXrayOn(!xrayOn); playSound('switch'); }}
           className={`px-8 py-4 rounded-2xl font-bold text-xl flex items-center gap-3 mx-auto transition-all shadow-md ${
-            xrayOn ? 'bg-red-500 text-slate-600 animate-pulse' : 'bg-gradient-to-r from-emerald-400 to-teal-500 text-slate-600 hover:scale-105'
+            xrayOn ? 'bg-red-500 text-slate-700 animate-pulse' : 'bg-gradient-to-r from-emerald-400 to-teal-500 text-slate-700 hover:scale-105'
           }`}
         >
           <Layers /> {xrayOn ? 'Turn X-Ray OFF' : 'ACTIVATE X-RAY MODE'}
@@ -319,7 +319,7 @@ const SceneXRay = ({ onComplete }: any) => {
               Every beautiful website you see is just a combination of structure (HTML) and style (CSS) painted by your browser.
             </p>
             <div className="flex justify-center gap-4 mb-12">
-              <button className="bg-indigo-600 text-slate-600 px-8 py-4 rounded-xl font-bold shadow-lg shadow-indigo-200">Get Started</button>
+              <button className="bg-indigo-600 text-slate-700 px-8 py-4 rounded-xl font-bold shadow-lg shadow-indigo-200">Get Started</button>
               <button className="bg-slate-100 text-gray-800 px-8 py-4 rounded-xl font-bold border border-slate-200">Learn More</button>
             </div>
             <div className="grid grid-cols-2 gap-6">
@@ -400,10 +400,10 @@ const SceneGuidedCoding = ({ onComplete }: any) => {
   return (
     <div className="flex flex-col items-center w-full max-w-6xl mx-auto mt-8 gap-8">
       <div className="bg-slate-800/80/80 p-6 rounded-3xl backdrop-blur-md border border-white text-center w-full shadow-2xl">
-        <h2 className="text-4xl font-black text-slate-600 mb-2 flex items-center justify-center gap-3">
+        <h2 className="text-4xl font-black text-slate-700 mb-2 flex items-center justify-center gap-3">
           <Keyboard className="text-indigo-600" size={36} /> You are the Developer
         </h2>
-        <p className="text-slate-500 font-bold text-lg">Bring the cyberspace core to life! Type the code exactly as shown to see the magic happen instantly.</p>
+        <p className="text-slate-700 font-bold text-lg">Bring the cyberspace core to life! Type the code exactly as shown to see the magic happen instantly.</p>
       </div>
 
       <div className="flex flex-col lg:flex-row w-full gap-8">
@@ -621,7 +621,7 @@ export default function App({ onComplete }: any) {
           <div className="pointer-events-auto p-6 -m-6">
             <div className="bg-slate-800/80/60 backdrop-blur-xl border border-white px-6 py-3 rounded-full flex items-center gap-3 shadow-xl opacity-0 group-hover:opacity-100 -translate-y-8 group-hover:translate-y-0 transition-all duration-500">
               <Monitor className="text-indigo-500" size={24} />
-              <span className="text-slate-600 font-black tracking-widest text-xl">WEB BUILDER</span>
+              <span className="text-slate-700 font-black tracking-widest text-xl">WEB BUILDER</span>
             </div>
           </div>
         </div>
