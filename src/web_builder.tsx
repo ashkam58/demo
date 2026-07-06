@@ -359,14 +359,18 @@ const SceneGuidedCoding = ({ onComplete }: any) => {
   useEffect(() => {
     const clean = (s: string) => s.replace(/\s+/g, '').replace(/"/g, "'").toLowerCase();
     if (clean(code) === clean(currentChallenge.expected)) {
-      setSuccess(true);
-      setCelebrate(true);
-      playSound('success');
-      setTimeout(() => setCelebrate(false), 800);
+      if (!success) {
+        setSuccess(true);
+        setCelebrate(true);
+        playSound('success');
+        setTimeout(() => setCelebrate(false), 800);
+      }
     } else {
-      setSuccess(false);
+      if (success) {
+        setSuccess(false);
+      }
     }
-  }, [code, currentChallenge]);
+  }, [code, currentChallenge, success]);
 
   const nextLevel = () => {
     if (level < challenges.length - 1) {
