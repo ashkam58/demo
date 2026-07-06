@@ -18,52 +18,8 @@ export const initAudio = () => {
 };
 
 export const startBGM = () => {
-  if (isBgmPlaying) return;
-  initAudio();
-  if (!audioCtx) return;
-  
-  bgmGain = audioCtx.createGain();
-  bgmGain.gain.value = 0; // fade in
-  bgmGain.connect(audioCtx.destination);
-  
-  // Lush ambient Cmaj9 chord drone for a musical, soothing EDM pad feel
-  const frequencies = [261.63, 329.63, 392.00, 493.88, 587.33]; // C4, E4, G4, B4, D5
-  
-  frequencies.forEach((freq, index) => {
-    const osc = audioCtx!.createOscillator();
-    osc.type = index % 2 === 0 ? 'sine' : 'triangle';
-    osc.frequency.value = freq;
-    
-    // Slight detune for that thick EDM pad chorus effect
-    const oscDetune = audioCtx!.createOscillator();
-    oscDetune.type = 'sine';
-    oscDetune.frequency.value = freq * 1.005;
-    
-    const mixGain = audioCtx!.createGain();
-    mixGain.gain.value = 0.15; // lower individual volume
-    
-    osc.connect(mixGain);
-    oscDetune.connect(mixGain);
-    mixGain.connect(bgmGain!);
-    
-    osc.start();
-    oscDetune.start();
-  });
-  
-  // Global slow LFO for a pulsing, swelling ambient effect
-  bgmLfo = audioCtx.createOscillator();
-  bgmLfo.type = 'sine';
-  bgmLfo.frequency.value = 0.15; // ~6.5 second cycle
-  
-  const lfoGain = audioCtx.createGain();
-  lfoGain.gain.value = 0.03; // Modulation depth
-  bgmLfo.connect(lfoGain);
-  lfoGain.connect(bgmGain.gain);
-  bgmLfo.start();
-  
-  // Fade in smoothly
-  bgmGain.gain.linearRampToValueAtTime(0.12, audioCtx.currentTime + 5);
-  isBgmPlaying = true;
+  // Background music disabled per user request
+  // Only interaction sounds (harp/flute/piano) remain active
 };
 
 // Pentatonic Scale (E major: E, F#, G#, B, C#)
