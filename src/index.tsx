@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import WorldOfCodingApp from './world_of_coding';
 import WebBuilderApp from './web_builder';
 import PyBuilderApp from './py_builder';
+import { startBGM } from './audio';
 
 // The sequence of modules to run through
 const MODULES = [
@@ -31,6 +32,20 @@ export default function IntegratedApp() {
   };
 
   const CurrentModuleComponent = MODULES[currentModuleIndex].component;
+
+  useEffect(() => {
+    const handleInteraction = () => {
+      startBGM();
+      window.removeEventListener('click', handleInteraction);
+      window.removeEventListener('keydown', handleInteraction);
+    };
+    window.addEventListener('click', handleInteraction);
+    window.addEventListener('keydown', handleInteraction);
+    return () => {
+      window.removeEventListener('click', handleInteraction);
+      window.removeEventListener('keydown', handleInteraction);
+    };
+  }, []);
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-sky-50 to-indigo-50 overflow-hidden font-sans">

@@ -5,46 +5,8 @@ import {
   Monitor, LayoutTemplate, Keyboard
 } from 'lucide-react';
 
-// --- Web Audio API for Interactions ---
-const playSound = (type: string) => {
-  try {
-    const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    
-    if (type === 'pop') {
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(400, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(600, ctx.currentTime + 0.1);
-      gain.gain.setValueAtTime(0.2, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
-      osc.start();
-      osc.stop(ctx.currentTime + 0.1);
-    } else if (type === 'switch') {
-      osc.type = 'triangle';
-      osc.frequency.setValueAtTime(200, ctx.currentTime);
-      osc.frequency.linearRampToValueAtTime(300, ctx.currentTime + 0.1);
-      gain.gain.setValueAtTime(0.1, ctx.currentTime);
-      gain.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 0.1);
-      osc.start();
-      osc.stop(ctx.currentTime + 0.1);
-    } else if (type === 'success') {
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(440, ctx.currentTime);
-      osc.frequency.setValueAtTime(554.37, ctx.currentTime + 0.1); // C#
-      osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.2); // E
-      gain.gain.setValueAtTime(0.1, ctx.currentTime);
-      gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.4);
-      osc.start();
-      osc.stop(ctx.currentTime + 0.4);
-    }
-  } catch (e) {
-    // Ignore if audio context fails
-  }
-};
+import { playInteractionSound as playSound } from './audio';
+import confetti from 'canvas-confetti';
 
 // --- Shared Components ---
 const GlassCard = ({ children, className = "" }: any) => (
@@ -412,6 +374,7 @@ const SceneGuidedCoding = ({ onComplete }: any) => {
       setCode("");
       setSuccess(false);
     } else {
+      confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
       onComplete();
     }
   };
