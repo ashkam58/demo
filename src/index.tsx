@@ -51,24 +51,26 @@ export default function IntegratedApp() {
     <div className="relative min-h-screen bg-gradient-to-br from-sky-50 to-indigo-50 overflow-hidden font-sans">
       
       {/* Top Navigation for the Integrated App */}
-      <div className="fixed top-4 left-0 right-0 z-[100] flex justify-center pointer-events-none">
-        <div className="bg-white/60 backdrop-blur-md border border-slate-200/50 rounded-full px-6 py-3 flex gap-6 pointer-events-auto shadow-xl">
-          {MODULES.map((mod, index) => {
-            const isActive = index === currentModuleIndex;
-            return (
-              <button
-                key={mod.id}
-                onClick={() => jumpToModule(index)}
-                className={`text-sm font-bold transition-all px-4 py-2 rounded-full flex items-center gap-2 ${
-                  isActive 
-                    ? 'bg-indigo-600 text-white shadow-md' 
-                    : 'text-slate-500 hover:text-slate-900 hover:bg-white/50'
-                }`}
-              >
-                {mod.name}
-              </button>
-            );
-          })}
+      <div className="fixed top-0 left-0 right-0 pt-4 z-[100] flex justify-center pointer-events-none group">
+        <div className="pointer-events-auto p-6 -m-6">
+          <div className="bg-white/60 backdrop-blur-md border border-slate-200/50 rounded-full px-6 py-3 flex gap-6 shadow-xl opacity-0 group-hover:opacity-100 -translate-y-12 group-hover:translate-y-0 transition-all duration-500">
+            {MODULES.map((mod, index) => {
+              const isActive = index === currentModuleIndex;
+              return (
+                <button
+                  key={mod.id}
+                  onClick={() => jumpToModule(index)}
+                  className={`text-sm font-bold transition-all px-4 py-2 rounded-full flex items-center gap-2 ${
+                    isActive 
+                      ? 'bg-indigo-600 text-white shadow-md' 
+                      : 'text-slate-500 hover:text-slate-900 hover:bg-white/50'
+                  }`}
+                >
+                  {mod.name}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 

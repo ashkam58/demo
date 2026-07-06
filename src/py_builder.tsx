@@ -38,16 +38,20 @@ const Button = ({ onClick, children, primary = false, className = "", color = "g
 // --- The Robot Companion (Py) ---
 const Py = ({ message, mood = 'happy' }: any) => {
   return (
-    <div className="fixed bottom-8 left-8 z-50 flex items-end gap-4 animate-float max-w-sm">
-      <div className="relative">
-        <div className="w-16 h-16 rounded-3xl bg-white flex items-center justify-center shadow-[0_0_30px_rgba(74,222,128,0.5)] border-2 border-green-400">
-          <Bot size={32} className={`text-green-500 ${mood === 'excited' ? 'animate-pulse' : ''}`} />
+    <div className="fixed bottom-0 left-0 z-50 group pointer-events-none">
+      <div className="pointer-events-auto p-12 -m-4">
+        <div className="flex items-end gap-4 animate-float max-w-sm opacity-0 group-hover:opacity-100 translate-y-12 group-hover:translate-y-0 transition-all duration-500 mb-8 ml-8">
+          <div className="relative">
+            <div className="w-16 h-16 rounded-3xl bg-white flex items-center justify-center shadow-[0_0_30px_rgba(74,222,128,0.5)] border-2 border-green-400">
+              <Bot size={32} className={`text-green-500 ${mood === 'excited' ? 'animate-pulse' : ''}`} />
+            </div>
+            <div className="absolute -top-2 -right-2 w-4 h-4 bg-emerald-400 rounded-full animate-ping"></div>
+            <div className="absolute -top-2 -right-2 w-4 h-4 bg-emerald-500 rounded-full border-2 border-white"></div>
+          </div>
+          <div className="bg-white/90 text-emerald-800 px-6 py-4 rounded-3xl rounded-bl-none shadow-xl border border-green-200 backdrop-blur-md">
+            <p className="font-mono text-sm tracking-wide leading-relaxed font-bold">{message}</p>
+          </div>
         </div>
-        <div className="absolute -top-2 -right-2 w-4 h-4 bg-emerald-400 rounded-full animate-ping"></div>
-        <div className="absolute -top-2 -right-2 w-4 h-4 bg-emerald-500 rounded-full border-2 border-white"></div>
-      </div>
-      <div className="bg-white/90 text-emerald-800 px-6 py-4 rounded-3xl rounded-bl-none shadow-xl border border-green-200 backdrop-blur-md">
-        <p className="font-mono text-sm tracking-wide leading-relaxed font-bold">{message}</p>
       </div>
     </div>
   );
@@ -812,22 +816,31 @@ export default function App({ onComplete }: any) {
       
       {/* Navigation / Progress Bar */}
       <nav className="fixed top-0 left-0 w-full z-50 p-6 flex justify-between items-center pointer-events-none">
-        <div className="bg-white/80 backdrop-blur-md border border-white px-6 py-3 rounded-full flex items-center gap-3 shadow-lg pointer-events-auto">
-          <Code2 className="text-emerald-500" size={24} />
-          <span className="text-slate-800 font-black tracking-widest text-xl font-mono">PYTHON_ACADEMY</span>
+        
+        <div className="group pointer-events-none">
+          <div className="pointer-events-auto p-6 -m-6">
+            <div className="bg-white/80 backdrop-blur-md border border-white px-6 py-3 rounded-full flex items-center gap-3 shadow-lg opacity-0 group-hover:opacity-100 -translate-y-8 group-hover:translate-y-0 transition-all duration-500">
+              <Code2 className="text-emerald-500" size={24} />
+              <span className="text-slate-800 font-black tracking-widest text-xl font-mono">PYTHON_ACADEMY</span>
+            </div>
+          </div>
         </div>
         
-        <div className="bg-white/80 backdrop-blur-md border border-white px-6 py-3 rounded-full flex gap-2 pointer-events-auto shadow-lg">
-          {[0, 1, 2, 3, 4, 5].map(i => (
-            <div 
-              key={i} 
-              className={`w-8 h-2 rounded-full transition-all duration-500 ${
-                i < step ? 'bg-emerald-500 shadow-sm' : 
-                i === step ? 'bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)] animate-pulse w-12' : 
-                'bg-slate-200'
-              }`}
-            />
-          ))}
+        <div className="group pointer-events-none">
+          <div className="pointer-events-auto p-6 -m-6">
+            <div className="bg-white/80 backdrop-blur-md border border-white px-6 py-3 rounded-full flex gap-2 shadow-lg opacity-0 group-hover:opacity-100 -translate-y-8 group-hover:translate-y-0 transition-all duration-500">
+              {[0, 1, 2, 3, 4, 5].map(i => (
+                <div 
+                  key={i} 
+                  className={`w-8 h-2 rounded-full transition-all duration-500 ${
+                    i < step ? 'bg-emerald-500 shadow-sm' : 
+                    i === step ? 'bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)] animate-pulse w-12' : 
+                    'bg-slate-200'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </nav>
 

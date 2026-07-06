@@ -31,16 +31,20 @@ const Button = ({ onClick, children, primary = false, className = "" }: any) => 
 // --- The Robot Companion (Byte) ---
 const Byte = ({ message, mood = 'happy' }: any) => {
   return (
-    <div className="fixed bottom-8 left-8 z-50 flex items-end gap-4 animate-bounce-slow max-w-sm">
-      <div className="relative">
-        <div className="w-16 h-16 rounded-3xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-[0_0_30px_rgba(99,102,241,0.5)] border-2 border-white">
-          <Bot size={32} color="white" className={mood === 'excited' ? 'animate-pulse' : ''} />
+    <div className="fixed bottom-0 left-0 z-50 group pointer-events-none">
+      <div className="pointer-events-auto p-12 -m-4">
+        <div className="flex items-end gap-4 animate-bounce-slow max-w-sm opacity-0 group-hover:opacity-100 translate-y-12 group-hover:translate-y-0 transition-all duration-500 mb-8 ml-8">
+          <div className="relative">
+            <div className="w-16 h-16 rounded-3xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-[0_0_30px_rgba(99,102,241,0.5)] border-2 border-white">
+              <Bot size={32} color="white" className={mood === 'excited' ? 'animate-pulse' : ''} />
+            </div>
+            <div className="absolute -top-2 -right-2 w-4 h-4 bg-green-400 rounded-full animate-ping"></div>
+            <div className="absolute -top-2 -right-2 w-4 h-4 bg-green-500 rounded-full border-2 border-indigo-900"></div>
+          </div>
+          <div className="bg-white text-indigo-950 px-6 py-4 rounded-3xl rounded-bl-none shadow-xl border border-slate-200 transform transition-all">
+            <p className="font-bold text-lg">{message}</p>
+          </div>
         </div>
-        <div className="absolute -top-2 -right-2 w-4 h-4 bg-green-400 rounded-full animate-ping"></div>
-        <div className="absolute -top-2 -right-2 w-4 h-4 bg-green-500 rounded-full border-2 border-indigo-900"></div>
-      </div>
-      <div className="bg-white text-indigo-950 px-6 py-4 rounded-3xl rounded-bl-none shadow-xl border border-slate-200 transform transition-all">
-        <p className="font-bold text-lg">{message}</p>
       </div>
     </div>
   );
@@ -602,20 +606,29 @@ export default function App({ onComplete }: any) {
       
       {/* Navigation / Progress Bar */}
       <nav className="fixed top-0 left-0 w-full z-50 p-6 flex justify-between items-center pointer-events-none">
-        <div className="bg-white/60 backdrop-blur-xl border border-white px-6 py-3 rounded-full flex items-center gap-3 shadow-xl pointer-events-auto">
-          <Monitor className="text-indigo-500" size={24} />
-          <span className="text-slate-800 font-black tracking-widest text-xl">WEB BUILDER</span>
+        
+        <div className="group pointer-events-none">
+          <div className="pointer-events-auto p-6 -m-6">
+            <div className="bg-white/60 backdrop-blur-xl border border-white px-6 py-3 rounded-full flex items-center gap-3 shadow-xl opacity-0 group-hover:opacity-100 -translate-y-8 group-hover:translate-y-0 transition-all duration-500">
+              <Monitor className="text-indigo-500" size={24} />
+              <span className="text-slate-800 font-black tracking-widest text-xl">WEB BUILDER</span>
+            </div>
+          </div>
         </div>
         
-        <div className="bg-white/60 backdrop-blur-xl border border-white px-6 py-3 rounded-full flex gap-2 pointer-events-auto shadow-xl">
-          {[0, 1, 2, 3, 4].map(i => (
-            <div 
-              key={i} 
-              className={`w-10 h-2 rounded-full transition-all duration-500 ${
-                i <= step ? 'bg-gradient-to-r from-pink-500 to-indigo-500 shadow-sm' : 'bg-slate-300'
-              }`}
-            />
-          ))}
+        <div className="group pointer-events-none">
+          <div className="pointer-events-auto p-6 -m-6">
+            <div className="bg-white/60 backdrop-blur-xl border border-white px-6 py-3 rounded-full flex gap-2 shadow-xl opacity-0 group-hover:opacity-100 -translate-y-8 group-hover:translate-y-0 transition-all duration-500">
+              {[0, 1, 2, 3, 4].map(i => (
+                <div 
+                  key={i} 
+                  className={`w-10 h-2 rounded-full transition-all duration-500 ${
+                    i <= step ? 'bg-gradient-to-r from-pink-500 to-indigo-500 shadow-sm' : 'bg-slate-300'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </nav>
 
