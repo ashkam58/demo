@@ -48,7 +48,7 @@ export default function IntegratedApp() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-slate-950 overflow-hidden font-sans">
+    <div className="relative min-h-screen bg-gradient-to-br from-[#EAF8FF] via-[#F7EEFF] to-[#FFF7D8] text-slate-600 overflow-hidden font-sans">
       
       {/* Top Navigation for the Integrated App */}
       <div className="fixed top-0 left-0 right-0 pt-4 z-[100] flex justify-center pointer-events-none group">
