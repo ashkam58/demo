@@ -633,7 +633,7 @@ export default function App({ onComplete }: any) {
       </nav>
 
       {/* Main Content Area */}
-      <main className="pt-32 px-6 flex flex-col items-center min-h-screen relative z-10">
+      <main className="pt-32 px-6 flex flex-col items-center min-h-screen relative z-10 w-full max-w-7xl mx-auto">
         
         {/* Floating Decorative Elements */}
         <div className="absolute top-40 left-20 animate-float opacity-40 pointer-events-none text-indigo-300">

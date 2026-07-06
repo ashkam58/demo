@@ -845,7 +845,7 @@ export default function App({ onComplete }: any) {
       </nav>
 
       {/* Main Content Area */}
-      <main className="pt-32 px-6 flex flex-col items-center min-h-screen relative z-10">
+      <main className="pt-32 px-6 flex flex-col items-center min-h-screen relative z-10 w-full max-w-7xl mx-auto">
         
         <div className="w-full flex-1 flex flex-col items-center justify-center">
           
