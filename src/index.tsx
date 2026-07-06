@@ -48,7 +48,7 @@ export default function IntegratedApp() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-[#EAF8FF] via-[#F7EEFF] to-[#FFF7D8] text-slate-600 overflow-hidden font-sans">
+    <div className="relative min-h-dvh bg-gradient-to-br from-[#EAF8FF] via-[#F7EEFF] to-[#FFF7D8] text-slate-700 overflow-x-hidden font-sans">
       
       {/* Top Navigation for the Integrated App */}
       <div className="fixed top-0 left-0 right-0 pt-4 z-[100] flex justify-center pointer-events-none group">
@@ -75,7 +75,7 @@ export default function IntegratedApp() {
       </div>
 
       {/* Render the current module */}
-      <div className="w-full h-full relative z-0">
+      <div className="w-full min-h-dvh relative z-0">
         <CurrentModuleComponent onComplete={handleModuleComplete} />
       </div>
 

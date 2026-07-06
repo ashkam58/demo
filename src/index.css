@@ -5,3 +5,24 @@
   --font-headings: "Fredoka", ui-sans-serif, system-ui;
   --font-mono: "Fira Code", ui-monospace, SFMono-Regular, monospace;
 }
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  min-width: 320px;
+}
+
+button,
+input,
+textarea {
+  color: inherit;
+}
