@@ -1,0 +1,67 @@
+import React, { useState } from 'react';
+import WorldOfCodingApp from './world_of_coding';
+import WebBuilderApp from './web_builder';
+import PyBuilderApp from './py_builder';
+
+// The sequence of modules to run through
+const MODULES = [
+  { id: 'world_of_coding', name: '1. World of Coding', component: WorldOfCodingApp },
+  { id: 'web_builder', name: '2. Web Builder', component: WebBuilderApp },
+  { id: 'py_builder', name: '3. Python Academy', component: PyBuilderApp },
+];
+
+export default function IntegratedApp() {
+  const [currentModuleIndex, setCurrentModuleIndex] = useState(0);
+
+  const handleModuleComplete = () => {
+    if (currentModuleIndex < MODULES.length - 1) {
+      // Small delay to allow completion sounds/animations to finish
+      setTimeout(() => {
+        setCurrentModuleIndex(currentModuleIndex + 1);
+      }, 500);
+    } else {
+      setTimeout(() => {
+        alert("You have completed all the modules! You are now a master creator.");
+      }, 500);
+    }
+  };
+
+  const jumpToModule = (index) => {
+    setCurrentModuleIndex(index);
+  };
+
+  const CurrentModuleComponent = MODULES[currentModuleIndex].component;
+
+  return (
+    <div className="relative min-h-screen bg-gradient-to-br from-sky-50 to-indigo-50 overflow-hidden font-sans">
+      
+      {/* Top Navigation for the Integrated App */}
+      <div className="fixed top-4 left-0 right-0 z-[100] flex justify-center pointer-events-none">
+        <div className="bg-white/60 backdrop-blur-md border border-slate-200/50 rounded-full px-6 py-3 flex gap-6 pointer-events-auto shadow-xl">
+          {MODULES.map((mod, index) => {
+            const isActive = index === currentModuleIndex;
+            return (
+              <button
+                key={mod.id}
+                onClick={() => jumpToModule(index)}
+                className={`text-sm font-bold transition-all px-4 py-2 rounded-full flex items-center gap-2 ${
+                  isActive 
+                    ? 'bg-indigo-600 text-white shadow-md' 
+                    : 'text-slate-500 hover:text-slate-900 hover:bg-white/50'
+                }`}
+              >
+                {mod.name}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Render the current module */}
+      <div className="w-full h-full relative z-0">
+        <CurrentModuleComponent onComplete={handleModuleComplete} />
+      </div>
+
+    </div>
+  );
+}
