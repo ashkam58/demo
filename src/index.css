@@ -41,3 +41,24 @@ body {
 .bg-white {
   background-color: #ffffff !important;
 }
+
+.lesson-scene {
+  height: 100dvh;
+  min-height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+  padding-top: clamp(4.5rem, 8vh, 6rem);
+  padding-bottom: clamp(1rem, 3vh, 2rem);
+}
+
+.lesson-fit {
+  transform-origin: center;
+}
+
+@media (max-height: 850px) {
+  .lesson-fit { scale: 0.86; width: 116%; max-width: 116%; }
+}
+
+@media (max-height: 700px) {
+  .lesson-fit { scale: 0.74; width: 135%; max-width: 135%; }
+}

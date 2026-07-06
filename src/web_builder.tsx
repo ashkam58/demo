@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { 
   Sparkles, Code, Paintbrush, Layers, Power,
-  ChevronRight, ArrowRight,
   Monitor, LayoutTemplate, Keyboard
 } from 'lucide-react';
 
@@ -64,8 +63,13 @@ const Byte = ({ message }: any) => {
 const SceneAnatomy = ({ onComplete }: any) => {
   const [cssOn, setCssOn] = useState(true);
 
+  useEffect(() => {
+    const timer = setTimeout(onComplete, 5000);
+    return () => clearTimeout(timer);
+  }, [onComplete]);
+
   return (
-    <div className="flex flex-col items-center w-full max-w-5xl mx-auto mt-12 gap-8">
+    <div className="lesson-fit flex flex-col items-center justify-center w-full max-w-5xl mx-auto gap-6">
       <div className="flex items-center gap-4 bg-white/50 p-2 rounded-full backdrop-blur-md border border-white shadow-sm">
         <button 
           onClick={() => { setCssOn(false); playSound('switch'); }}
@@ -131,9 +135,6 @@ const SceneAnatomy = ({ onComplete }: any) => {
         </div>
       </div>
 
-      <Button primary onClick={onComplete} className="mt-8">
-        I understand! Let's build <ArrowRight />
-      </Button>
     </div>
   );
 };
@@ -154,8 +155,15 @@ const SceneBuilder = ({ onComplete }: any) => {
 
   const isBeautiful = styles.borderRadius > 15 && styles.shadow > 10;
 
+  useEffect(() => {
+    if (!isBeautiful) return;
+    playSound('success');
+    const timer = setTimeout(onComplete, 4000);
+    return () => clearTimeout(timer);
+  }, [isBeautiful, onComplete]);
+
   return (
-    <div className="flex flex-col lg:flex-row gap-8 w-full max-w-6xl mx-auto mt-8 items-start">
+    <div className="lesson-fit flex flex-col lg:flex-row gap-8 w-full max-w-6xl mx-auto items-center">
       
       {/* Controls / CSS Inspector */}
       <GlassCard className="flex-1 p-8 w-full">
@@ -197,13 +205,6 @@ const SceneBuilder = ({ onComplete }: any) => {
           </div>
         </div>
 
-        {isBeautiful && (
-          <div className="mt-8 animate-fade-in">
-            <Button primary onClick={() => { playSound('success'); onComplete(); }} className="w-full">
-              Looks Amazing! Next <ChevronRight />
-            </Button>
-          </div>
-        )}
       </GlassCard>
 
       {/* Live Preview */}
@@ -256,8 +257,14 @@ const SceneBuilder = ({ onComplete }: any) => {
 const SceneXRay = ({ onComplete }: any) => {
   const [xrayOn, setXrayOn] = useState(false);
 
+  useEffect(() => {
+    if (!xrayOn) return;
+    const timer = setTimeout(onComplete, 4000);
+    return () => clearTimeout(timer);
+  }, [xrayOn, onComplete]);
+
   return (
-    <div className="flex flex-col items-center w-full max-w-4xl mx-auto mt-8 gap-8">
+    <div className="lesson-fit flex flex-col items-center justify-center w-full max-w-4xl mx-auto gap-6">
       <div className="bg-white/60 p-6 rounded-3xl backdrop-blur-md border border-white text-center w-full shadow-xl">
         <h2 className="text-2xl font-bold text-slate-700 mb-4">The Browser's X-Ray Vision</h2>
         <p className="text-slate-700 mb-6 font-medium">Browsers read tags to understand what things are. Turn on X-Ray mode to see the hidden HTML tags!</p>
@@ -336,13 +343,6 @@ const SceneXRay = ({ onComplete }: any) => {
         </div>
       </div>
 
-      {xrayOn && (
-        <div className="animate-fade-in-up w-full mt-4 flex justify-center">
-          <Button primary onClick={() => { playSound('success'); onComplete(); }}>
-            Ready to Type Code! <ChevronRight />
-          </Button>
-        </div>
-      )}
     </div>
   );
 };
@@ -397,8 +397,14 @@ const SceneGuidedCoding = ({ onComplete }: any) => {
     }
   };
 
+  useEffect(() => {
+    if (!success) return;
+    const timer = setTimeout(nextLevel, 4000);
+    return () => clearTimeout(timer);
+  }, [success, level]);
+
   return (
-    <div className="flex flex-col items-center w-full max-w-6xl mx-auto mt-8 gap-8">
+    <div className="lesson-fit flex flex-col items-center justify-center w-full max-w-6xl mx-auto gap-6">
       <div className="bg-white/80 p-6 rounded-3xl backdrop-blur-md border border-white text-center w-full shadow-2xl">
         <h2 className="text-4xl font-black text-slate-700 mb-2 flex items-center justify-center gap-3">
           <Keyboard className="text-indigo-600" size={36} /> You are the Developer
@@ -502,13 +508,6 @@ const SceneGuidedCoding = ({ onComplete }: any) => {
         </div>
       </div>
 
-      {success && (
-        <div className="animate-fade-in-up w-full mt-4 flex justify-center">
-          <Button primary onClick={nextLevel} className="text-2xl px-12 py-6 shadow-[0_0_40px_rgba(74,222,128,0.5)] bg-gradient-to-r from-emerald-400 to-green-500 hover:scale-110">
-            {level < challenges.length - 1 ? 'Execute & Next Level! 🚀' : 'Mission Accomplished! 🏆'}
-          </Button>
-        </div>
-      )}
     </div>
   );
 };
@@ -643,7 +642,7 @@ export default function App({ onComplete }: any) {
       </nav>
 
       {/* Main Content Area */}
-      <main className="pt-28 pb-8 px-6 flex flex-col items-center min-h-dvh relative z-10 w-full max-w-7xl mx-auto">
+      <main className="h-dvh overflow-hidden pt-20 pb-4 px-6 flex flex-col items-center justify-center relative z-10 w-full max-w-7xl mx-auto">
         
         {/* Floating Decorative Elements */}
         <div className="absolute top-40 left-20 animate-float opacity-40 pointer-events-none text-indigo-300">

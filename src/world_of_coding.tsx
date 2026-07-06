@@ -95,7 +95,7 @@ const MagicalBackground = () => {
 
 // --- SCENE 1: WELCOME ---
 const WelcomeScene = ({ onNext }: any) => (
-  <div className="relative z-10 flex flex-col items-center justify-center min-h-[70vh] text-center px-4 scene-enter">
+  <div className="lesson-scene lesson-fit relative z-10 flex flex-col items-center justify-center text-center px-4 scene-enter">
     <div className="animate-float mb-8">
       <div className="w-24 h-24 rounded-3xl bg-gradient-to-tr from-sky-400 to-indigo-500 flex items-center justify-center shadow-[0_0_50px_rgba(56,189,248,0.5)] rotate-12">
         <Sparkles className="w-12 h-12 text-slate-700" />
@@ -127,14 +127,18 @@ const WelcomeScene = ({ onNext }: any) => (
 // --- SCENE 2: WHAT IS CODING ---
 const CodingScene = ({ onNext }: any) => {
   const [robotAction, setRobotAction] = useState('idle');
+  const [advanceScheduled, setAdvanceScheduled] = useState(false);
 
   const handleAction = (action: string) => {
+    if (advanceScheduled) return;
     setRobotAction(action);
+    setAdvanceScheduled(true);
     setTimeout(() => setRobotAction('idle'), 1500);
+    setTimeout(onNext, 4000);
   };
 
   return (
-    <div className="relative z-10 flex flex-col items-center justify-center min-h-[70vh] px-4 scene-enter max-w-6xl mx-auto py-4">
+    <div className="lesson-scene lesson-fit relative z-10 flex flex-col items-center justify-center px-4 scene-enter max-w-6xl mx-auto">
       <div className="bg-gradient-to-br from-[#2D4A7C] via-[#314E8D] to-[#4258C5] rounded-[40px] backdrop-blur-xl shadow-[inset_0_0_20px_rgba(255,255,255,0.2),_0_20px_60px_rgba(79,125,255,0.25)] text-white border border-white/10 rounded-3xl p-8 md:p-12 w-full flex flex-col md:flex-row gap-12 items-center">
         
         <div className="flex-1 space-y-6">
@@ -207,9 +211,6 @@ const CodingScene = ({ onNext }: any) => {
         </div>
       </div>
       
-      <button onClick={onNext} className="mt-8 px-6 py-3 bg-gradient-to-r from-[#8B5CF6] to-[#6366F1] shadow-[0_15px_50px_rgba(139,92,246,0.25)] hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(139,92,246,0.4)] active:scale-95 text-white rounded-full flex items-center gap-2 shadow-lg transition-all hover:scale-105">
-        Next: Algorithms <ArrowRight className="w-4 h-4" />
-      </button>
     </div>
   );
 };
@@ -222,6 +223,12 @@ const AlgorithmScene = ({ onNext }: any) => {
   const [success, setSuccess] = useState(false);
   const gridSize = 3;
   const targetPos = { x: 2, y: 2 };
+
+  useEffect(() => {
+    if (!success) return;
+    const timer = setTimeout(onNext, 4000);
+    return () => clearTimeout(timer);
+  }, [success, onNext]);
 
   const addStep = (dir: string) => {
     if (!running && path.length < 6 && !success) setPath([...path, dir]);
@@ -260,7 +267,7 @@ const AlgorithmScene = ({ onNext }: any) => {
   };
 
   return (
-    <div className="relative z-10 flex flex-col items-center justify-center min-h-[70vh] px-4 scene-enter max-w-6xl mx-auto py-4">
+    <div className="lesson-scene lesson-fit relative z-10 flex flex-col items-center justify-center px-4 scene-enter max-w-6xl mx-auto">
       <div className="text-center mb-8">
         <h2 className="text-5xl md:text-7xl font-headings font-bold text-gradient mb-4">
           What is an <span className="text-gradient">Algorithm?</span>
@@ -359,11 +366,6 @@ const AlgorithmScene = ({ onNext }: any) => {
         </div>
       </div>
       
-      {success && (
-        <button onClick={onNext} className="mt-8 px-8 py-4 bg-indigo-600 text-white rounded-full font-bold text-xl flex items-center gap-2 hover:scale-105 transition-all animate-glow shadow-xl">
-          Next: What is AI? <ArrowRight className="w-5 h-5" />
-        </button>
-      )}
     </div>
   );
 };
@@ -401,8 +403,14 @@ const AIScene = ({ onNext }: any) => {
 
   const isComplete = confidence >= 100 || currentImageIndex >= trainingData.length - 1;
 
+  useEffect(() => {
+    if (!isComplete) return;
+    const timer = setTimeout(onNext, 4000);
+    return () => clearTimeout(timer);
+  }, [isComplete, onNext]);
+
   return (
-    <div className="relative z-10 flex flex-col items-center justify-center min-h-[90vh] px-4 scene-enter max-w-6xl mx-auto py-10">
+    <div className="lesson-scene lesson-fit relative z-10 flex flex-col items-center justify-center px-4 scene-enter max-w-6xl mx-auto">
       <div className="text-center mb-8">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-100 text-purple-700 border border-purple-200 mb-6">
           <BrainCircuit className="w-5 h-5" />
@@ -485,9 +493,6 @@ const AIScene = ({ onNext }: any) => {
             <p className="text-blue-100 mb-8 max-w-md mx-auto">
               The AI learned the pattern by looking at examples and receiving feedback. That's how machine learning works!
             </p>
-            <button onClick={onNext} className="px-8 py-4 bg-indigo-600 text-white rounded-full font-bold text-xl flex items-center gap-2 hover:scale-105 transition-all mx-auto shadow-xl">
-              Next: Master the Maze <ArrowRight className="w-5 h-5" />
-            </button>
           </div>
         )}
       </div>
@@ -596,8 +601,14 @@ const MazeGameScene = ({ onNext }: any) => {
     }
   };
 
+  useEffect(() => {
+    if (status !== 'success') return;
+    const timer = setTimeout(nextLevel, 4000);
+    return () => clearTimeout(timer);
+  }, [status, level]);
+
   return (
-    <div className="relative z-10 flex flex-col items-center justify-center min-h-[70vh] px-4 scene-enter max-w-6xl mx-auto">
+    <div className="lesson-scene lesson-fit relative z-10 flex flex-col items-center justify-center px-4 scene-enter max-w-6xl mx-auto">
       <div className="text-center mb-8">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 border border-emerald-200 mb-6">
           <Flag className="w-5 h-5" />
@@ -652,9 +663,6 @@ const MazeGameScene = ({ onNext }: any) => {
                   <Check className="w-8 h-8" />
                 </div>
                 <h3 className="text-2xl font-bold text-green-700 mb-4">Level Cleared!</h3>
-                <button onClick={nextLevel} className="px-6 py-2 bg-green-600 text-white rounded-full font-bold shadow-md hover:scale-105 transition-all">
-                  {level < levels.length - 1 ? 'Next Level' : 'Finish Game'}
-                </button>
               </div>
             )}
             {status === 'fail' && (
@@ -723,8 +731,14 @@ const MazeGameScene = ({ onNext }: any) => {
 
 
 // --- SCENE 6: FINALE ---
-const FinaleScene = ({ onComplete, onRestart }: any) => (
-  <div className="relative z-10 flex flex-col items-center justify-center min-h-[70vh] text-center px-4 scene-enter">
+const FinaleScene = ({ onComplete, onRestart }: any) => {
+  useEffect(() => {
+    const timer = setTimeout(onComplete || onRestart, 4000);
+    return () => clearTimeout(timer);
+  }, [onComplete, onRestart]);
+
+  return (
+  <div className="lesson-scene lesson-fit relative z-10 flex flex-col items-center justify-center text-center px-4 scene-enter">
     
     <div className="animate-float-slow mb-8 relative">
       <div className="absolute inset-0 bg-yellow-300 blur-3xl opacity-50 rounded-full animate-pulse-glow"></div>
@@ -749,18 +763,9 @@ const FinaleScene = ({ onComplete, onRestart }: any) => (
       </div>
     </div>
     
-    <button 
-      onClick={onComplete || onRestart}
-      className="px-8 py-4 bg-indigo-600 text-white rounded-full font-bold text-xl transition-all duration-300 hover:bg-indigo-700 hover:scale-105 flex items-center gap-2 shadow-xl"
-    >
-      {onComplete ? (
-        <><ArrowRight className="w-5 h-5" /> Continue Journey</>
-      ) : (
-        <><RefreshCw className="w-5 h-5" /> Start Again</>
-      )}
-    </button>
   </div>
-);
+  );
+};
 
 
 // --- MAIN APP COMPONENT ---
