@@ -21,8 +21,23 @@ body {
   min-width: 320px;
 }
 
-button,
-input,
-textarea {
-  color: inherit;
+/* Keep core content readable even when translucent artwork sits behind it. */
+.text-slate-700 {
+  color: #1e293b !important;
+}
+
+.text-gray-500 {
+  color: #475569 !important;
+}
+
+.text-gray-600 {
+  color: #334155 !important;
+}
+
+.text-white {
+  color: #ffffff !important;
+}
+
+.bg-white {
+  background-color: #ffffff !important;
 }
