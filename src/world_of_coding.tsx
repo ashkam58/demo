@@ -1,4 +1,9 @@
 import { useState, useEffect } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCards, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-cards';
+import 'swiper/css/navigation';
 import { Play, Sparkles, BrainCircuit, Code2, Volume2, VolumeX, ArrowRight, ArrowUp, ArrowDown, ArrowLeft, RefreshCw, Check, X, Flag, RotateCcw, RotateCw } from 'lucide-react';
 
 // --- CUSTOM ANIMATION STYLES ---
@@ -768,14 +773,16 @@ const FinaleScene = ({ onComplete, onRestart }: any) => {
 // --- MAIN APP COMPONENT ---
 export default function App({ onComplete }: any) {
   const handleNext = () => {
-    if (currentScene === 5) {
-      if (onComplete) onComplete();
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      setCurrentScene(prev => prev + 1);
+    if (swiperInstance) {
+      if (swiperInstance.activeIndex === 5) {
+        if (onComplete) onComplete();
+      } else {
+        swiperInstance.slideNext();
+      }
     }
   };
   const [currentScene, setCurrentScene] = useState(0);
+    const [swiperInstance, setSwiperInstance] = useState<any>(null);
   const [soundEnabled, setSoundEnabled] = useState(false);
 
   const toggleSound = () => setSoundEnabled(!soundEnabled);
@@ -786,9 +793,10 @@ export default function App({ onComplete }: any) {
   };
 
   const restart = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    setCurrentScene(0);
-  };
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setCurrentScene(0);
+      swiperInstance?.slideTo(0);
+    };
 
   return (
     <div className="min-h-screen text-slate-700 font-sans overflow-x-hidden selection:bg-purple-300/50">
@@ -819,13 +827,22 @@ export default function App({ onComplete }: any) {
 
       {/* Scene Manager */}
       <main className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center justify-center flex-1 min-h-[90vh] pt-24 pb-12">
-        {currentScene === 0 && <WelcomeScene onNext={nextScene} />}
-        {currentScene === 1 && <CodingScene onNext={nextScene} />}
-        {currentScene === 2 && <AlgorithmScene onNext={nextScene} />}
-        {currentScene === 3 && <AIScene onNext={nextScene} />}
-        {currentScene === 4 && <MazeGameScene onNext={nextScene} />}
-        {currentScene === 5 && <FinaleScene onRestart={restart} onComplete={onComplete} />}
-      </main>
+        <Swiper
+          effect={'cards'}
+          grabCursor={true}
+          modules={[EffectCards, Navigation]}
+          className="w-full max-w-5xl"
+          onSwiper={setSwiperInstance}
+          onSlideChange={(swiper) => setCurrentScene(swiper.activeIndex)}
+        >
+          <SwiperSlide className="flex items-center justify-center p-4"><WelcomeScene onNext={nextScene} /></SwiperSlide>
+          <SwiperSlide className="flex items-center justify-center p-4"><CodingScene onNext={nextScene} /></SwiperSlide>
+          <SwiperSlide className="flex items-center justify-center p-4"><AlgorithmScene onNext={nextScene} /></SwiperSlide>
+          <SwiperSlide className="flex items-center justify-center p-4"><AIScene onNext={nextScene} /></SwiperSlide>
+          <SwiperSlide className="flex items-center justify-center p-4"><MazeGameScene onNext={nextScene} /></SwiperSlide>
+          <SwiperSlide className="flex items-center justify-center p-4"><FinaleScene onRestart={restart} onComplete={onComplete} /></SwiperSlide>
+        </Swiper>
+</main>
 
       {/* Global Next Button */}
       <button 

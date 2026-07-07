@@ -1,4 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCards, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-cards';
+import 'swiper/css/navigation';
 import { 
   Bot, Sparkles, TerminalSquare, Cpu,
   ArrowRight, Play,
@@ -711,6 +716,7 @@ export default function App({ onComplete }: any) {
     }
   };
   const [step, setStep] = useState(0);
+    const [swiperInstance, setSwiperInstance] = useState<any>(null);
 
   // Global styles for animations, glowing grids, and themes
   useEffect(() => {
@@ -786,8 +792,8 @@ export default function App({ onComplete }: any) {
   }, []);
 
   const nextStep = useCallback(() => {
-    setStep(s => Math.min(s + 1, 5));
-  }, []);
+    swiperInstance?.slideNext();
+  }, [swiperInstance]);
 
   // Determine Py's message based on step
   let botMessage = "";
@@ -856,16 +862,23 @@ export default function App({ onComplete }: any) {
       <main className="h-dvh overflow-hidden pt-20 pb-4 px-6 flex flex-col items-center justify-center relative z-10 w-full max-w-7xl mx-auto">
         
         <div className="w-full flex-1 flex flex-col items-center justify-center">
-          
-          {step === 0 && <SceneIntro onComplete={nextStep} />}
-          {step === 1 && <SceneTerminal onComplete={nextStep} />}
-          {step === 2 && <SceneVariables onComplete={nextStep} />}
-          {step === 3 && <SceneBinarySearch onComplete={nextStep} />}
-          {step === 4 && <ScenePythonVisualizer onComplete={nextStep} />}
-          {step === 5 && <SceneFinale onComplete={onComplete} />}
-
-        </div>
-      </main>
+        <Swiper
+          effect={'cards'}
+          grabCursor={true}
+          modules={[EffectCards, Navigation]}
+          className="w-full max-w-5xl"
+          onSwiper={setSwiperInstance}
+          onSlideChange={(swiper) => setStep(swiper.activeIndex)}
+        >
+          <SwiperSlide className="flex items-center justify-center p-4"><SceneIntro onComplete={nextStep} /></SwiperSlide>
+          <SwiperSlide className="flex items-center justify-center p-4"><SceneTerminal onComplete={nextStep} /></SwiperSlide>
+          <SwiperSlide className="flex items-center justify-center p-4"><SceneVariables onComplete={nextStep} /></SwiperSlide>
+          <SwiperSlide className="flex items-center justify-center p-4"><SceneBinarySearch onComplete={nextStep} /></SwiperSlide>
+          <SwiperSlide className="flex items-center justify-center p-4"><ScenePythonVisualizer onComplete={nextStep} /></SwiperSlide>
+          <SwiperSlide className="flex items-center justify-center p-4"><SceneFinale onComplete={onComplete} /></SwiperSlide>
+        </Swiper>
+      </div>
+    </main>
 
       {/* The Robot Companion */}
       <Py message={botMessage} mood={botMood} />

@@ -1,4 +1,9 @@
 import { useState, useEffect } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCards, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-cards';
+import 'swiper/css/navigation';
 import { 
   Sparkles, Code, Paintbrush, Layers, Power,
   Monitor, LayoutTemplate, Keyboard
@@ -520,6 +525,7 @@ export default function App({ onComplete }: any) {
     }
   };
   const [step, setStep] = useState(0);
+    const [swiperInstance, setSwiperInstance] = useState<any>(null);
 
   // Global styles for animations and background
   useEffect(() => {
@@ -587,7 +593,7 @@ export default function App({ onComplete }: any) {
     return () => { document.head.removeChild(style); };
   }, []);
 
-  const nextStep = () => setStep(s => Math.min(s + 1, 4));
+  const nextStep = () => swiperInstance?.slideNext();
 
   // Determine Byte's message based on step
   let botMessage = "";
@@ -658,57 +664,44 @@ export default function App({ onComplete }: any) {
 
         {/* Scene Container */}
         <div className="w-full flex-1 flex flex-col items-center justify-center">
-          
-          {step === 0 && (
-            <div className="text-center animate-fade-in-up max-w-3xl">
-              <div className="mb-8 inline-block p-4 bg-white/60 rounded-3xl backdrop-blur-md border border-white shadow-xl animate-float">
-                <Sparkles size={64} className="text-amber-400 mx-auto" />
+        <Swiper
+          effect={'cards'}
+          grabCursor={true}
+          modules={[EffectCards, Navigation]}
+          className="w-full max-w-5xl"
+          onSwiper={setSwiperInstance}
+          onSlideChange={(swiper) => setStep(swiper.activeIndex)}
+        >
+          <SwiperSlide className="flex items-center justify-center p-4">
+              <div className="text-center animate-fade-in-up max-w-3xl lesson-fit mt-24">
+                <div className="mb-8 inline-block p-4 bg-white/60 rounded-3xl backdrop-blur-md border border-white shadow-xl animate-float">
+                  <Sparkles size={64} className="text-amber-400 mx-auto" />
+                </div>
+                <h1 className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mb-6 drop-shadow-sm">
+                  Enter The DOM
+                </h1>
+                <p className="text-2xl text-slate-700 mb-12 font-medium">
+                  Put on your magic glasses. We are going inside the machine to see what websites are made of.
+                </p>
+                <Button primary onClick={nextStep} className="text-2xl px-12 py-6 rounded-full mx-auto shadow-xl">
+                  Start Adventure <Power className="ml-2"/>
+                </Button>
               </div>
-              <h1 className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mb-6 drop-shadow-sm">
-                Enter The DOM
-              </h1>
-              <p className="text-2xl text-slate-700 mb-12 font-medium">
-                Put on your magic glasses. We are going inside the machine to see what websites are made of.
-              </p>
-              <Button primary onClick={nextStep} className="text-2xl px-12 py-6 rounded-full mx-auto shadow-xl">
-                Start Adventure <Power className="ml-2"/>
-              </Button>
-            </div>
-          )}
-
-          {step === 1 && (
-            <div className="w-full animate-fade-in">
-              <SceneAnatomy onComplete={nextStep} />
-            </div>
-          )}
-
-          {step === 2 && (
-            <div className="w-full animate-fade-in">
-              <SceneBuilder onComplete={nextStep} />
-            </div>
-          )}
-
-          {step === 3 && (
-            <div className="w-full animate-fade-in">
-              <SceneXRay onComplete={nextStep} />
-            </div>
-          )}
-
-          {step === 4 && (
-            <div className="w-full animate-fade-in">
-              <SceneGuidedCoding onComplete={() => {
-                if (onComplete) {
-                  onComplete();
-                } else {
-                  alert("Congratulations! You've mastered HTML & CSS basics! Proceed to JavaScript.");
-                  setStep(0);
-                }
-              }} />
-            </div>
-          )}
-
-        </div>
-      </main>
+          </SwiperSlide>
+          <SwiperSlide className="flex items-center justify-center p-4"><SceneAnatomy onComplete={nextStep} /></SwiperSlide>
+          <SwiperSlide className="flex items-center justify-center p-4"><SceneBuilder onComplete={nextStep} /></SwiperSlide>
+          <SwiperSlide className="flex items-center justify-center p-4"><SceneXRay onComplete={nextStep} /></SwiperSlide>
+          <SwiperSlide className="flex items-center justify-center p-4"><SceneGuidedCoding onComplete={() => {
+                  if (onComplete) {
+                    onComplete();
+                  } else {
+                    alert("Congratulations! You've mastered HTML & CSS basics! Proceed to JavaScript.");
+                    swiperInstance?.slideTo(0);
+                  }
+                }} /></SwiperSlide>
+        </Swiper>
+          </div>
+        </main>
 
       {/* The Robot Companion */}
       <Byte message={botMessage} mood={botMood} />
