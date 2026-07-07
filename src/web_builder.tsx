@@ -513,10 +513,10 @@ const SceneGuidedCoding = ({ onComplete }: any) => {
 // --- MAIN APP COMPONENT ---
 export default function App({ onComplete }: any) {
   const handleNext = () => {
-    if (currentScene === 5) {
+    if (step >= 4) {
       if (onComplete) onComplete();
     } else {
-      setCurrentScene(prev => prev + 1);
+      nextStep();
     }
   };
   const [step, setStep] = useState(0);
