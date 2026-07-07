@@ -68,7 +68,7 @@ const SceneAnatomy = ({ onComplete }: any) => {
   }, [onComplete]);
 
   return (
-    <div className="lesson-fit flex flex-col items-center justify-center w-full max-w-5xl mx-auto gap-6">
+    <div className="lesson-fit mt-24 flex flex-col items-center justify-center w-full max-w-5xl mx-auto gap-6">
       <div className="flex items-center gap-4 bg-white/50 p-2 rounded-full backdrop-blur-md border border-white shadow-sm">
         <button 
           onClick={() => { setCssOn(false); playSound('switch'); }}
@@ -161,7 +161,7 @@ const SceneBuilder = ({ onComplete }: any) => {
   }, [isBeautiful, onComplete]);
 
   return (
-    <div className="lesson-fit flex flex-col lg:flex-row gap-8 w-full max-w-6xl mx-auto items-center">
+    <div className="lesson-fit mt-24 flex flex-col lg:flex-row gap-8 w-full max-w-6xl mx-auto items-center">
       
       {/* Controls / CSS Inspector */}
       <GlassCard className="flex-1 p-8 w-full">
@@ -261,7 +261,7 @@ const SceneXRay = ({ onComplete }: any) => {
   }, [xrayOn, onComplete]);
 
   return (
-    <div className="lesson-fit flex flex-col items-center justify-center w-full max-w-4xl mx-auto gap-6">
+    <div className="lesson-fit mt-24 flex flex-col items-center justify-center w-full max-w-4xl mx-auto gap-6">
       <div className="bg-white/60 p-6 rounded-3xl backdrop-blur-md border border-white text-center w-full shadow-xl">
         <h2 className="text-2xl font-bold text-slate-700 mb-4">The Browser's X-Ray Vision</h2>
         <p className="text-slate-700 mb-6 font-medium">Browsers read tags to understand what things are. Turn on X-Ray mode to see the hidden HTML tags!</p>
@@ -401,7 +401,7 @@ const SceneGuidedCoding = ({ onComplete }: any) => {
   }, [success, level]);
 
   return (
-    <div className="lesson-fit flex flex-col items-center justify-center w-full max-w-6xl mx-auto gap-6">
+    <div className="lesson-fit mt-24 flex flex-col items-center justify-center w-full max-w-6xl mx-auto gap-6">
       <div className="bg-white/80 p-6 rounded-3xl backdrop-blur-md border border-white text-center w-full shadow-2xl">
         <h2 className="text-4xl font-black text-slate-700 mb-2 flex items-center justify-center gap-3">
           <Keyboard className="text-indigo-600" size={36} /> You are the Developer

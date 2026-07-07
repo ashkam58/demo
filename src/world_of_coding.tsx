@@ -818,7 +818,7 @@ export default function App({ onComplete }: any) {
       </div>
 
       {/* Scene Manager */}
-      <main className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center justify-center flex-1 min-h-[90vh]">
+      <main className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center justify-center flex-1 min-h-[90vh] pt-24 pb-12">
         {currentScene === 0 && <WelcomeScene onNext={nextScene} />}
         {currentScene === 1 && <CodingScene onNext={nextScene} />}
         {currentScene === 2 && <AlgorithmScene onNext={nextScene} />}

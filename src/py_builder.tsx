@@ -78,7 +78,7 @@ const SceneIntro = ({ onComplete }: any) => {
   }, [onComplete]);
 
   return (
-    <div className="lesson-fit flex flex-col items-center justify-center w-full max-w-4xl mx-auto gap-6 text-slate-700">
+    <div className="lesson-fit mt-24 flex flex-col items-center justify-center w-full max-w-4xl mx-auto gap-6 text-slate-700">
       <div className="text-center mb-8">
         <h2 className="text-4xl font-black mb-4">Evolution of a Web App</h2>
         <p className="text-slate-700 font-mono">Watch how code transforms static text into an intelligent machine.</p>
@@ -169,7 +169,7 @@ const SceneTerminal = ({ onComplete }: any) => {
   };
 
   return (
-    <div className="lesson-fit flex flex-col items-center justify-center w-full max-w-3xl mx-auto gap-6">
+    <div className="lesson-fit mt-24 flex flex-col items-center justify-center w-full max-w-3xl mx-auto gap-6">
       <GlassPanel className="w-full flex flex-col shadow-2xl" glowing={isSuccess}>
         {/* Terminal Header */}
         <div className="bg-slate-800 px-4 py-3 border-b border-slate-700 flex items-center justify-between rounded-t-3xl">
@@ -242,7 +242,7 @@ const SceneVariables = ({ onComplete }: any) => {
   }, [isComplete, onComplete]);
 
   return (
-    <div className="lesson-fit w-full max-w-5xl mx-auto flex flex-col items-center justify-center gap-8">
+    <div className="lesson-fit mt-24 w-full max-w-5xl mx-auto flex flex-col items-center justify-center gap-8">
       <div className="text-center text-slate-700">
         <h2 className="text-4xl font-black mb-2">Variables are Magic Containers</h2>
         <p className="text-slate-700 font-mono text-lg">Click a value to store it in a variable.</p>
@@ -356,7 +356,7 @@ const SceneBinarySearch = ({ onComplete }: any) => {
 
   if (isStarting) {
     return (
-      <div className="lesson-fit flex flex-col items-center justify-center w-full max-w-2xl mx-auto gap-6 animate-fade-in">
+      <div className="lesson-fit mt-24 flex flex-col items-center justify-center w-full max-w-2xl mx-auto gap-6 animate-fade-in">
         <Cpu size={80} className="text-emerald-500 drop-shadow-[0_0_20px_rgba(16,185,129,0.5)] animate-pulse" />
         <h2 className="text-5xl font-black text-slate-700 text-center tracking-tight">The AI Mind Reader</h2>
         <p className="text-xl text-slate-700 text-center mb-8">
@@ -371,7 +371,7 @@ const SceneBinarySearch = ({ onComplete }: any) => {
   }
 
   return (
-    <div className="lesson-fit w-full max-w-6xl mx-auto flex flex-col gap-6 animate-fade-in">
+    <div className="lesson-fit mt-24 w-full max-w-6xl mx-auto flex flex-col gap-6 animate-fade-in">
       
       {/* Top HUD */}
       <div className="grid grid-cols-3 gap-6">
@@ -560,7 +560,7 @@ const ScenePythonVisualizer = ({ onComplete }: any) => {
   }, [success, level]);
 
   return (
-    <div className="lesson-fit flex flex-col items-center justify-center w-full max-w-6xl mx-auto gap-6">
+    <div className="lesson-fit mt-24 flex flex-col items-center justify-center w-full max-w-6xl mx-auto gap-6">
       
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes extreme-bounce {
@@ -666,7 +666,7 @@ const SceneFinale = ({ onComplete }: any) => {
   }, [onComplete]);
 
   return (
-    <div className="lesson-fit flex flex-col items-center justify-center w-full h-full relative">
+    <div className="lesson-fit mt-24 flex flex-col items-center justify-center w-full h-full relative">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-green-200/40 via-transparent to-transparent pointer-events-none"></div>
       
       <Sparkles size={80} className="text-emerald-500 mb-8 animate-pulse drop-shadow-[0_0_20px_rgba(16,185,129,0.5)]" />
