@@ -64,8 +64,7 @@ const SceneAnatomy = ({ onComplete }: any) => {
   const [cssOn, setCssOn] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(onComplete, 5000);
-    return () => clearTimeout(timer);
+    
   }, [onComplete]);
 
   return (
@@ -158,8 +157,7 @@ const SceneBuilder = ({ onComplete }: any) => {
   useEffect(() => {
     if (!isBeautiful) return;
     playSound('success');
-    const timer = setTimeout(onComplete, 4000);
-    return () => clearTimeout(timer);
+    
   }, [isBeautiful, onComplete]);
 
   return (
@@ -259,8 +257,7 @@ const SceneXRay = ({ onComplete }: any) => {
 
   useEffect(() => {
     if (!xrayOn) return;
-    const timer = setTimeout(onComplete, 4000);
-    return () => clearTimeout(timer);
+    
   }, [xrayOn, onComplete]);
 
   return (
@@ -515,6 +512,13 @@ const SceneGuidedCoding = ({ onComplete }: any) => {
 
 // --- MAIN APP COMPONENT ---
 export default function App({ onComplete }: any) {
+  const handleNext = () => {
+    if (currentScene === 5) {
+      if (onComplete) onComplete();
+    } else {
+      setCurrentScene(prev => prev + 1);
+    }
+  };
   const [step, setStep] = useState(0);
 
   // Global styles for animations and background
@@ -709,6 +713,14 @@ export default function App({ onComplete }: any) {
       {/* The Robot Companion */}
       <Byte message={botMessage} mood={botMood} />
 
-    </div>
+    
+      {/* Global Next Button */}
+      <button 
+        onClick={handleNext}
+        className="fixed bottom-6 right-6 z-[9999] bg-slate-900/40 hover:bg-slate-900/60 backdrop-blur-md px-6 py-2 rounded-full text-white/90 transition-all shadow-lg text-sm font-bold border border-white/20 hover:scale-105 flex items-center gap-2"
+      >
+        Next <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+</div>
   );
 }

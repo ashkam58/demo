@@ -74,8 +74,7 @@ const SceneIntro = ({ onComplete }: any) => {
   useEffect(() => {
     const timer1 = setTimeout(() => setStage(1), 2000);
     const timer2 = setTimeout(() => { setStage(2); playSound('success'); }, 4000);
-    const timer3 = setTimeout(onComplete, 8000);
-    return () => { clearTimeout(timer1); clearTimeout(timer2); clearTimeout(timer3); };
+    return () => { clearTimeout(timer1); clearTimeout(timer2); };
   }, [onComplete]);
 
   return (
@@ -136,8 +135,7 @@ const SceneTerminal = ({ onComplete }: any) => {
 
   useEffect(() => {
     if (!isSuccess) return;
-    const timer = setTimeout(onComplete, 4000);
-    return () => clearTimeout(timer);
+    
   }, [isSuccess, onComplete]);
 
   const handleType = (e: any) => {
@@ -240,8 +238,7 @@ const SceneVariables = ({ onComplete }: any) => {
   useEffect(() => {
     if (!isComplete) return;
     playSound('success');
-    const timer = setTimeout(onComplete, 4000);
-    return () => clearTimeout(timer);
+    
   }, [isComplete, onComplete]);
 
   return (
@@ -323,8 +320,7 @@ const SceneBinarySearch = ({ onComplete }: any) => {
 
   useEffect(() => {
     if (!found) return;
-    const timer = setTimeout(onComplete, 4000);
-    return () => clearTimeout(timer);
+    
   }, [found, onComplete]);
 
   const guess = Math.floor((low + high) / 2);
@@ -666,8 +662,7 @@ const ScenePythonVisualizer = ({ onComplete }: any) => {
 const SceneFinale = ({ onComplete }: any) => {
   useEffect(() => {
     if (!onComplete) return;
-    const timer = setTimeout(onComplete, 4000);
-    return () => clearTimeout(timer);
+    
   }, [onComplete]);
 
   return (
@@ -708,6 +703,13 @@ const SceneFinale = ({ onComplete }: any) => {
 
 // --- MAIN APP COMPONENT ---
 export default function App({ onComplete }: any) {
+  const handleNext = () => {
+    if (step >= 5) {
+      if (onComplete) onComplete();
+    } else {
+      setStep(s => Math.min(s + 1, 5));
+    }
+  };
   const [step, setStep] = useState(0);
 
   // Global styles for animations, glowing grids, and themes
@@ -868,6 +870,14 @@ export default function App({ onComplete }: any) {
       {/* The Robot Companion */}
       <Py message={botMessage} mood={botMood} />
 
-    </div>
+    
+      {/* Global Next Button */}
+      <button 
+        onClick={handleNext}
+        className="fixed bottom-6 right-6 z-[9999] bg-slate-900/40 hover:bg-slate-900/60 backdrop-blur-md px-6 py-2 rounded-full text-white/90 transition-all shadow-lg text-sm font-bold border border-white/20 hover:scale-105 flex items-center gap-2"
+      >
+        Next <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+</div>
   );
 }

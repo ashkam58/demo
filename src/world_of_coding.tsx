@@ -226,8 +226,7 @@ const AlgorithmScene = ({ onNext }: any) => {
 
   useEffect(() => {
     if (!success) return;
-    const timer = setTimeout(onNext, 4000);
-    return () => clearTimeout(timer);
+    
   }, [success, onNext]);
 
   const addStep = (dir: string) => {
@@ -405,8 +404,7 @@ const AIScene = ({ onNext }: any) => {
 
   useEffect(() => {
     if (!isComplete) return;
-    const timer = setTimeout(onNext, 4000);
-    return () => clearTimeout(timer);
+    
   }, [isComplete, onNext]);
 
   return (
@@ -733,8 +731,7 @@ const MazeGameScene = ({ onNext }: any) => {
 // --- SCENE 6: FINALE ---
 const FinaleScene = ({ onComplete, onRestart }: any) => {
   useEffect(() => {
-    const timer = setTimeout(onComplete || onRestart, 4000);
-    return () => clearTimeout(timer);
+    
   }, [onComplete, onRestart]);
 
   return (
@@ -770,6 +767,14 @@ const FinaleScene = ({ onComplete, onRestart }: any) => {
 
 // --- MAIN APP COMPONENT ---
 export default function App({ onComplete }: any) {
+  const handleNext = () => {
+    if (currentScene === 5) {
+      if (onComplete) onComplete();
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setCurrentScene(prev => prev + 1);
+    }
+  };
   const [currentScene, setCurrentScene] = useState(0);
   const [soundEnabled, setSoundEnabled] = useState(false);
 
@@ -813,7 +818,7 @@ export default function App({ onComplete }: any) {
       </div>
 
       {/* Scene Manager */}
-      <main className="relative z-10 w-full max-w-7xl mx-auto">
+      <main className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center justify-center flex-1 min-h-[90vh]">
         {currentScene === 0 && <WelcomeScene onNext={nextScene} />}
         {currentScene === 1 && <CodingScene onNext={nextScene} />}
         {currentScene === 2 && <AlgorithmScene onNext={nextScene} />}
@@ -821,6 +826,15 @@ export default function App({ onComplete }: any) {
         {currentScene === 4 && <MazeGameScene onNext={nextScene} />}
         {currentScene === 5 && <FinaleScene onRestart={restart} onComplete={onComplete} />}
       </main>
+
+      {/* Global Next Button */}
+      <button 
+        onClick={handleNext}
+        className="fixed bottom-6 right-6 z-[9999] bg-slate-900/40 hover:bg-slate-900/60 backdrop-blur-md px-6 py-2 rounded-full text-white/90 transition-all shadow-lg text-sm font-bold border border-white/20 hover:scale-105 flex items-center gap-2"
+      >
+        Next <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+
 
     </div>
   );
